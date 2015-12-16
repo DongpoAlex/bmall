@@ -13,6 +13,7 @@ import org.springframework.web.servlet.HandlerMapping;
 import org.webjars.WebJarAssetLocator;
 
 import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
 
 /**
  * Created by AlexBob on 2015/12/15.
@@ -37,8 +38,18 @@ public class Application {
         }
     }
 
-    @RequestMapping("a/**")
-    public String index() {
-        return "forward:/index.html";
+    /**
+     * angular route
+     * @return
+     */
+    @RequestMapping(value = "/{[path:[^\\.]*}")
+    public String redirect() {
+        return "forward:/";
+    }
+
+    @RequestMapping("/user")
+    @ResponseBody
+    public Principal user(Principal user) {
+        return user;
     }
 }
