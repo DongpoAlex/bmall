@@ -36,4 +36,9 @@ public class Application {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
+    @RequestMapping("a/**")
+    public String index() {
+        return "forward:/index.html";
+    }
 }

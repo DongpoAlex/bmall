@@ -1,20 +1,17 @@
-angular.module('bmall', ['ngRoute','ngAnimate'])
-    .config(['$routeProvider', '$locationProvider',function ($routeProvider, $locationProvider) {
-        $routeProvider.when('signon',{
+angular.module('bmall', ['ngRoute'])
+    .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
+        $routeProvider.when('/a/login', {
             templateUrl: 'login-page.html',
-            controller: 'loginCtrl',
+            controller: 'LoginCtrl',
             controllerAs: 'login'
         });
-        $locationProvider.html5Mode({
-            enabled: true,
-            requireBase: false
-        });
+        $locationProvider.html5Mode(true);
     }]).controller('MainCtrl', ['$route', '$routeParams', '$location',
     function ($route, $routeParams, $location) {
         this.$route = $route;
         this.$location = $location;
         this.$routeParams = $routeParams;
-    }]).controller('loginCtrl', ['$routeParams', function ($routeParams) {
+    }]).controller('LoginCtrl', ['$routeParams', function ($routeParams) {
     this.name = "login";
     this.params = $routeParams;
 }]);
