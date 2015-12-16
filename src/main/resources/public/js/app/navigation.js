@@ -1,7 +1,4 @@
-angular.module('navigation', ['ngRoute', 'auth']).controller(
-    'navigation',
-
-    function($scope, $route, auth) {
+angular.module('navigation', ['ngRoute', 'auth']).controller('navigation',function($scope, $route, auth) {
 
         $scope.credentials = {};
 

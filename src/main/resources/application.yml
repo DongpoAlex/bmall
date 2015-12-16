@@ -5,9 +5,15 @@ spring:
     url: jdbc:sqlserver://192.168.31.226:1433;databaseName=mySHOPPFStock
     username: sa
     password: 123456
+    initialize: false
+  data:
+    rest:
+      base-path: /api
 
   jpa:
     database: SQL_SERVER
+    show-sql: true
+
   mvc:
     date-format: yyyy-MM-dd
 security:
