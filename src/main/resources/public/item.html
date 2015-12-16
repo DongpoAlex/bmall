@@ -525,6 +525,7 @@ License: You must have a valid license purchased only from themeforest(the above
 Nostrud duis molestie at dolore.</p>
                   </div>
                   <div class="product-page-options">
+                      <!--
                     <div class="pull-left">
                       <label class="control-label">Size:</label>
                       <select class="form-control input-sm">
@@ -533,6 +534,7 @@ Nostrud duis molestie at dolore.</p>
                         <option>XL</option>
                       </select>
                     </div>
+
                     <div class="pull-left">
                       <label class="control-label">Color:</label>
                       <select class="form-control input-sm">
@@ -541,19 +543,21 @@ Nostrud duis molestie at dolore.</p>
                         <option>Black</option>
                       </select>
                     </div>
+                    -->
                   </div>
                   <div class="product-page-cart">
                     <div class="product-quantity">
                         <input id="product-quantity" type="text" value="1" readonly class="form-control input-sm">
                     </div>
-                    <button class="btn btn-primary" type="submit">Add to cart</button>
+                    <button class="btn btn-primary" type="submit">加入购物车</button>
                   </div>
                   <div class="review">
                     <input type="range" value="4" step="0.25" id="backing4">
                     <div class="rateit" data-rateit-backingfld="#backing4" data-rateit-resetable="false"  data-rateit-ispreset="true" data-rateit-min="0" data-rateit-max="5">
                     </div>
-                    <a href="#">7 reviews</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#">Write a review</a>
+                    <a href="#">本周评论</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#">评论</a>
                   </div>
+                    <!--
                   <ul class="social-icons">
                     <li><a class="facebook" data-original-title="facebook" href="#"></a></li>
                     <li><a class="twitter" data-original-title="twitter" href="#"></a></li>
@@ -561,13 +565,14 @@ Nostrud duis molestie at dolore.</p>
                     <li><a class="evernote" data-original-title="evernote" href="#"></a></li>
                     <li><a class="tumblr" data-original-title="tumblr" href="#"></a></li>
                   </ul>
+                  -->
                 </div>
 
                 <div class="product-page-content">
                   <ul id="myTab" class="nav nav-tabs">
-                    <li><a href="#Description" data-toggle="tab">Description</a></li>
-                    <li><a href="#Information" data-toggle="tab">Information</a></li>
-                    <li class="active"><a href="#Reviews" data-toggle="tab">Reviews (2)</a></li>
+                    <li><a href="#Description" data-toggle="tab">商品描述</a></li>
+                    <li><a href="#Information" data-toggle="tab">商品参数</a></li>
+                    <li class="active"><a href="#Reviews" data-toggle="tab">评价</a></li>
                   </ul>
                   <div id="myTabContent" class="tab-content">
                     <div class="tab-pane fade" id="Description">
@@ -625,27 +630,27 @@ Nostrud duis molestie at dolore.</p>
 
                       <!-- BEGIN FORM-->
                       <form action="#" class="reviews-form" role="form">
-                        <h2>Write a review</h2>
+                        <h2>填写评价</h2>
                         <div class="form-group">
-                          <label for="name">Name <span class="require">*</span></label>
+                          <label for="name">用户名称 <span class="require">*</span></label>
                           <input type="text" class="form-control" id="name">
                         </div>
                         <div class="form-group">
-                          <label for="email">Email</label>
+                          <label for="email">邮箱</label>
                           <input type="text" class="form-control" id="email">
                         </div>
                         <div class="form-group">
-                          <label for="review">Review <span class="require">*</span></label>
+                          <label for="review">评价 <span class="require">*</span></label>
                           <textarea class="form-control" rows="8" id="review"></textarea>
                         </div>
                         <div class="form-group">
-                          <label for="email">Rating</label>
+                          <label for="email">评级</label>
                           <input type="range" value="4" step="0.25" id="backing5">
                           <div class="rateit" data-rateit-backingfld="#backing5" data-rateit-resetable="false"  data-rateit-ispreset="true" data-rateit-min="0" data-rateit-max="5">
                           </div>
                         </div>
                         <div class="padding-top-20">                  
-                          <button type="submit" class="btn btn-primary">Send</button>
+                          <button type="submit" class="btn btn-primary">提交</button>
                         </div>
                       </form>
                       <!-- END FORM--> 
@@ -664,20 +669,20 @@ Nostrud duis molestie at dolore.</p>
         <!-- BEGIN SIMILAR PRODUCTS -->
         <div class="row margin-bottom-40">
           <div class="col-md-12 col-sm-12 bxslider-wrapper bxslider-wrapper-similar-products">
-            <h2>Most popular products</h2>
+            <h2>大家还在关注的商品</h2>
               <ul class="bxslider bxslider-similar-products" data-slides-phone="1" data-slides-tablet="2" data-slides-desktop="4" data-slide-margin="20">
                 <li>
                   <div class="product-item">
                     <div class="pi-img-wrapper">
                       <img src="assets/temp/products/k4.jpg" class="img-responsive" alt="Berry Lace Dress">
                       <div>
-                        <a href="assets/temp/products/k4.jpg" class="btn btn-default fancybox-button">Zoom</a>
-                        <a href="#product-pop-up" class="btn btn-default fancybox-fast-view">View</a>
+                        <a href="assets/temp/products/k4.jpg" class="btn btn-default fancybox-button">放大</a>
+                        <a href="#product-pop-up" class="btn btn-default fancybox-fast-view">浏览</a>
                       </div>
                     </div>
                     <h3><a href="item.html">Berry Lace Dress</a></h3>
                     <div class="pi-price">$29.00</div>
-                    <a href="#" class="btn btn-default add2cart">Add to cart</a>
+                    <a href="#" class="btn btn-default add2cart">加入购物车</a>
                   </div>
                 </li>
                 <li>
