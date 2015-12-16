@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    platform: sql_server
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    url: jdbc:sqlserver://localhost:1433;databaseName=mySHOPPFStock
+    username: sa
+    password: 123456
+
+  jpa:
+    database: SQL_SERVER
+  mvc:
+    date-format: yyyy-MM-dd
+security:
+  enable-csrf: true
