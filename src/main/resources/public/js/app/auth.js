@@ -26,7 +26,7 @@ angular.module('auth', []).factory('auth',function ($rootScope, $http, $location
                         + credentials.password)
                 } : {};
 
-                $http.get('user', {
+                $http.get('api/user', {
                     headers: headers
                 }).success(function (data) {
                     if (data.name) {

@@ -1,11 +1,14 @@
+logging:
+  level: INFO
+
 spring:
   datasource:
-    platform: sql_server
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
     url: jdbc:sqlserver://192.168.31.226:1433;databaseName=mySHOPPFStock
     username: sa
     password: 123456
     initialize: false
+
   data:
     rest:
       base-path: /api
@@ -16,5 +19,10 @@ spring:
 
   mvc:
     date-format: yyyy-MM-dd
+    locale: zh_CN
+
+  messages:
+    basename: messages_zh_CN
+
 security:
   enable-csrf: true

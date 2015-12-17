@@ -6,10 +6,9 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.HandlerMapping;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 import org.webjars.WebJarAssetLocator;
 
 import javax.servlet.http.HttpServletRequest;
@@ -47,9 +46,9 @@ public class Application {
         return "forward:/";
     }
 
-    @RequestMapping("/user")
+    @CrossOrigin
+    @RequestMapping("/api/user")
     @ResponseBody
-    public Principal user(Principal user) {
-        return user;
-    }
+    public Principal user(Principal user) {return user;}
+
 }
