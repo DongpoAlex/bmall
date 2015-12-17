@@ -1,9 +1,10 @@
-angular.module('home', ['bmallService']).controller('home', function($scope, $http,menu) {
+angular.module('home', ['bmallService']).controller('home', function($rootScope, $http,menu) {
     $http.get('/user/').success(function(data) {
-        $scope.menues=[];
-        menu(function(data){
-            $scope.menues = data._embedded.depts;
-        });
-        $scope.user = data.name;
+        if($rootScope.menues==undefined){
+            menu(function (data) {
+                $rootScope.menues = data._embedded.depts;
+            });
+        }
+        $rootScope.user = data.name;
     });
 });
