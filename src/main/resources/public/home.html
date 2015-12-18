@@ -218,14 +218,14 @@
             <div class="sidebar col-md-3 col-sm-4" >
                 <ul class="list-group margin-bottom-25 sidebar-menu">
                     <li class="list-group-item clearfix dropdown"
-                        ng-repeat="(key,value) in menues  | filter : {prentId: 0} : true">
+                        ng-repeat="(key,value) in menus  | filter : {prentId: 0} : true">
                         <a href="javascript:void(0);" handle-sidebar-menu>
                             <i class="fa fa-angle-right"></i>
                             {{value.name}}
                             <i class="fa fa-angle-down"></i>
                         </a>
                         <ul class="dropdown-menu">
-                            <li class="list-group-item dropdown clearfix" ng-repeat="child in menues | filter : {prentId:key+1}:true">
+                            <li class="list-group-item dropdown clearfix" ng-repeat="child in menus | filter : {prentId:key+1}:true">
                                 <a href="javascript:void(0);" handle-sidebar-menu ><i class="fa fa-circle"></i> {{child.name}} </a>
                                 <ul class="dropdown-menu">
                                     <li class="list-group-item dropdown clearfix">

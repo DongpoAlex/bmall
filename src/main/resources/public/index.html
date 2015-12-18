@@ -178,7 +178,7 @@
         <!-- BEGIN NAVIGATION -->
         <div class="collapse navbar-collapse mega-menu" ng-controller="initCtrl">
             <ul class="nav navbar-nav">
-                <li class="dropdown" ng-repeat="(key,value) in menues  | filter : {prentId: 0} : true">
+                <li class="dropdown" ng-repeat="(key,value) in menus  | filter : {prentId: 0} : true">
                     <a class="dropdown-toggle" data-toggle="dropdown" data-delay="0" data-close-others="false"
                        data-target="product-list.html" href="product-list.html">
                         {{value.name}}
@@ -189,7 +189,7 @@
                         <li>
                             <div class="nav-content">
                                 <!-- BEGIN DROPDOWN MENU - COLUMN -->
-                                <div class="nav-content-col" ng-repeat="child in menues | filter : {prentId:key+1}:true">
+                                <div class="nav-content-col" ng-repeat="child in menus | filter : {prentId:key+1}:true">
                                     <h3><a class="dropdown-toggle" data-toggle="dropdown" data-delay="0"
                                            data-close-others="false"
                                            data-target="product-list.html" href="product-list.html">
@@ -422,6 +422,7 @@
 <script type="text/javascript" src="webjarslocator/angularjs/angular.js"></script>
 <script type="text/javascript" src="webjarslocator/angularjs/angular-animate.js"></script>
 <script type="text/javascript" src="webjarslocator/angularjs/angular-route.js"></script>
+<script type="text/javascript" src="webjarslocator/angularjs/angular-resource.js"></script>
 <!-- END CORE PLUGINS -->
 
 <!-- BEGIN APP SCRIPT -->
