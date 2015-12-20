@@ -13,7 +13,7 @@ angular.module('auth', []).factory('auth',function ($rootScope, $http, $location
 
             authenticated: false,
 
-            loginPath: '/login',
+            loginPath: '/',
             logoutPath: '/logout',
             homePath: '/',
             path: $location.path(),

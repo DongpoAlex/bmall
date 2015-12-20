@@ -36,15 +36,14 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth
                 .jdbcAuthentication()
-                .dataSource(dataSource)
-                .passwordEncoder(passwordEncoder());
-                //.withUser("user").password(passwordEncoder().encode("password")).roles("USER");
+                .dataSource(dataSource);
+                //.withUser("user").password("password").roles("USER");
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.httpBasic().and().authorizeRequests()
-                .antMatchers("/index.html","/login.html","/","/webjarslocator/**","/assets/**","/login","/home","/api/dept").permitAll()
+                .antMatchers("/*","/webjarslocator/**","/assets/**","/api/dept").permitAll()
                 .anyRequest().authenticated().and().csrf()
                 .csrfTokenRepository(csrfTokenRepository()).and()
                 .addFilterAfter(csrfHeaderFilter(), CsrfFilter.class);
@@ -80,9 +79,4 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         return repository;
     }
 
-    @Bean
-    public BCryptPasswordEncoder passwordEncoder()
-    {
-        return new BCryptPasswordEncoder();
-    }
 }

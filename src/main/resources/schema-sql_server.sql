@@ -1,6 +1,3 @@
-DROP TABLE if EXISTS authorities;
-DROP TABLE if EXISTS users;
-DROP TABLE if EXISTS GoodsExtend;
 CREATE TABLE users (
   username VARCHAR(255) NOT NULL PRIMARY KEY,
   password VARCHAR(255) NOT NULL,
@@ -24,3 +21,6 @@ CREATE TABLE GoodsExtend (
   url     VARCHAR(1000) NOT NULL,
   goodsid INT           NOT NULL
 );
+
+ALTER view [dbo].[v_SGroup] as
+SELECT id,name,id/100 prantid FROM mySHOPDCStock..SGroup where id<>0;
