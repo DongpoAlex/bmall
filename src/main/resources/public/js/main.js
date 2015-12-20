@@ -8,6 +8,8 @@ angular.module('bmall', ['ngRoute', 'auth', 'home', 'navigation', 'bmallService'
         }).when('/login', {
             templateUrl: '/login.html',
             controller: 'navigation'
+        }).when('/shopping',{
+
         }).otherwise('/');
 
         $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
