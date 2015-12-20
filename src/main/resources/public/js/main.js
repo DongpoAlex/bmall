@@ -16,9 +16,10 @@ angular.module('bmall', ['ngRoute', 'auth', 'home', 'navigation', 'bmallService'
 
     auth.init('/', '/login', '/logout');
 
-}).controller("initCtrl", ['$scope','menuService',function ($scope, menuService) {
+}).controller("initCtrl", ['$rootScope','menuService','cartService',function ($rootScope, menuService,cartService) {
     menuService.get(function(data){
-        $scope.menus = data._embedded.depts;
+        $rootScope.menus = data._embedded.depts;
     });
 
+    cartService.get();
 }]);

@@ -1,13 +1,35 @@
 angular.module('bmallService', ['ngResource'])
-    .factory('menuService',function ($resource){
+    .factory('menuService', function ($resource) {
+            return $resource('/api/dept/:id');
+        }
+    ).factory('goodsService', function ($resource) {
 
-        return $resource('/api/dept/:id');
+        return $resource('/api/goods/:id?size=9');
 
-    }).factory('goodsService',function ($resource){
+    }
+).factory('cartService', function ($rootScope) {
+        $rootScope.cart= [];
+        return {
+            get: function(){
+                return $rootScope.cart;
+            },
+            set: function (goods) {
+                $rootScope.cart.push(goods);
+            },
+            remove:function(goods){
 
-        return $resource('/api/goods/:id');
-
-    }).directive('handleSidebarMenu', function () {
+            }
+        };
+    }
+).directive('initImageZoom', function () {
+        function link(scope, element, attrs) {
+            jQuery(element).zoom({url: jQuery('.product-main-image img').attr('data-BigImgSrc')});
+        };
+        return {
+            link: link
+        };
+    }
+).directive('handleSidebarMenu', function () {
         function link(scope, element, attrs) {
             var em = $(element);
             em.click(function () {
@@ -24,4 +46,5 @@ angular.module('bmallService', ['ngResource'])
         return {
             link: link
         };
-    });
+    }
+);
