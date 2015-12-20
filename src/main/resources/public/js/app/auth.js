@@ -13,7 +13,7 @@ angular.module('auth', []).factory('auth',function ($rootScope, $http, $location
 
             authenticated: false,
 
-            loginPath: '/',
+            loginPath: '/login',
             logoutPath: '/logout',
             homePath: '/',
             path: $location.path(),
@@ -58,12 +58,6 @@ angular.module('auth', []).factory('auth',function ($rootScope, $http, $location
                 auth.homePath = homePath;
                 auth.loginPath = loginPath;
                 auth.logoutPath = logoutPath;
-
-                auth.authenticate({}, function (authenticated) {
-                    if (authenticated) {
-                        $location.path(auth.path);
-                    }
-                })
 
                 // Guard route changes and switch to login page if unauthenticated
                 $rootScope.$on('$routeChangeStart', function () {
