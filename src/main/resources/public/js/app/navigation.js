@@ -1,17 +1,17 @@
-angular.module('navigation', ['ngRoute', 'auth']).controller('navigation',function($scope, $route, auth) {
+angular.module('navigation', ['ngRoute', 'auth']).controller('navigation', function ($scope, $route, auth) {
 
         $scope.credentials = {};
 
-        $scope.tab = function(route) {
+        $scope.tab = function (route) {
             return $route.current && route === $route.current.controller;
         };
 
-        $scope.authenticated = function() {
+        $scope.authenticated = function () {
             return auth.authenticated;
         }
 
-        $scope.login = function() {
-            auth.authenticate($scope.credentials, function(authenticated) {
+        $scope.login = function () {
+            auth.authenticate($scope.credentials, function (authenticated) {
                 if (authenticated) {
                     console.log("Login succeeded")
                     $scope.error = false;
@@ -24,4 +24,5 @@ angular.module('navigation', ['ngRoute', 'auth']).controller('navigation',functi
 
         $scope.logout = auth.clear;
 
-    });
+    }
+);

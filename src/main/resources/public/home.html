@@ -84,9 +84,9 @@
                     <div class="col-md-4 col-sm-6 col-xs-12" ng-repeat="item in goodses._embedded.goodses">
                         <div class="product-item">
                             <div class="pi-img-wrapper">
-                                <img src="{{item.extendSet[0].url}}" class="img-responsive" alt="Berry Lace Dress">
+                                <img ng-src="{{item.extendSet[0].url}}" class="img-responsive" alt="Berry Lace Dress">
                                 <div>
-                                    <a href="{{item.extendSet[0].url}}" class="btn btn-default fancybox-button">大图</a>
+                                    <a ng-href="{{item.extendSet[0].url}}" class="btn btn-default fancybox-button">大图</a>
                                     <a href="#product-pop-up" class="btn btn-default fancybox-fast-view">显示</a>
                                 </div>
                             </div>

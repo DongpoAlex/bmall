@@ -101,13 +101,13 @@
             <div class="cart-content-wrapper">
                 <div class="cart-content">
                     <ul class="scroller" style="height: 250px;">
-                        <li ng-repeat="item in cart">
-                            <a href="item.html"><img src="{{item.extendSet[0].url}}" alt="Rolex Classic Watch" width="37"
+                        <li ng-repeat="item in cart track by $index">
+                            <a href="/goods/{{item.id}}"><img ng-src="{{item.extendSet[0].url}}" alt="Rolex Classic Watch" width="37"
                                                      height="34"></a>
-                            <span class="cart-content-count">x 1</span>
-                            <strong><a href="item.html">{{item.name}}</a></strong>
+                            <span class="cart-content-count">x {{item.qty}}</span>
+                            <strong><a href="/goods/{{item.id}}">{{item.name}}</a></strong>
                             <em>$1230</em>
-                            <a href="javascript:void(0);" class="del-goods"><i class="fa fa-times"></i></a>
+                            <a href="javascript:void(0);" class="del-goods" ng-click="removeGoods(item)"><i class="fa fa-times"></i></a>
                         </li>
 
                     </ul>
@@ -413,6 +413,7 @@
 <script type="text/javascript" src="webjarslocator/angularjs/angular-animate.js"></script>
 <script type="text/javascript" src="webjarslocator/angularjs/angular-route.js"></script>
 <script type="text/javascript" src="webjarslocator/angularjs/angular-resource.js"></script>
+<script type="text/javascript" src="webjarslocator/angularjs/angular-cookies.js"></script>
 <!-- END CORE PLUGINS -->
 
 

@@ -41,10 +41,10 @@ public class Application {
      * angular route
      * @return
      */
-    @RequestMapping(value = "/{[path:[^\\.]*}")
-    public String redirect() {
-        return "forward:/";
-    }
+    @RequestMapping(value = "/{path:[^\\.]*}{extension:[^(api)]}")
+    public String redirect() {return "forward:/";}
+    @RequestMapping(value = "/{path:[^\\.]*}{extension:[^api]}/{path:[^\\.]*}")
+    public String redirectS() {return "forward:/";}
 
     @CrossOrigin
     @RequestMapping("/api/user")

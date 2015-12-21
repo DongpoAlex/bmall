@@ -31,6 +31,8 @@ public class Goods {
         return goodsId;
     }
 
+    public int getId() {return goodsId;}
+
     public void setGoodsId(int goodsId) {
         this.goodsId = goodsId;
     }
