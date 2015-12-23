@@ -31,10 +31,12 @@ angular.module('auth', []).factory('auth',function ($rootScope, $http, $location
                 }).success(function (data) {
                     if (data.name) {
                         auth.authenticated = true;
+                        $rootScope.user=data;
                     } else {
                         auth.authenticated = false;
                     }
                     callback && callback(auth.authenticated);
+
                     $location.path(auth.path == auth.loginPath ? auth.homePath : auth.path);
                 }).error(function () {
                     auth.authenticated = false;

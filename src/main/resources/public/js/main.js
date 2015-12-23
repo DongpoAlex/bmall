@@ -6,13 +6,16 @@ angular.module('bmall', ['ngRoute', 'auth', 'home', 'navigation', 'bmallService'
             $routeProvider.when('/', {
                 templateUrl: '/home.html',
                 controller: 'home'
-            }).when('/goods/:id',{
+            }).when('/goods/:id', {
                 templateUrl: '/item.html',
-                controller: 'goods'
+                controller: 'goodsCtrl'
             }).when('/login', {
                 templateUrl: '/login.html',
                 controller: 'navigation'
-            }).when('/shopping', {}).otherwise('/');
+            }).when('/shopping', {
+                templateUrl: '/shopping-cart.html',
+                controller: 'initCtrl'
+            }).otherwise('/');
 
             $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
@@ -24,11 +27,31 @@ angular.module('bmall', ['ngRoute', 'auth', 'home', 'navigation', 'bmallService'
     }
 ).controller("initCtrl", ['$rootScope', 'menuService', 'cartService',
     function ($rootScope, menuService, cartService) {
-        menuService.get(function (data) {
-            $rootScope.menus = data._embedded.depts;
-        });
-        $rootScope.removeGoods=cartService.remove;
+
+        $rootScope.removeGoods = cartService.remove;
+        $rootScope.claerCart = cartService.clearCart;
+        $rootScope.getToltal = cartService.getToltal;
+
     }
-]).controller('goods',['$scope',function($scope){
+]).controller('goodsCtrl', ['$scope', '$http', '$routeParams', 'cartService','goodsService','filterFilter','$rootScope',
+    function ($scope, $http, $routeParams, cartService,goodsService,filterFilter,$rootScope) {
+    var params = $routeParams.id;
+    $scope.goods = [];
+    $http.get('/api/goods/' + params).success(function (data) {
+        $scope.goods = data;
+        var priceItem = filterFilter($rootScope.prices, {
+            guestId: $rootScope.user.name,
+            goodsId: params
+        }, true);
+        if(priceItem.price){
+            $scope.goods.price = priceItem.price;
+        }else{
+            $scope.goods.price=0;
+        }
+    });
+
+    $scope.addCart = function (goods) {
+        cartService.set(goods);
+    };
 
 }]);

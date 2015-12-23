@@ -87,11 +87,11 @@
                                 <img ng-src="{{item.extendSet[0].url}}" class="img-responsive" alt="Berry Lace Dress">
                                 <div>
                                     <a ng-href="{{item.extendSet[0].url}}" class="btn btn-default fancybox-button">大图</a>
-                                    <a href="#product-pop-up" class="btn btn-default fancybox-fast-view">显示</a>
+                                    <a href="/goods/{{item.id}}" class="btn btn-default fancybox-fast-view">显示</a>
                                 </div>
                             </div>
                             <h3><a href="item.html">{{item.name}}</a></h3>
-                            <div class="pi-price"></div>
+                            <div class="pi-price">￥{{item.price}}</div>
                             <a href="#" ng-click="addCart(item)" class="btn btn-default add2cart">增加到购物车</a>
                         </div>
                     </div>

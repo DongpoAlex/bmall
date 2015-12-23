@@ -18,6 +18,12 @@ apply plugin: "java"
 apply plugin: "spring-boot"
 apply plugin: 'idea'
 
+jar {
+    baseName = 'bmall'
+    version =  '0.0.1-SNAPSHOT'
+}
+
+
 repositories {
     mavenLocal()
     jcenter()

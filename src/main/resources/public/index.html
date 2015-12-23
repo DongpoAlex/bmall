@@ -94,7 +94,7 @@
         <div class="cart-block">
             <div class="cart-info">
                 <a href="javascript:void(0);" class="cart-info-count">{{cart.length}}</a>
-                <a href="javascript:void(0);" class="cart-info-value">0</a>
+                <a href="javascript:void(0);" class="cart-info-value">{{getToltal()}}</a>
             </div>
             <i class="fa fa-shopping-cart"></i>
             <!-- BEGIN CART CONTENT -->
@@ -106,14 +106,14 @@
                                                      height="34"></a>
                             <span class="cart-content-count">x {{item.qty}}</span>
                             <strong><a href="/goods/{{item.id}}">{{item.name}}</a></strong>
-                            <em>$1230</em>
-                            <a href="javascript:void(0);" class="del-goods" ng-click="removeGoods(item)"><i class="fa fa-times"></i></a>
+                            <em>￥{{item.price*item.qty}}</em>
+                            <a href="javascript:void(0);" class="del-goods" ng-click="removeGoods(item.$index)"><i class="fa fa-times"></i></a>
                         </li>
 
                     </ul>
                     <div class="text-right">
-                        <a href="shopping-cart.html" class="btn btn-default">详细</a>
-                        <a href="checkout.html" class="btn btn-primary">结算</a>
+                        <!--<a href="shopping-cart.html" class="btn btn-default">详细</a>-->
+                        <a href="/shopping" class="btn btn-primary">确认</a>
                     </div>
                 </div>
             </div>
