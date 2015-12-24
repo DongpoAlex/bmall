@@ -28,7 +28,7 @@ security:
   enable-csrf: true
 
 server:
-  port: 80
+  port: 8080
   address: 127.0.0.1
   tomcat:
     uri-encoding: UTF-8

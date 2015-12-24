@@ -31,23 +31,14 @@ angular.module('bmall', ['ngRoute', 'auth', 'home', 'navigation', 'bmallService'
         $rootScope.removeGoods = cartService.remove;
         $rootScope.claerCart = cartService.clearCart;
         $rootScope.getToltal = cartService.getToltal;
-
+        $rootScope.putPurchase=cartService.putPurchase;
     }
 ]).controller('goodsCtrl', ['$scope', '$http', '$routeParams', 'cartService','goodsService','filterFilter','$rootScope',
-    function ($scope, $http, $routeParams, cartService,goodsService,filterFilter,$rootScope) {
+    function ($scope, $http, $routeParams, cartService) {
     var params = $routeParams.id;
     $scope.goods = [];
     $http.get('/api/goods/' + params).success(function (data) {
         $scope.goods = data;
-        var priceItem = filterFilter($rootScope.prices, {
-            guestId: $rootScope.user.name,
-            goodsId: params
-        }, true);
-        if(priceItem.price){
-            $scope.goods.price = priceItem.price;
-        }else{
-            $scope.goods.price=0;
-        }
     });
 
     $scope.addCart = function (goods) {

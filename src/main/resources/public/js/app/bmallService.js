@@ -1,9 +1,9 @@
 angular.module('bmallService', ['ngResource', 'ngCookies'])
-    .factory('superCache', ['$cacheFactory', function($cacheFactory) {
+    .factory('superCache', ['$cacheFactory', function ($cacheFactory) {
         return $cacheFactory('super-cache');
     }])
-    .factory('menuService', function ($rootScope,$resource,superCache) {
-        $rootScope.menus=[];
+    .factory('menuService', function ($rootScope, $resource, superCache) {
+        $rootScope.menus = [];
         if (superCache.get('menus')) {
             $rootScope.menus = superCache.get("menus");
         } else {
@@ -12,44 +12,22 @@ angular.module('bmallService', ['ngResource', 'ngCookies'])
 
                 $rootScope.menus = data._embedded.depts;
 
-                superCache.put("menus",$rootScope.menus);
+                superCache.put("menus", $rootScope.menus);
             });
         }
-        return  $rootScope.menus;
-    }).factory('goodsService', function ($rootScope, $resource, filterFilter, $cookieStore) {
+        return $rootScope.menus;
+    }).factory('goodsService', function ($rootScope, $resource, filterFilter) {
 
     $rootScope.goodses = [];
-    $rootScope.prices = [];
 
     var initGoodses = function (url) {
-        if ($cookieStore.get("prices")) {
-            $rootScope.prices = $cookieStore.get("prices");
-        } else {
-            var p = $resource('/api/goodsPrice');
-            p.get(function (data) {
-                $rootScope.prices = data._embedded.goodsPrices;
-                $cookieStore.put("prices", $rootScope.prices);
-            });
-        }
-
         var Goods = $resource(url);
         Goods.get(function (data) {
             $rootScope.goodses = data;
-            angular.forEach($rootScope.goodses._embedded.goodses, function (value) {
-                var priceItem = filterFilter($rootScope.prices, {
-                    guestId: $rootScope.user.name,
-                    goodsId: value.id
-                }, true);
-                if(priceItem.price){
-                     value.price = priceItem.price;
-                }else{
-                    value.price=0;
-                }
-            });
         });
     };
 
-    initGoodses('/api/goods?size=9');
+    initGoodses('api/goods/search/byGuest?guestId=' + $rootScope.user.name + '&size=9');
 
 
     return {
@@ -61,7 +39,8 @@ angular.module('bmallService', ['ngResource', 'ngCookies'])
         }
     }
 
-}).factory('cartService', function ($rootScope, $cookieStore,$location) {
+}).factory('cartService', function ($rootScope, $cookieStore, $location, $resource) {
+
     $rootScope.cart = [];
 
     if ($cookieStore.get('cart')) {
@@ -95,17 +74,35 @@ angular.module('bmallService', ['ngResource', 'ngCookies'])
             $rootScope.cart.splice(index, 1);
             $cookieStore.put('cart', $rootScope.cart);
         },
-        clearCart:function(){
+        clearCart: function () {
             $cookieStore.remove('cart');
             $rootScope.cart = [];
             $location.path('/');
         },
-        getToltal:function(){
-            var toltal=0;
-            angular.forEach($rootScope.cart,function(value){
-                toltal=toltal+value.price*value.qty;
+        getToltal: function () {
+            var toltal = 0;
+            angular.forEach($rootScope.cart, function (value) {
+                toltal = toltal + value.price * value.qty;
             });
             return toltal;
+        },
+        putPurchase: function () {
+            var sheetId = moment().format("YYYYMMDDHHmmsss");
+
+            angular.forEach($rootScope.cart, function (value) {
+                value.sheetId = sheetId;
+                value.sumPrice=value.qty*value.price;
+            });
+
+            var CreditPurchase = $resource('/api/purchase');
+
+            var newPurchase = new CreditPurchase({sheetId:sheetId});
+            newPurchase.sheetId=sheetId;
+            newPurchase.flag = 1;
+            newPurchase.editor = $rootScope.user.name;
+            newPurchase.ordphdate = 7;
+            newPurchase.itemSet = $rootScope.cart;
+            newPurchase.$save();
         }
     };
 }).directive('initImageZoom', function () {
@@ -133,4 +130,16 @@ angular.module('bmallService', ['ngResource', 'ngCookies'])
             link: link
         };
     }
-);
+).directive('initTouchspin', function () {
+    function link(scope, element, attrs) {
+        jQuery(element).TouchSpin({
+            buttondown_class: "btn quantity-down",
+            buttonup_class: "btn quantity-up"
+        });
+        jQuery(".quantity-down").html("<i class='fa fa-angle-down'></i>");
+        jQuery(".quantity-up").html("<i class='fa fa-angle-up'></i>");
+    };
+    return {
+        link: link
+    };
+});

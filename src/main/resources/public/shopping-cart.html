@@ -30,8 +30,8 @@
                                     </td>
                                     <td class="shopping-cart-quantity">
                                         <div class="product-quantity">
-                                            <input id="product-quantity" type="text" value="{{item.qty}}" readonly
-                                                   class="form-control input-sm">
+                                            <input id="product-quantity" init-touchspin type="text" ng-model="item.qty"
+                                               readonly    class="form-control input-sm">
                                         </div>
                                     </td>
                                     <td class="shopping-cart-price">
@@ -41,7 +41,7 @@
                                         <strong><span></span>{{item.qty*item.price}}</strong>
                                     </td>
                                     <td class="del-goods-col">
-                                        <a class="del-goods" href="#" ng-click="removeGoods(item)"><i class="fa fa-times"></i></a>
+                                        <a class="del-goods" href="#" ng-click="removeGoods(item.$index)"><i class="fa fa-times"></i></a>
                                     </td>
                                 </tr>
 
@@ -58,7 +58,7 @@
                         </div>
                     </div>
                     <a class="btn btn-default" href="/">继续购物<i class="fa fa-shopping-cart"></i></a>
-                    <button class="btn btn-primary" type="submit" ng-click="claerCart()">确认订单<i class="fa fa-check"></i></button>
+                    <button class="btn btn-primary" type="submit" ng-click="putPurchase()">确认订单<i class="fa fa-check"></i></button>
                 </div>
             </div>
             <!-- END CONTENT -->

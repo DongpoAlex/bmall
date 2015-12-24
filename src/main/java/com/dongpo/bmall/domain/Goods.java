@@ -1,18 +1,17 @@
 package com.dongpo.bmall.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.Set;
 
 /**
  * Created by AlexBob on 2015/12/16.
  */
-@Entity
+@Entity(name = "wholegoods")
 public class Goods {
 
     @Id
+    private int id;
+
     @Column(name = "goodsID")
     private int goodsId;
 
@@ -24,48 +23,42 @@ public class Goods {
     @Column(name = "unitname")
     private String unitName;
 
+    @Column(name = "guestid")
+    private String guestId;
+
+    private double price;
+
     @OneToMany(mappedBy = "goodsId")
     private Set<GoodsExtend> extendSet;
 
+    public int getId() {return id;}
+
     public int getGoodsId() {
         return goodsId;
-    }
-
-    public int getId() {return goodsId;}
-
-    public void setGoodsId(int goodsId) {
-        this.goodsId = goodsId;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public String getBarcode() {
         return barcode;
-    }
-
-    public void setBarcode(String barcode) {
-        this.barcode = barcode;
     }
 
     public String getUnitName() {
         return unitName;
     }
 
-    public void setUnitName(String unitName) {
-        this.unitName = unitName;
-    }
+
+    public String getGuestId() {return guestId;}
+
+    public double getPrice() {return price;}
+
 
     public Set<GoodsExtend> getExtendSet() {
         return extendSet;
     }
 
-    public void setExtendSet(Set<GoodsExtend> extendSet) {
-        this.extendSet = extendSet;
-    }
+
 }
