@@ -32,7 +32,7 @@ angular.module('bmallService', ['ngResource', 'ngCookies'])
 
     return {
         get: function (id) {
-            return filterFilter($rootScope.goodses, {id: id}, true);
+            return filterFilter($rootScope.goodses, {goodsId: id}, true);
         },
         pageNext: function (url) {
             initGoodses(url);
@@ -54,7 +54,7 @@ angular.module('bmallService', ['ngResource', 'ngCookies'])
             var index = -1;
 
             angular.forEach($rootScope.cart, function (value, key) {
-                    if (value.id == goods.id) {
+                    if (value.goodsId == goods.goodsId) {
                         index = key;
                     }
                 }
@@ -73,11 +73,6 @@ angular.module('bmallService', ['ngResource', 'ngCookies'])
         remove: function (index) {
             $rootScope.cart.splice(index, 1);
             $cookieStore.put('cart', $rootScope.cart);
-        },
-        clearCart: function () {
-            $cookieStore.remove('cart');
-            $rootScope.cart = [];
-            $location.path('/');
         },
         getToltal: function () {
             var toltal = 0;
@@ -103,6 +98,10 @@ angular.module('bmallService', ['ngResource', 'ngCookies'])
             newPurchase.ordphdate = 7;
             newPurchase.itemSet = $rootScope.cart;
             newPurchase.$save();
+
+            $cookieStore.remove('cart');
+            $rootScope.cart = [];
+            $location.path('/');
         }
     };
 }).directive('initImageZoom', function () {
