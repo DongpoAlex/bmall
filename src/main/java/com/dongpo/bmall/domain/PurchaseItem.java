@@ -21,7 +21,8 @@ public class PurchaseItem {
     @Column(name = "guestid")
     private String guestId;
 
-    private int goodsid;
+    @Column(name = "goodsid")
+    private int goodsId;
 
     private double qty;
 
@@ -45,14 +46,6 @@ public class PurchaseItem {
 
     public void setSheetId(String sheetId) {
         this.sheetId = sheetId;
-    }
-
-    public int getGoodsid() {
-        return goodsid;
-    }
-
-    public void setGoodsid(int goodsid) {
-        this.goodsid = goodsid;
     }
 
     public double getQty() {
@@ -101,5 +94,13 @@ public class PurchaseItem {
 
     public void setSumPrice(double sumPrice) {
         this.sumPrice = sumPrice;
+    }
+
+    public int getGoodsId() {
+        return goodsId;
+    }
+
+    public void setGoodsId(int goodsId) {
+        this.goodsId = goodsId;
     }
 }
