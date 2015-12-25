@@ -99,8 +99,7 @@ angular.module('bmallService', ['ngResource', 'ngCookies'])
             newPurchase.itemSet = $rootScope.cart;
             newPurchase.$save();
 
-            $cookieStore.remove('cart');
-            $rootScope.cart = [];
+
             $location.path('/');
         }
     };
