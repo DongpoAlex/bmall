@@ -7,7 +7,7 @@ import javax.persistence.Id;
 /**
  * Created by AlexBob on 2015/12/26.
  */
-@Entity(name = "wholeprice")
+@Entity(name = "guestgoodscart")
 public class GuestCart {
 
     @Id

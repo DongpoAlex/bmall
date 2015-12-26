@@ -1,4 +1,4 @@
-angular.module('bMallService', ['ngResource', 'ngCookies'])
+angular.module('bMallService', ['ngResource'])
     .factory('superCache', ['$cacheFactory', function ($cacheFactory) {
         return $cacheFactory('super-cache');
     }])
@@ -28,7 +28,7 @@ angular.module('bMallService', ['ngResource', 'ngCookies'])
 
     };
 
-    initGoodses('api/goods/search/byGuest?guestId=' + $rootScope.user.name + '&size=9');
+    initGoodses('api/goods/search/byGuest?guestId=' + $rootScope.user.name + '&size=20');
 
 
     return {
@@ -40,7 +40,7 @@ angular.module('bMallService', ['ngResource', 'ngCookies'])
         }
     }
 
-}).factory('cartService', function ($rootScope, $cookieStore, $location, $resource, $window) {
+}).factory('cartService', function ($rootScope, $location, $resource, $window) {
 
     var initCart = function () {
         var CreditCart = $resource('/api/guestCart/search/byGuest?guestId=' + $rootScope.user.name);
@@ -62,10 +62,7 @@ angular.module('bMallService', ['ngResource', 'ngCookies'])
         initCart:initCart,
 
         set: function (goods) {
-
-            goods.qty = 1;
             var index = -1;
-
             angular.forEach($rootScope.cart, function (value, key) {
                     if (value.goodsId == goods.goodsId) {
                         index = key;
@@ -74,20 +71,13 @@ angular.module('bMallService', ['ngResource', 'ngCookies'])
                 }
             );
             if (index === -1) {
+                goods.qty = 1;
                 $rootScope.cart.push(goods);
             }
-
-            $cookieStore.remove('cart');
-            $cookieStore.put('cart', $rootScope.cart);
-
 
         },
         remove: function (index) {
             $rootScope.cart.splice(index, 1);
-            $cookieStore.put('cart', $rootScope.cart);
-            if ($rootScope.$root.$$phase != '$apply' && $rootScope.$root.$$phase != '$digest') {
-                $rootScope.$apply();
-            }
         },
         getTotal: function () {
             var total = 0;
