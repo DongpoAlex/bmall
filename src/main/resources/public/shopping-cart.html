@@ -28,12 +28,13 @@
                                             <input id="product-quantity" init-touchspin type="text" ng-model="item.qty"
                                                class="form-control input-sm">
                                         </div>
+                                        <strong><span>{{item.unitName}}</span></strong>
                                     </td>
                                     <td class="shopping-cart-price">
-                                        <strong><span></span>{{item.price}}</strong>
+                                        <strong><span>{{item.price}}</span></strong>
                                     </td>
                                     <td class="shopping-cart-total">
-                                        <strong><span></span>{{item.qty*item.price}}</strong>
+                                        <strong><span>{{item.qty*item.price}}</span></strong>
                                     </td>
                                     <td class="del-goods-col">
                                         <a class="del-goods" href="#" ng-click="removeGoods(item.$index)"><i class="fa fa-times"></i></a>
