@@ -43,6 +43,7 @@ angular.module('bMallService', ['ngResource'])
 }).factory('cartService', function ($rootScope, $location, $resource, $window) {
 
     var initCart = function () {
+        $rootScope.cart=[];
         var CreditCart = $resource('/api/guestCart/search/byGuest?guestId=' + $rootScope.user.name);
         CreditCart.get(function (data) {
             $rootScope.cart = data._embedded.guestCarts;

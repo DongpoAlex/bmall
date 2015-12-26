@@ -88,7 +88,7 @@
                 <span class="icon-bar"></span>
             </button>
             <!-- END RESPONSIVE MENU TOGGLER -->
-            <a href="/" class="navbar-brand"><img src="assets/img/logo_red.png" alt="Metronic Shop UI"></a><!-- LOGO -->
+            <a href="/" class="navbar-brand"><img src="assets/img/logo_red.png" alt="Metronic Shop UI" height="32"></a><!-- LOGO -->
 
         </div>
         <!-- BEGIN CART -->
@@ -104,7 +104,7 @@
                     <ul class="scroller" style="height: 250px;">
                         <li ng-repeat="item in cart track by $index">
                             <strong><a href="/goods/{{item.id}}">{{item.name}}</a></strong>
-                            <span class="cart-content-count">x {{item.qty}}</span>
+                            <span class="cart-content-count">x {{item.qty}} *{{item.unitName}}</span>
                             <em>￥{{item.price*item.qty}}</em>
                             <a href="javascript:void(0);" class="del-goods" ng-click="removeGoods(item.$index)"><i class="fa fa-times"></i></a>
                         </li>
