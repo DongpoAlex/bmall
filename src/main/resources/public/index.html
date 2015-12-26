@@ -88,7 +88,7 @@
                 <span class="icon-bar"></span>
             </button>
             <!-- END RESPONSIVE MENU TOGGLER -->
-            <a href="/" class="navbar-brand"><img src="assets/img/logo_red.png" alt="Metronic Shop UI" height="32"></a><!-- LOGO -->
+            <a href="/" class="navbar-brand"><img src="assets/img/logo_red.png" alt="Metronic Shop UI"></a><!-- LOGO -->
 
         </div>
         <!-- BEGIN CART -->
@@ -104,7 +104,8 @@
                     <ul class="scroller" style="height: 250px;">
                         <li ng-repeat="item in cart track by $index">
                             <strong><a href="/goods/{{item.id}}">{{item.name}}</a></strong>
-                            <span class="cart-content-count">x {{item.qty}} *{{item.unitName}}</span>
+                            <span class="cart-content-count">x {{item.qty}}</span>
+                            <span>{{item.unitName}}</span>
                             <em>￥{{item.price*item.qty}}</em>
                             <a href="javascript:void(0);" class="del-goods" ng-click="removeGoods(item.$index)"><i class="fa fa-times"></i></a>
                         </li>
@@ -391,7 +392,28 @@
                 </div>
             </div>
 
-            <div class="sticker sticker-sale"></div>
+            <div class="sticker sticker-sale">
+                <div class="loading-spiner-holder" data-loading>
+                    <div class="modal fade loading-modal" tabindex="-1" role="dialog" aria-hidden="true"  >
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                    <h4 class="modal-title">Loading...</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-striped active" role="progressbar"
+                                             aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                                            <span>加载中...</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                    </div><!-- /.modal -->
+                </div>
+            </div>
         </div>
     </div>
 </div>

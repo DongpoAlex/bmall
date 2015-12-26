@@ -32,6 +32,7 @@ angular.module('auth', ['bMallService']).factory('auth',function ($rootScope, $h
                     if (data.name) {
                         auth.authenticated = true;
                         $rootScope.user=data;
+                        cartService.initCart();
                     } else {
                         auth.authenticated = false;
                     }
@@ -48,6 +49,7 @@ angular.module('auth', ['bMallService']).factory('auth',function ($rootScope, $h
             clear: function () {
                 $location.path(auth.loginPath);
                 auth.authenticated = false;
+                $rootScope.cart=[];
                 $http.post(auth.logoutPath, {}).success(function () {
                     console.log("Logout succeeded");
                 }).error(function (data) {
@@ -63,7 +65,6 @@ angular.module('auth', ['bMallService']).factory('auth',function ($rootScope, $h
 
                 auth.authenticate({}, function (authenticated) {
                     if (authenticated) {
-                        cartService.initCart();
                         $location.path(auth.path);
                     }
                 })

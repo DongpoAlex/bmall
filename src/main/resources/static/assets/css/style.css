@@ -418,11 +418,8 @@ Header and header elements
 }
 
 .header  a.navbar-brand {
-	font-size: 23px;
-	font-weight: 400;
-	margin-right: 52px;
-	padding-top: 28px;
-	padding-bottom: 25px;
+	margin-right: 0px;
+	padding-top: 0px;
 }
 
 /* Navigation */
