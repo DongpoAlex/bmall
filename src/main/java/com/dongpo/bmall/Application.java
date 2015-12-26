@@ -28,12 +28,12 @@ public class Application {
 
     @ResponseBody
     @RequestMapping("/webjarslocator/{webjar}/**")
-    public ResponseEntity locateWebjarAsset(@PathVariable String webjar, HttpServletRequest request) {
+    public ResponseEntity<? extends Object> locateWebjarAsset(@PathVariable String webjar, HttpServletRequest request) {
         try {
             String mvcPrefix = "/webjarslocator/" + webjar + "/"; // This prefix must match the mapping path!
             String mvcPath = (String) request.getAttribute(HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE);
             String fullPath = new WebJarAssetLocator().getFullPath(webjar, mvcPath.substring(mvcPrefix.length()));
-            return new ResponseEntity(new ClassPathResource(fullPath), HttpStatus.OK);
+            return new ResponseEntity<Object>(new ClassPathResource(fullPath), HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }

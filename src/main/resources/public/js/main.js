@@ -1,4 +1,4 @@
-angular.module('bmall', ['ngRoute', 'auth', 'home', 'navigation', 'bmallService'])
+angular.module('bMall', ['ngRoute', 'auth', 'home', 'navigation', 'bMallService'])
     .config(['$routeProvider', '$httpProvider', '$locationProvider',
         function ($routeProvider, $httpProvider, $locationProvider) {
             $locationProvider.html5Mode(true);
@@ -13,36 +13,30 @@ angular.module('bmall', ['ngRoute', 'auth', 'home', 'navigation', 'bmallService'
                 templateUrl: '/login.html',
                 controller: 'navigation'
             }).when('/shopping', {
-                templateUrl: '/shopping-cart.html',
-                controller: 'initCtrl'
+                templateUrl: '/shopping-cart.html'
             }).otherwise('/');
 
             $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
         }
     ]).run(function (auth) {
-
         auth.init('/', '/login', '/logout');
-
     }
 ).controller("initCtrl", ['$rootScope', 'menuService', 'cartService',
     function ($rootScope, menuService, cartService) {
-
         $rootScope.removeGoods = cartService.remove;
-        $rootScope.claerCart = cartService.clearCart;
-        $rootScope.getToltal = cartService.getToltal;
-        $rootScope.putPurchase=cartService.putPurchase;
+        $rootScope.getTotal = cartService.getTotal;
+        $rootScope.putPurchase = cartService.putPurchase;
+
     }
-]).controller('goodsCtrl', ['$scope', '$http', '$routeParams', 'cartService','goodsService','filterFilter','$rootScope',
+]).controller('goodsCtrl', ['$scope', '$http', '$routeParams', 'cartService', 'goodsService', 'filterFilter', '$rootScope',
     function ($scope, $http, $routeParams, cartService) {
-    var params = $routeParams.id;
-    $scope.goods = [];
-    $http.get('/api/goods/' + params).success(function (data) {
-        $scope.goods = data;
-    });
+        var params = $routeParams.id;
+        $scope.goods = [];
+        $http.get('/api/goods/' + params).success(function (data) {
+            $scope.goods = data;
+        });
 
-    $scope.addCart = function (goods) {
-        cartService.set(goods);
-    };
+        $scope.addCart = cartService.set;
 
-}]);
+    }]);

@@ -10,7 +10,6 @@
                         <div class="table-wrapper-responsive">
                             <table summary="Shopping cart">
                                 <tr>
-                                    <th class="shopping-cart-image">图片</th>
                                     <th class="shopping-cart-description">商品信息</th>
                                     <th class="shopping-cart-ref-no">用户</th>
                                     <th class="shopping-cart-quantity">数量</th>
@@ -18,10 +17,6 @@
                                     <th class="shopping-cart-total" colspan="2">小计(元)</th>
                                 </tr>
                                 <tr ng-repeat="item in cart">
-                                    <td class="shopping-cart-image">
-                                        <a href="/goods/{{item.id}}"><img ng-src="{{item.extendSet[0].url}}"
-                                                         alt="{{item.name}}"></a>
-                                    </td>
                                     <td class="shopping-cart-description">
                                         <h3><a href="/goods/{{item.id}}">{{item.name}}</a></h3>
                                     </td>

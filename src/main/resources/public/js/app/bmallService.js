@@ -1,4 +1,4 @@
-angular.module('bmallService', ['ngResource', 'ngCookies'])
+angular.module('bMallService', ['ngResource', 'ngCookies'])
     .factory('superCache', ['$cacheFactory', function ($cacheFactory) {
         return $cacheFactory('super-cache');
     }])
@@ -25,6 +25,7 @@ angular.module('bmallService', ['ngResource', 'ngCookies'])
         Goods.get(function (data) {
             $rootScope.goodses = data;
         });
+
     };
 
     initGoodses('api/goods/search/byGuest?guestId=' + $rootScope.user.name + '&size=9');
@@ -39,15 +40,27 @@ angular.module('bmallService', ['ngResource', 'ngCookies'])
         }
     }
 
-}).factory('cartService', function ($rootScope, $cookieStore, $location, $resource) {
+}).factory('cartService', function ($rootScope, $cookieStore, $location, $resource, $window) {
 
-    $rootScope.cart = [];
+    var initCart = function () {
+        var CreditCart = $resource('/api/guestCart/search/byGuest?guestId=' + $rootScope.user.name);
+        CreditCart.get(function (data) {
+            $rootScope.cart = data._embedded.guestCarts;
+            angular.forEach($rootScope.cart, function (value) {
+                var CreditGoods = $resource('api/goods/search/byGoodsId?goodsId=' + value.goodsId + '&guestId=' + $rootScope.user.name);
+                CreditGoods.get(function (goods) {
+                    value.qty = 1;
+                    value.name = goods.name;
+                    value.price = goods.price;
+                });
+            });
+        });
+    };
 
-    if ($cookieStore.get('cart')) {
-        $rootScope.cart = $cookieStore.get('cart');
-    }
 
     return {
+        initCart:initCart,
+
         set: function (goods) {
 
             goods.qty = 1;
@@ -56,50 +69,52 @@ angular.module('bmallService', ['ngResource', 'ngCookies'])
             angular.forEach($rootScope.cart, function (value, key) {
                     if (value.goodsId == goods.goodsId) {
                         index = key;
+                        value.qty = value.qty + 1;
                     }
                 }
             );
-
-            if (index > -1) {
-                console.log('Cart in', index, goods.name);
-                $rootScope.cart[index].qty = $rootScope.cart[index].qty + parseInt(goods.qty);
-            } else {
+            if (index === -1) {
                 $rootScope.cart.push(goods);
             }
-            $cookieStore.remove('cart');
 
+            $cookieStore.remove('cart');
             $cookieStore.put('cart', $rootScope.cart);
+
+
         },
         remove: function (index) {
             $rootScope.cart.splice(index, 1);
             $cookieStore.put('cart', $rootScope.cart);
+            if ($rootScope.$root.$$phase != '$apply' && $rootScope.$root.$$phase != '$digest') {
+                $rootScope.$apply();
+            }
         },
-        getToltal: function () {
-            var toltal = 0;
+        getTotal: function () {
+            var total = 0;
             angular.forEach($rootScope.cart, function (value) {
-                toltal = toltal + value.price * value.qty;
+                total = total + value.price * value.qty;
             });
-            return toltal;
+            return total;
         },
         putPurchase: function () {
             var sheetId = moment().format("YYYYMMDDHHmmsss");
 
             angular.forEach($rootScope.cart, function (value) {
                 value.sheetId = sheetId;
-                value.sumPrice=value.qty*value.price;
+                value.sumPrice = value.qty * value.price;
             });
 
             var CreditPurchase = $resource('/api/purchase');
 
-            var newPurchase = new CreditPurchase({sheetId:sheetId});
-            newPurchase.sheetId=sheetId;
+            var newPurchase = new CreditPurchase({sheetId: sheetId});
+            newPurchase.sheetId = sheetId;
             newPurchase.flag = 1;
             newPurchase.editor = $rootScope.user.name;
             newPurchase.ordphdate = 7;
             newPurchase.itemSet = $rootScope.cart;
             newPurchase.$save();
 
-
+            $window.alert('订单已确认！');
             $location.path('/');
         }
     };

@@ -15,7 +15,8 @@ import org.springframework.data.rest.core.annotation.RestResource;
 public interface GoodsRepository extends PagingAndSortingRepository<Goods, Integer> {
 
     @RestResource(path = "/byGuest")
-    @Query("SELECT g FROM wholegoods g WHERE g.guestId=:guestId ")
-    Page<Goods> findAll(@Param("guestId") String guestId, Pageable var1);
+    Page<Goods> findByGuestId(@Param("guestId") String guestId, Pageable var1);
 
+    @RestResource(path = "/byGoodsId")
+    Goods findByGoodsIdAndGuestId(@Param("goodsId") int goodsId,@Param("guestId") String guestId);
 }

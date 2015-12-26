@@ -12,7 +12,7 @@ public class Goods {
     @Id
     private int id;
 
-    @Column(name = "goodsID")
+    @Column(name = "goodsid")
     private int goodsId;
 
     private String name;

@@ -22,5 +22,49 @@ CREATE TABLE GoodsExtend (
   goodsid INT           NOT NULL
 );
 
-ALTER view [dbo].[v_SGroup] as
-SELECT id,name,id/100 prantid FROM mySHOPDCStock..SGroup where id<>0;
+ALTER VIEW [dbo].[v_SGroup] AS
+SELECT
+  id,
+  name,
+  id / 100 prantid
+FROM mySHOPDCStock..SGroup
+WHERE id <> 0;
+
+CREATE VIEW GuestGoodsCart
+AS
+  SELECT
+    row_number()
+    OVER (
+      ORDER BY GuestID) AS id,
+    GuestID,
+    goodsid
+  FROM MHWholePurchaseitem
+  GROUP BY GuestID, goodsid
+
+CREATE VIEW [dbo].[WholeGoods]
+AS
+  SELECT
+    ROW_NUMBER()
+    OVER (
+      ORDER BY g.goodsid) AS id,
+    g.*,
+    w.guestid,
+    w.price
+  FROM mySHOPDCStock..goods g, WholePrice w
+  WHERE g.goodsid = w.goodsid
+
+
+CREATE TRIGGER [dbo].[trg_MHWholePurchase0]
+ON [dbo].[MHWholePurchase0]
+FOR INSERT
+AS
+  DECLARE @flag INT;
+DECLARE @sheetid CHAR(16);
+SELECT
+    @sheetid = inserted.sheetid,
+    @flag = inserted.flag
+FROM inserted;
+IF @flag = 1
+  BEGIN
+    EXEC ST_MHWholePurchase @sheetid, '平台下单';
+  END

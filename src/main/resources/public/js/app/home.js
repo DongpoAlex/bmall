@@ -1,4 +1,4 @@
-angular.module('home', ['bmallService']).controller('home', ['$rootScope', '$scope', 'menuService', 'goodsService',
+angular.module('home', ['bMallService']).controller('home', ['$rootScope', '$scope', 'menuService', 'goodsService',
     '$http', 'cartService',
     function ($rootScope, $scope, menuService, goodsService, $http, cartService) {
 
@@ -7,4 +7,5 @@ angular.module('home', ['bmallService']).controller('home', ['$rootScope', '$sco
         $scope.addCart = cartService.set;
 
 
-    }]);
+    }
+]);

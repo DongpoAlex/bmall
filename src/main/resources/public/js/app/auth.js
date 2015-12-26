@@ -1,4 +1,4 @@
-angular.module('auth', []).factory('auth',function ($rootScope, $http, $location) {
+angular.module('auth', ['bMallService']).factory('auth',function ($rootScope, $http, $location,cartService) {
 
         enter = function () {
             if ($location.path() != auth.loginPath) {
@@ -63,6 +63,7 @@ angular.module('auth', []).factory('auth',function ($rootScope, $http, $location
 
                 auth.authenticate({}, function (authenticated) {
                     if (authenticated) {
+                        cartService.initCart();
                         $location.path(auth.path);
                     }
                 })
