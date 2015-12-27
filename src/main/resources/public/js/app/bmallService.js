@@ -20,7 +20,7 @@ angular.module('bMallService', ['ngResource'])
 
     $rootScope.goodses = [];
 
-    var initGoodses = function (url) {
+    var init = function (url) {
         var Goods = $resource(url);
         Goods.get(function (data) {
             $rootScope.goodses = data;
@@ -28,15 +28,14 @@ angular.module('bMallService', ['ngResource'])
 
     };
 
-    initGoodses('api/goods/search/byGuest?guestId=' + $rootScope.user.name + '&size=20');
-
-
     return {
+        initGoodses: init,
+
         get: function (id) {
             return filterFilter($rootScope.goodses, {goodsId: id}, true);
         },
         pageNext: function (url) {
-            initGoodses(url);
+            init(url);
         }
     }
 
@@ -44,14 +43,16 @@ angular.module('bMallService', ['ngResource'])
 
     var initCart = function () {
         $rootScope.cart = [];
-        $rootScope.note='';
+        $rootScope.note = '';
         var CreditCart = $resource('/api/guestCart/search/byGuest?guestId=' + $rootScope.user.name);
         CreditCart.get(function (data) {
             $rootScope.cart = data._embedded.guestCarts;
             angular.forEach($rootScope.cart, function (value) {
                 var CreditGoods = $resource('api/goods/search/byGoodsId?goodsId=' + value.goodsId + '&guestId=' + $rootScope.user.name);
                 CreditGoods.get(function (goods) {
-                    value.qty = 1;
+                    value.qty = 0;
+                    value.sepc = goods.sepc;
+                    value.deptId = goods.deptId
                     value.name = goods.name;
                     value.price = goods.price;
                     value.unitName = goods.unitName;
@@ -92,20 +93,29 @@ angular.module('bMallService', ['ngResource'])
         putPurchase: function () {
             var sheetId = moment().format("YYYYMMDDHHmmsss");
 
+            var cartGoods = [];
+
             angular.forEach($rootScope.cart, function (value) {
-                value.sheetId = sheetId;
-                value.sumPrice = value.qty * value.price;
+                if (value.qty > 0) {
+                    value.sheetId = sheetId;
+                    value.sumPrice = value.qty * value.price;
+                    cartGoods.push(value);
+                }
             });
 
+            if(cartGoods.length===0){
+                $window.alert('订单商品数量不能为空!');
+                return;
+            }
             var CreditPurchase = $resource('/api/purchase');
 
             var newPurchase = new CreditPurchase({sheetId: sheetId});
             newPurchase.sheetId = sheetId;
             newPurchase.flag = 1;
-            newPurchase.note=$rootScope.note;
+            newPurchase.note = $rootScope.note;
             newPurchase.editor = $rootScope.user.name;
             newPurchase.ordphdate = 7;
-            newPurchase.itemSet = $rootScope.cart;
+            newPurchase.itemSet = cartGoods.cart;
             newPurchase.$save();
 
             $window.alert('订单已确认！');
