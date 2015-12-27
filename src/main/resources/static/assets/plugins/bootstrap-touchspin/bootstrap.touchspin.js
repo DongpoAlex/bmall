@@ -37,11 +37,11 @@
 
         var defaults = {
             min: 0,
-            max: 100,
+            max: 100000000000000000000000,
             initval: "",
             step: 1,
             decimals: 0,
-            stepinterval: 100,
+            stepinterval: 100000000000000000000000,
             forcestepdivisibility: 'round',  // none | floor | round | ceil
             stepintervaldelay: 500,
             prefix: "",

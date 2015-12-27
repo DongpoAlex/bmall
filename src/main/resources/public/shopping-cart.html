@@ -25,8 +25,8 @@
                                     </td>
                                     <td class="shopping-cart-quantity">
                                         <div class="product-quantity">
-                                            <input id="product-quantity" init-touchspin type="text" ng-model="item.qty"
-                                                   class="form-control input-sm">
+                                            <input type="number" ng-model="item.qty"
+                                                   class="form-control">
                                         </div>
 
                                     </td>
@@ -176,9 +176,6 @@
 
 <script type="text/javascript">
     jQuery(document).ready(function () {
-        App.init();
         App.initBxSlider();
-        App.initImageZoom();
-        App.initTouchspin();
     });
 </script>

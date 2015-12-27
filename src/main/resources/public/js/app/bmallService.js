@@ -115,7 +115,7 @@ angular.module('bMallService', ['ngResource'])
             newPurchase.note = $rootScope.note;
             newPurchase.editor = $rootScope.user.name;
             newPurchase.ordphdate = 7;
-            newPurchase.itemSet = cartGoods.cart;
+            newPurchase.itemSet = cartGoods;
             newPurchase.$save();
 
             $window.alert('订单已确认！');
