@@ -43,7 +43,8 @@ angular.module('bMallService', ['ngResource'])
 }).factory('cartService', function ($rootScope, $location, $resource, $window) {
 
     var initCart = function () {
-        $rootScope.cart=[];
+        $rootScope.cart = [];
+        $rootScope.note='';
         var CreditCart = $resource('/api/guestCart/search/byGuest?guestId=' + $rootScope.user.name);
         CreditCart.get(function (data) {
             $rootScope.cart = data._embedded.guestCarts;
@@ -53,6 +54,7 @@ angular.module('bMallService', ['ngResource'])
                     value.qty = 1;
                     value.name = goods.name;
                     value.price = goods.price;
+                    value.unitName = goods.unitName;
                 });
             });
         });
@@ -60,7 +62,7 @@ angular.module('bMallService', ['ngResource'])
 
 
     return {
-        initCart:initCart,
+        initCart: initCart,
 
         set: function (goods) {
             var index = -1;
@@ -100,6 +102,7 @@ angular.module('bMallService', ['ngResource'])
             var newPurchase = new CreditPurchase({sheetId: sheetId});
             newPurchase.sheetId = sheetId;
             newPurchase.flag = 1;
+            newPurchase.note=$rootScope.note;
             newPurchase.editor = $rootScope.user.name;
             newPurchase.ordphdate = 7;
             newPurchase.itemSet = $rootScope.cart;

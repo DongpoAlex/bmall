@@ -34,10 +34,15 @@ public class PurchaseItem {
     @Column(name = "pkname")
     private String unitName;
 
+    @Column(name = "managedeptid")
+    private int deptId;
+
+    @Column(name = "pkspec")
+    private String spec;
+
     public int getId() {
         return id;
     }
-
 
 
     public String getSheetId() {
@@ -102,5 +107,21 @@ public class PurchaseItem {
 
     public void setGoodsId(int goodsId) {
         this.goodsId = goodsId;
+    }
+
+    public int getDeptId() {
+        return deptId;
+    }
+
+    public void setDeptId(int deptId) {
+        this.deptId = deptId;
+    }
+
+    public String getSpec() {
+        return spec;
+    }
+
+    public void setSpec(String spec) {
+        this.spec = spec;
     }
 }

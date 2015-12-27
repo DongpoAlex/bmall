@@ -83,14 +83,11 @@
                     <!-- PRODUCT ITEM START -->
                     <div class="col-md-4 col-sm-6 col-xs-12" ng-repeat="item in goodses._embedded.goodses">
                         <div class="product-item">
-                            <div class="pi-img-wrapper">
-                                <div>
-                                    <a ng-href="{{item.extendSet[0].url}}" class="btn btn-default fancybox-button">大图</a>
-                                    <a href="/goods/{{item.id}}" class="btn btn-default fancybox-fast-view">显示</a>
-                                </div>
-                            </div>
                             <h3><a href="item.html">{{item.name}}</a></h3>
-                            <div class="pi-price">￥{{item.price}}</div>
+                            <div class="pi-price"><strong>￥{{item.price}}</strong></div>
+                            <div class="text-right">
+                                <p><span  class="label label-primary">{{item.spec}}</span>*<span class="label label-success">{{item.unitName}}</span></p>
+                            </div>
                             <a href="#" ng-click="addCart(item)" class="btn btn-default add2cart">增加到购物车</a>
                         </div>
                     </div>
@@ -112,7 +109,7 @@
                                 <span aria-hidden="true">&laquo;</span>
                             </a>
                             </li>
-                            <li class="disabled" ><a>当前第{{goodses.page.number+1}}页,总共{{goodses.page.totalPages}}</a></li>
+                            <li class="disabled"><a>当前第{{goodses.page.number+1}}页,总共{{goodses.page.totalPages}}</a></li>
                             <li><a href="#" ng-click="pageNext(goodses._links.next.href)" aria-label="Next">
                                 <span aria-hidden="true">&raquo;</span>
                             </a>

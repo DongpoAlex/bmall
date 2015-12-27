@@ -28,6 +28,11 @@ public class Goods {
 
     private double price;
 
+    @Column(name = "deptid")
+    private int deptId;
+
+    private String spec;
+
     @OneToMany(mappedBy = "goodsId")
     private Set<GoodsExtend> extendSet;
 
@@ -58,6 +63,15 @@ public class Goods {
 
     public Set<GoodsExtend> getExtendSet() {
         return extendSet;
+    }
+
+    public int getDeptId() {
+        return deptId;
+    }
+
+
+    public String getSpec() {
+        return spec;
     }
 
 

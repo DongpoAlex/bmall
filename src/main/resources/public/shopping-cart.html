@@ -26,7 +26,7 @@
                                     <td class="shopping-cart-quantity">
                                         <div class="product-quantity">
                                             <input id="product-quantity" init-touchspin type="text" ng-model="item.qty"
-                                               class="form-control input-sm">
+                                                   class="form-control input-sm">
                                         </div>
 
                                     </td>
@@ -37,24 +37,33 @@
                                         <strong><span>{{item.qty*item.price}}</span></strong>
                                     </td>
                                     <td class="del-goods-col">
-                                        <a class="del-goods" href="#" ng-click="removeGoods(item.$index)"><i class="fa fa-times"></i></a>
+                                        <a class="del-goods" href="#" ng-click="removeGoods(item.$index)"><i
+                                                class="fa fa-times"></i></a>
                                     </td>
                                 </tr>
 
                             </table>
                         </div>
-
+                        <div class="form-group has-success has-feedback">
+                            <label class="control-label sr-only" >备注</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">备注</span>
+                                <input type="text" class="form-control"   aria-describedby="inputGroupSuccess4Status">
+                            </div>
+                        </div>
                         <div class="shopping-total">
                             <ul>
                                 <li>
                                     <em>合计</em>
-                                    <strong class="price"><span></span>{{getToltal()}}</strong>
+                                    <strong class="price"><span></span>{{getTotal()}}</strong>
                                 </li>
                             </ul>
                         </div>
+
                     </div>
                     <a class="btn btn-default" href="/">继续购物<i class="fa fa-shopping-cart"></i></a>
-                    <button class="btn btn-primary" type="submit" ng-click="putPurchase()">确认订单<i class="fa fa-check"></i></button>
+                    <button class="btn btn-primary" type="submit" ng-click="putPurchase()">确认订单<i
+                            class="fa fa-check"></i></button>
                 </div>
             </div>
             <!-- END CONTENT -->
