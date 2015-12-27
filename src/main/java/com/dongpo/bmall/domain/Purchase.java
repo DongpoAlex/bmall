@@ -37,6 +37,9 @@ public class Purchase {
     @Column(name = "paymodeid")
     private String paymodeId;
 
+
+    private String note;
+
     public String getSheetId() {
         return sheetId;
     }
@@ -116,4 +119,13 @@ public class Purchase {
     public void setItemSet(Set<PurchaseItem> itemSet) {
         this.itemSet = itemSet;
     }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
+
 }

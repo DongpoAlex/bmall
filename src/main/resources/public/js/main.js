@@ -40,6 +40,7 @@ angular.module('bMall', ['ngRoute', 'auth', 'home', 'navigation', 'bMallService'
     };
 }]).controller("initCtrl", ['$rootScope', 'menuService', 'cartService',
     function ($rootScope, menuService, cartService) {
+
         $rootScope.removeGoods = cartService.remove;
         $rootScope.getTotal = cartService.getTotal;
         $rootScope.putPurchase = cartService.putPurchase;

@@ -51,7 +51,6 @@ angular.module('auth', ['bMallService']).factory('auth',function ($rootScope, $h
                 auth.authenticated = false;
                 $rootScope.user=[];
                 $rootScope.cart=[];
-                $rootScope.goodses=[];
                 $rootScope.note='';
                 $http.post(auth.logoutPath, {}).success(function () {
                     console.log("Logout succeeded");
