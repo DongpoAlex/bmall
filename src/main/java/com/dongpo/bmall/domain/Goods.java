@@ -33,6 +33,15 @@ public class Goods {
 
     private String spec;
 
+    @Column(name = "orderpknum1")
+    private int oPKNum;
+
+    @Column(name = "orderpkname1")
+    private String oPKName;
+
+    @Column(name = "orderpkspec1")
+    private String oPKSpec;
+
     @OneToMany(mappedBy = "goodsId")
     private Set<GoodsExtend> extendSet;
 
@@ -74,5 +83,15 @@ public class Goods {
         return spec;
     }
 
+    public int getoPKNum() {
+        return oPKNum;
+    }
 
+    public String getoPKSpec() {
+        return oPKSpec;
+    }
+
+    public String getoPKName() {
+        return oPKName;
+    }
 }

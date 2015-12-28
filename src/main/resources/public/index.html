@@ -89,7 +89,7 @@
                 <a href="/shopping" class="cart-info-count">{{cart.length}}</a>
                 <a href="/shopping" class="cart-info-value">{{getTotal()}}</a>
             </div>
-            <i class="fa fa-shopping-cart"></i>
+            <a href="/shopping"><i class="fa fa-shopping-cart"></i></a>
             <!-- BEGIN CART CONTENT -->
             <div class="cart-content-wrapper">
                 <div class="cart-content">
@@ -116,7 +116,7 @@
         <!-- BEGIN NAVIGATION -->
         <div class="collapse navbar-collapse mega-menu">
             <ul class="nav navbar-nav">
-                <li class="dropdown" ng-repeat="(key,value) in menus  | filter : {prentId: 0} : true">
+                <li class="dropdown" ng-repeat="(key,value) in menus">
                     <a class="dropdown-toggle" data-toggle="dropdown" data-delay="0" data-close-others="false"
                        data-target="product-list.html" href="product-list.html">
                         {{value.name}}
@@ -127,7 +127,7 @@
                         <li>
                             <div class="nav-content">
                                 <!-- BEGIN DROPDOWN MENU - COLUMN -->
-                                <div class="nav-content-col" ng-repeat="child in menus | filter : {prentId:key+1}:true">
+                                <div class="nav-content-col" ng-repeat="child in menus |filter : {id:value.prentId}:true">
                                     <h3><a class="dropdown-toggle" data-toggle="dropdown" data-delay="0"
                                            data-close-others="false"
                                            data-target="product-list.html" href="product-list.html">

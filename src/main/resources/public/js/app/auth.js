@@ -1,4 +1,4 @@
-angular.module('auth', ['bMallService']).factory('auth',function ($rootScope, $http, $location,cartService) {
+angular.module('auth', ['bMallService']).factory('auth',function ($rootScope, $http, $location,cartService,menuService) {
 
         enter = function () {
             if ($location.path() != auth.loginPath) {
@@ -32,7 +32,11 @@ angular.module('auth', ['bMallService']).factory('auth',function ($rootScope, $h
                     if (data.name) {
                         auth.authenticated = true;
                         $rootScope.user=data;
+
+                        //服务加载
+                        menuService.int();
                         cartService.initCart();
+
                     } else {
                         auth.authenticated = false;
                     }
@@ -49,6 +53,7 @@ angular.module('auth', ['bMallService']).factory('auth',function ($rootScope, $h
             clear: function () {
                 $location.path(auth.loginPath);
                 auth.authenticated = false;
+                $rootScope.menus=[];
                 $rootScope.user=[];
                 $rootScope.cart=[];
                 $rootScope.note='';

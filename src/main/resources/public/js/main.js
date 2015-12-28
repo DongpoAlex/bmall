@@ -37,8 +37,8 @@ angular.module('bMall', ['ngRoute', 'auth', 'home', 'navigation', 'bMallService'
             });
         }
     };
-}]).controller("initCtrl", ['$rootScope', 'menuService', 'cartService','$scope',
-    function ($rootScope, menuService, cartService) {
+}]).controller("initCtrl", ['$rootScope', 'cartService','$scope',
+    function ($rootScope,cartService) {
 
         $rootScope.removeGoods = cartService.remove;
         $rootScope.getTotal = cartService.getTotal;

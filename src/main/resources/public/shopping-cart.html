@@ -11,26 +11,26 @@
                             <table summary="Shopping cart">
                                 <tr>
                                     <th class="shopping-cart-description">商品信息</th>
-                                    <th class="shopping-cart-ref-no">用户</th>
-                                    <th class="shopping-cart-quantity">数量</th>
                                     <th class="shopping-cart-price">单价(元)</th>
+                                    <th class="shopping-cart-quantity">数量</th>
                                     <th class="shopping-cart-total" colspan="2">小计(元)</th>
                                 </tr>
                                 <tr ng-repeat="item in cart">
                                     <td class="shopping-cart-description">
                                         <h3><a href="/goods/{{item.id}}">{{item.name}}</a></h3>
+                                        <div class="text-right">
+                                            <p><span  class="label label-primary">{{item.ospec}}</span></p>
+                                        </div>
                                     </td>
-                                    <td class="shopping-cart-ref-no">
-                                        {{user.name}}
+
+                                    <td class="shopping-cart-price">
+                                        <strong><span>{{item.price}}</span></strong>
                                     </td>
                                     <td class="shopping-cart-quantity">
                                         <div class="product-quantity">
                                             <input id="product-quantity" type="text" value="1"
                                                    class="form-control input-sm" ng-model="item.qty" init-touchspin>
                                         </div>
-                                    </td>
-                                    <td class="shopping-cart-price">
-                                        <strong><span>{{item.price}}</span></strong>
                                     </td>
                                     <td class="shopping-cart-total">
                                         <strong><span>{{item.qty*item.price}}</span></strong>
@@ -70,104 +70,7 @@
         <!-- END SIDEBAR & CONTENT -->
 
         <!-- BEGIN SIMILAR PRODUCTS -->
-        <div class="row margin-bottom-40">
-            <div class="col-md-12 col-sm-12 bxslider-wrapper bxslider-wrapper-similar-products">
-                <h2>受欢迎的商品</h2>
-                <ul class="bxslider bxslider-similar-products" data-slides-phone="1" data-slides-tablet="2"
-                    data-slides-desktop="4" data-slide-margin="20">
-                    <li>
-                        <div class="product-item">
-                            <div class="pi-img-wrapper">
-                                <img src="assets/temp/products/k4.jpg" class="img-responsive" alt="Berry Lace Dress">
-                                <div>
-                                    <a href="assets/temp/products/k4.jpg"
-                                       class="btn btn-default fancybox-button">Zoom</a>
-                                    <a href="#product-pop-up" class="btn btn-default fancybox-fast-view">View</a>
-                                </div>
-                            </div>
-                            <h3><a href="item.html">Berry Lace Dress</a></h3>
-                            <div class="pi-price">$29.00</div>
-                            <a href="#" class="btn btn-default add2cart">Add to cart</a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="product-item">
-                            <div class="pi-img-wrapper">
-                                <img src="assets/temp/products/k1.jpg" class="img-responsive" alt="Berry Lace Dress">
-                                <div>
-                                    <a href="assets/temp/products/k1.jpg"
-                                       class="btn btn-default fancybox-button">Zoom</a>
-                                    <a href="#product-pop-up" class="btn btn-default fancybox-fast-view">View</a>
-                                </div>
-                            </div>
-                            <h3><a href="item.html">Berry Lace Dress2</a></h3>
-                            <div class="pi-price">$29.00</div>
-                            <a href="#" class="btn btn-default add2cart">Add to cart</a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="product-item">
-                            <div class="pi-img-wrapper">
-                                <img src="assets/temp/products/k2.jpg" class="img-responsive" alt="Berry Lace Dress">
-                                <div>
-                                    <a href="assets/temp/products/k2.jpg"
-                                       class="btn btn-default fancybox-button">Zoom</a>
-                                    <a href="#product-pop-up" class="btn btn-default fancybox-fast-view">View</a>
-                                </div>
-                            </div>
-                            <h3><a href="item.html">Berry Lace Dress3</a></h3>
-                            <div class="pi-price">$29.00</div>
-                            <a href="#" class="btn btn-default add2cart">Add to cart</a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="product-item">
-                            <div class="pi-img-wrapper">
-                                <img src="assets/temp/products/k3.jpg" class="img-responsive" alt="Berry Lace Dress">
-                                <div>
-                                    <a href="assets/temp/products/k3.jpg"
-                                       class="btn btn-default fancybox-button">Zoom</a>
-                                    <a href="#product-pop-up" class="btn btn-default fancybox-fast-view">View</a>
-                                </div>
-                            </div>
-                            <h3><a href="item.html">Berry Lace Dress4</a></h3>
-                            <div class="pi-price">$29.00</div>
-                            <a href="#" class="btn btn-default add2cart">Add to cart</a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="product-item">
-                            <div class="pi-img-wrapper">
-                                <img src="assets/temp/products/k4.jpg" class="img-responsive" alt="Berry Lace Dress">
-                                <div>
-                                    <a href="assets/temp/products/k4.jpg"
-                                       class="btn btn-default fancybox-button">Zoom</a>
-                                    <a href="#product-pop-up" class="btn btn-default fancybox-fast-view">View</a>
-                                </div>
-                            </div>
-                            <h3><a href="item.html">Berry Lace Dress5</a></h3>
-                            <div class="pi-price">$29.00</div>
-                            <a href="#" class="btn btn-default add2cart">Add to cart</a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="product-item">
-                            <div class="pi-img-wrapper">
-                                <img src="assets/temp/products/k1.jpg" class="img-responsive" alt="Berry Lace Dress">
-                                <div>
-                                    <a href="assets/temp/products/k1.jpg"
-                                       class="btn btn-default fancybox-button">Zoom</a>
-                                    <a href="#product-pop-up" class="btn btn-default fancybox-fast-view">View</a>
-                                </div>
-                            </div>
-                            <h3><a href="item.html">Berry Lace Dress6</a></h3>
-                            <div class="pi-price">$29.00</div>
-                            <a href="#" class="btn btn-default add2cart">Add to cart</a>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
+
         <!-- END SIMILAR PRODUCTS -->
     </div>
 </div>
