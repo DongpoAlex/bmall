@@ -20,7 +20,7 @@ public class Goods {
     @Column(name = "BarcodeID")
     private String barcode;
 
-    @Column(name = "unitname")
+    @Column(name = "orderpkname1")
     private String unitName;
 
     @Column(name = "guestid")
