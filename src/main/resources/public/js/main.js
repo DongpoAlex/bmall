@@ -38,7 +38,7 @@ angular.module('bMall', ['ngRoute', 'auth', 'home', 'navigation', 'bMallService'
             });
         }
     };
-}]).controller("initCtrl", ['$rootScope', 'menuService', 'cartService',
+}]).controller("initCtrl", ['$rootScope', 'menuService', 'cartService','$scope',
     function ($rootScope, menuService, cartService) {
 
         $rootScope.removeGoods = cartService.remove;
