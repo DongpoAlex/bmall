@@ -19,4 +19,8 @@ public interface GoodsRepository extends PagingAndSortingRepository<Goods, Integ
 
     @RestResource(path = "/byGoodsId")
     Goods findByGoodsIdAndGuestId(@Param("goodsId") int goodsId,@Param("guestId") String guestId);
+
+    @RestResource(path = "/byDeptId")
+    Page<Goods> findBydeptId(@Param("deptId") int deptId,Pageable var1);
+
 }

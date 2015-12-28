@@ -12,7 +12,7 @@
         <ul class="breadcrumb">
             <li><a href="index.html">首页</a></li>
             <li><a href="">商店</a></li>
-            <li class="active">男人衣柜</li>
+            <li class="active">蔬菜超市</li>
         </ul>
         <!-- BEGIN SIDEBAR & CONTENT -->
         <div class="row margin-bottom-40">
@@ -20,7 +20,7 @@
             <div class="sidebar col-md-3 col-sm-4">
                 <ul class="list-group margin-bottom-25 sidebar-menu">
                     <li class="list-group-item clearfix dropdown"
-                        ng-repeat="(key,value) in menus">
+                        ng-repeat="value in menus  | filter : {prentId:0}:true">
                         <a href="javascript:void(0);" handle-sidebar-menu>
                             <i class="fa fa-angle-right"></i>
                             {{value.name}}
@@ -28,7 +28,7 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li class="list-group-item dropdown clearfix"
-                                ng-repeat="child in menus | filter : {id:value.prentId}:true">
+                                ng-repeat="child in menus | filter : {prentId:value.id} :true">
                                 <a href="javascript:void(0);" handle-sidebar-menu><i class="fa fa-circle"></i>
                                     {{child.name}} </a>
                                 <ul class="dropdown-menu">
