@@ -1,7 +1,10 @@
 package com.dongpo.bmall.domain;
 
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import org.springframework.data.rest.core.annotation.RestResource;
 
 /**
  * Created by AlexBob on 2015/12/16.
@@ -9,4 +12,8 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 @RepositoryRestResource(path = "dept")
 public interface DeptRepository extends CrudRepository<Dept, Integer> {
+
+    @RestResource(path = "/byGuest")
+    @Query(value = "select * from v_SGroup where id in ( select deptId/100 from wholegoods where guestId = :guestId)",nativeQuery =true)
+    Iterable<Dept> findByGuestId(@Param("guestId") String guestId);
 }

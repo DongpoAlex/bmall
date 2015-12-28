@@ -4,18 +4,21 @@ angular.module('bMallService', ['ngResource'])
     }])
     .factory('menuService', function ($rootScope, $resource, superCache) {
         $rootScope.menus = [];
-        if (superCache.get('menus')) {
-            $rootScope.menus = superCache.get("menus");
-        } else {
-            var p = $resource('/api/dept/');
-            p.get(function (data) {
+        var initMenus = function () {
+            if (superCache.get('menus')) {
+                $rootScope.menus = superCache.get("menus");
+            } else {
+                var p = $resource('api/dept/search/byGuest?guestId=' + $rootScope.user.name);
+                p.get(function (data) {
 
-                $rootScope.menus = data._embedded.depts;
+                    $rootScope.menus = data._embedded.depts;
 
-                superCache.put("menus", $rootScope.menus);
-            });
-        }
-        return $rootScope.menus;
+                    superCache.put("menus", $rootScope.menus);
+                });
+            }
+        };
+
+        return {int: initMenus};
     }).factory('goodsService', function ($rootScope, $resource, filterFilter) {
 
     $rootScope.goodses = [];
@@ -43,7 +46,7 @@ angular.module('bMallService', ['ngResource'])
 
     var initCart = function () {
         $rootScope.cart = [];
-        $rootScope.purchase = { note: ''};
+        $rootScope.purchase = {note: ''};
         var CreditCart = $resource('/api/guestCart/search/byGuest?guestId=' + $rootScope.user.name);
         CreditCart.get(function (data) {
             $rootScope.cart = data._embedded.guestCarts;
@@ -51,11 +54,12 @@ angular.module('bMallService', ['ngResource'])
                 var CreditGoods = $resource('api/goods/search/byGoodsId?goodsId=' + value.goodsId + '&guestId=' + $rootScope.user.name);
                 CreditGoods.get(function (goods) {
                     value.qty = 0;
-                    value.sepc = goods.sepc;
-                    value.deptId = goods.deptId
+                    value.spec = goods.spec;
+                    value.deptId = goods.deptId / 100;
                     value.name = goods.name;
                     value.price = goods.price;
                     value.unitName = goods.unitName;
+                    value.ospec = goods.oPKNum + goods.oPKName + goods.oPKSpec;
                 });
             });
         });

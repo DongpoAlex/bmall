@@ -20,7 +20,7 @@ public class Goods {
     @Column(name = "BarcodeID")
     private String barcode;
 
-    @Column(name = "orderpkname1")
+    @Column(name = "unitname")
     private String unitName;
 
     @Column(name = "guestid")
@@ -32,6 +32,15 @@ public class Goods {
     private int deptId;
 
     private String spec;
+
+    @Column(name = "orderpknum1")
+    private int oPKNum;
+
+    @Column(name = "orderpkname1")
+    private String oPKName;
+
+    @Column(name = "orderpkspec1")
+    private String oPKSpec;
 
     @OneToMany(mappedBy = "goodsId")
     private Set<GoodsExtend> extendSet;
@@ -74,5 +83,15 @@ public class Goods {
         return spec;
     }
 
+    public int getoPKNum() {
+        return oPKNum;
+    }
 
+    public String getoPKSpec() {
+        return oPKSpec;
+    }
+
+    public String getoPKName() {
+        return oPKName;
+    }
 }
