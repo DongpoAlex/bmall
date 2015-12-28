@@ -43,7 +43,7 @@ angular.module('bMallService', ['ngResource'])
 
     var initCart = function () {
         $rootScope.cart = [];
-        $rootScope.note = '';
+        $rootScope.purchase = { note: '11111'};
         var CreditCart = $resource('/api/guestCart/search/byGuest?guestId=' + $rootScope.user.name);
         CreditCart.get(function (data) {
             $rootScope.cart = data._embedded.guestCarts;
@@ -103,7 +103,7 @@ angular.module('bMallService', ['ngResource'])
                 }
             });
 
-            if(cartGoods.length===0){
+            if (cartGoods.length === 0) {
                 $window.alert('订单商品数量不能为空!');
                 return;
             }
@@ -112,7 +112,7 @@ angular.module('bMallService', ['ngResource'])
             var newPurchase = new CreditPurchase({sheetId: sheetId});
             newPurchase.sheetId = sheetId;
             newPurchase.flag = 1;
-            newPurchase.note = $rootScope.note;
+            newPurchase.note = $rootScope.purchase.note;
             newPurchase.editor = $rootScope.user.name;
             newPurchase.ordphdate = 7;
             newPurchase.itemSet = cartGoods;
