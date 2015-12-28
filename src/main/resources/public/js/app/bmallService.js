@@ -59,7 +59,8 @@ angular.module('bMallService', ['ngResource'])
                     value.name = goods.name;
                     value.price = goods.price;
                     value.unitName = goods.unitName;
-                    value.ospec = goods.oPKNum+','+goods.oPKName + goods.oPKSpec;
+                    value.opknum = goods.oPKNum;
+                    value.opkspec = goods.oPKSpec;
                 });
             });
         });
