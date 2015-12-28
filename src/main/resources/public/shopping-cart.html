@@ -25,10 +25,9 @@
                                     </td>
                                     <td class="shopping-cart-quantity">
                                         <div class="product-quantity">
-                                            <input type="number" ng-model="item.qty"
-                                                   class="form-control">
+                                            <input id="product-quantity" type="text" value="1"
+                                                   class="form-control input-sm" ng-model="item.qty" init-touchspin>
                                         </div>
-
                                     </td>
                                     <td class="shopping-cart-price">
                                         <strong><span>{{item.price}}</span></strong>
@@ -173,9 +172,3 @@
     </div>
 </div>
 
-
-<script type="text/javascript">
-    jQuery(document).ready(function () {
-        App.initBxSlider();
-    });
-</script>

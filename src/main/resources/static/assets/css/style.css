@@ -2024,7 +2024,7 @@ table .product-quantity .input-group {
 	font: 300 23px 'Open Sans', sans-serif;;
 	color: #647484;
 	height: 38px;
-	width: 80px;
+	width: 50px;
 	text-align: center;
 	padding: 5px;
 }
@@ -2036,25 +2036,25 @@ table .product-quantity .input-group {
 	position: static;
 }
 .product-quantity .btn {
-  text-align: center;
-  height: 18px !important;
-  width: 18px;
-  padding: 0 2px 0 1px !important;
-  text-align: center;
-  background: #edeff1;
-  border-radius: 0 !important;
-  font-size: 18px !important;
-  line-height: 1 !important;
-  color: #616b76;
-  margin: 0 !important;
-  position: absolute;
-  right: 0;
+	text-align: center;
+	height: 18px !important;
+	width: 18px;
+	padding: 0 2px 0 1px !important;
+	text-align: center;
+	background: #edeff1;
+	border-radius: 0 !important;
+	font-size: 18px !important;
+	line-height: 1 !important;
+	color: #616b76;
+	margin: 0 !important;
+	position: absolute;
+	right: 0;
 }
 .product-quantity .quantity-up {
-  top: 0;
+	top: 0;
 }
 .product-quantity .quantity-down {
-  bottom: 0;
+	bottom: 0;
 }
 .product-quantity .btn i {
 	position: relative;
@@ -3094,4 +3094,27 @@ div.radio,
 div.checker {
 	margin-right: 0;
 	margin-left: 3px;
+}
+
+.modal {
+	text-align: center;
+}
+
+.modal .modal-content{
+	background:fixed;
+}
+
+@media screen and (min-width: 768px) {
+	.modal:before {
+		display: inline-block;
+		vertical-align: middle;
+		content: " ";
+		height: 100%;
+	}
+}
+
+.modal-dialog {
+	display: inline-block;
+	text-align: left;
+	vertical-align: middle;
 }
