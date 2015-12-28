@@ -43,7 +43,7 @@ angular.module('bMallService', ['ngResource'])
 
     var initCart = function () {
         $rootScope.cart = [];
-        $rootScope.purchase = { note: '11111'};
+        $rootScope.purchase = { note: ''};
         var CreditCart = $resource('/api/guestCart/search/byGuest?guestId=' + $rootScope.user.name);
         CreditCart.get(function (data) {
             $rootScope.cart = data._embedded.guestCarts;
@@ -121,13 +121,6 @@ angular.module('bMallService', ['ngResource'])
             $window.alert('订单已确认！');
             $location.path('/');
         }
-    };
-}).directive('initImageZoom', function () {
-    function link(scope, element, attrs) {
-        jQuery(element).zoom({url: jQuery('.product-main-image img').attr('data-BigImgSrc')});
-    };
-    return {
-        link: link
     };
 }).directive('handleSidebarMenu', function () {
         function link(scope, element, attrs) {
