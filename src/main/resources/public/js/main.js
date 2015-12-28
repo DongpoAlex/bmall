@@ -24,16 +24,15 @@ angular.module('bMall', ['ngRoute', 'auth', 'home', 'navigation', 'bMallService'
     }
 ).directive('loading', ['$http', function ($http) {
     return {
-        restrict: 'A',
         link: function (scope, elm, attrs) {
             scope.isLoading = function () {
                 return $http.pendingRequests.length > 0;
             };
             scope.$watch(scope.isLoading, function (v) {
                 if (v) {
-                    elm.show();
+                    $(elm).modal('show');
                 } else {
-                    elm.hide();
+                    $(elm).modal('hide');
                 }
             });
         }
