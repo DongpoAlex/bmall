@@ -3100,13 +3100,6 @@ div.checker {
 	text-align: center;
 }
 
-.modal .modal-content{
-    filter:alpha(opacity=50);
-    -moz-opacity:1;
-    -khtml-opacity: 1;
-    opacity: 1;
-}
-
 @media screen and (min-width: 768px) {
 	.modal:before {
 		display: inline-block;
