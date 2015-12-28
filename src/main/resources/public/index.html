@@ -116,7 +116,7 @@
         <!-- BEGIN NAVIGATION -->
         <div class="collapse navbar-collapse mega-menu">
             <ul class="nav navbar-nav">
-                <li class="dropdown" ng-repeat="(key,value) in menus">
+                <li class="dropdown" ng-repeat="(key,value) in menus | filter : {prentId:0} :true">
                     <a class="dropdown-toggle" data-toggle="dropdown" data-delay="0" data-close-others="false"
                        data-target="product-list.html" href="product-list.html">
                         {{value.name}}
@@ -127,7 +127,7 @@
                         <li>
                             <div class="nav-content">
                                 <!-- BEGIN DROPDOWN MENU - COLUMN -->
-                                <div class="nav-content-col" ng-repeat="child in menus |filter : {id:value.prentId}:true">
+                                <div class="nav-content-col" ng-repeat="child in menus | filter : {prentId:value.id}:true">
                                     <h3><a class="dropdown-toggle" data-toggle="dropdown" data-delay="0"
                                            data-close-others="false"
                                            data-target="product-list.html" href="product-list.html">
