@@ -11,18 +11,19 @@
                             <table summary="Shopping cart">
                                 <tr>
                                     <th class="shopping-cart-description">商品信息</th>
+                                    <th class="shopping-cart-description">件装</th>
                                     <th class="shopping-cart-price">单价(元)</th>
                                     <th class="shopping-cart-quantity">数量</th>
+                                    <th class="shopping-cart-quantity">单位</th>
                                     <th class="shopping-cart-total" colspan="2">小计(元)</th>
                                 </tr>
                                 <tr ng-repeat="item in cart">
                                     <td class="shopping-cart-description">
                                         <h3><a href="/goods/{{item.id}}">{{item.name}}</a></h3>
-                                        <div class="text-right">
-                                            <p><span  class="label label-primary">{{item.ospec}}</span></p>
-                                        </div>
                                     </td>
-
+                                    <td>
+                                        <span class="label label-primary">{{item.ospec}}</span>
+                                    </td>
                                     <td class="shopping-cart-price">
                                         <strong><span>{{item.price}}</span></strong>
                                     </td>
@@ -31,6 +32,10 @@
                                             <input id="product-quantity" type="text" value="1"
                                                    class="form-control input-sm" ng-model="item.qty" init-touchspin>
                                         </div>
+                                    </td>
+                                    <td>
+                                        <span  class="label label-success">{{item.spec}}*{{item.unitName}}</span>
+                                    </td>
                                     </td>
                                     <td class="shopping-cart-total">
                                         <strong><span>{{item.qty*item.price}}</span></strong>
