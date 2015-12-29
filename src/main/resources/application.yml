@@ -4,9 +4,9 @@ logging:
 spring:
   datasource:
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-    url: jdbc:sqlserver://192.168.1.230:1433;databaseName=mySHOPPFStock
+    url: jdbc:sqlserver://localhost:1433;databaseName=mySHOPPFStock
     username: sa
-    password: sa
+    password: 123456
     initialize: false
 
   data:
@@ -29,6 +29,5 @@ security:
 
 server:
   port: 80
-  address: 127.0.0.1
   tomcat:
     uri-encoding: UTF-8

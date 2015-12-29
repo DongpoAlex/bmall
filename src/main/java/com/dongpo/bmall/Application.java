@@ -48,6 +48,9 @@ public class Application {
     @RequestMapping(value = "/{path:[^\\.]*}{extension:[^api]}/{path:[^\\.]*}")
     public String redirectS() {return "forward:/";}
 
+    @RequestMapping(value = "/app/")
+    public String redirectApp() {return "forward:/app/index.html";}
+
     @CrossOrigin
     @RequestMapping("/api/user")
     @ResponseBody
