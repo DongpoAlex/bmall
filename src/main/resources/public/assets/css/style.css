@@ -1030,12 +1030,10 @@ Catalogue styles
 }
 .bxslider-wrapper .bx-controls-direction {
 	position: absolute;
-	top: 0;
+	top: 1.2rem;
 	right: 0;
 }
-.bxslider-wrapper .bx-controls-direction {
-	top: -40px;
-}
+
 .bx-viewport {
 	padding-right: 5px !important;
 	-moz-box-sizing: content-box;
@@ -1053,16 +1051,16 @@ Catalogue styles
 	border-radius: 26px !important;
 }
 .bx-wrapper .bx-controls-direction a.bx-prev {
-    background: #fff url(../img/bx-fa-angles.png) no-repeat 8px 8px;
+	background: #fff url(../img/bx-fa-angles.png) no-repeat 8px 8px;
 }
 .bx-wrapper .bx-controls-direction a.bx-next {
-    background: #fff url(../img/bx-fa-angles.png) no-repeat -33px 8px;
+	background: #fff url(../img/bx-fa-angles.png) no-repeat -33px 8px;
 }
 .bx-wrapper .bx-controls-direction a.bx-prev:hover {
-    background: #e84d1c url(../img/bx-fa-angles.png) no-repeat 8px -31px;
+	background: #e84d1c url(../img/bx-fa-angles.png) no-repeat 8px -31px;
 }
 .bx-wrapper .bx-controls-direction a.bx-next:hover {
-    background: #e84d1c url(../img/bx-fa-angles.png) no-repeat -33px -31px;
+	background: #e84d1c url(../img/bx-fa-angles.png) no-repeat -33px -31px;
 }
 
 /* BEDIN LAYER SLIDER */
@@ -1448,7 +1446,7 @@ Brands
 }
 .brands .bx-wrapper .bx-controls-direction a {
     position: absolute;
-    top: 0;
+    top: 1.2rem;
     width: 70px;
     height: 92px;
     text-indent: -10000px;

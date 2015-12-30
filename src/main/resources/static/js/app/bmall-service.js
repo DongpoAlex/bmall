@@ -156,4 +156,28 @@ angular.module('bMallService', ['ngResource'])
     return {
         link: link
     };
+}).directive('initBxSlider', function () {
+    function link(scope, element, attrs) {
+        var slideMargin = parseInt($(element).attr("data-slide-margin"));
+        var slideContainerWidth = $(element).closest('.bxslider-wrapper').width();
+        var slideWidth;
+
+        var slides = $(element).attr("data-slides-desktop");
+
+        slides = parseInt(slides);
+
+        slideWidth = slideContainerWidth / slides;
+
+        $(element).bxSlider({
+            minSlides: slides,
+            maxSlides: slides,
+            slideWidth: slideWidth,
+            slideMargin: slideMargin,
+            useCSS: false
+
+        });
+    };
+    return {
+        link: link
+    };
 });

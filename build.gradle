@@ -14,7 +14,7 @@ apply plugin: 'idea'
 
 jar {
     baseName = 'bmall'
-    version =  '0.0.1-SNAPSHOT'
+    version = '0.0.1-SNAPSHOT'
 }
 
 
@@ -47,13 +47,11 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
 
     //web import script
-    compile("org.webjars:webjars-locator:0.28")
-    compile("org.webjars:angularjs:1.4.8")
-    compile("org.webjars:jquery:1.11.3")
-    compile("org.webjars:bootstrap:3.3.6")
-    compile("org.webjars.bower:momentjs:2.10.6")
-    compile("org.webjars.bower:font-awesome:4.5.0")
-
+    compile 'org.webjars:webjars-locator:0.28'
+    compile 'org.webjars:angularjs:1.4.8'
+    compile 'org.webjars.bower:bootstrap:3.3.6'
+    compile 'org.webjars.bower:momentjs:2.10.6'
+    compile 'org.webjars.bower:font-awesome:4.5.0'
 
     //database driver
     compile("com.microsoft.sqlserver:sqljdbc4:4.1")
