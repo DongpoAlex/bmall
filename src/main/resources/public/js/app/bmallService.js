@@ -148,11 +148,10 @@ angular.module('bMallService', ['ngResource'])
 ).directive('initTouchspin', function () {
     function link(scope, element, attrs) {
         jQuery(element).TouchSpin({
-            buttondown_class: "btn quantity-down",
-            buttonup_class: "btn quantity-up"
+            verticalbuttons: true,
+            max: 1000000000
         });
-        jQuery(".quantity-down").html("<i class='fa fa-angle-down'></i>");
-        jQuery(".quantity-up").html("<i class='fa fa-angle-up'></i>");
+
     };
     return {
         link: link
