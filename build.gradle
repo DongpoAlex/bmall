@@ -50,7 +50,7 @@ dependencies {
     compile("org.webjars:webjars-locator:0.28")
     compile("org.webjars:angularjs:1.4.8")
     compile("org.webjars:jquery:1.11.3")
-    compile("org.webjars:bootstrap:3.3.5")
+    compile("org.webjars:bootstrap:3.3.6")
     compile("org.webjars.bower:momentjs:2.10.6")
 
 

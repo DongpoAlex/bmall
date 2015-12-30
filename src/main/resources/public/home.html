@@ -6,7 +6,6 @@
         </div>
     </div>
 </div>
-
 <div class="main">
     <div class="container">
         <ul class="breadcrumb">
@@ -17,7 +16,7 @@
         <!-- BEGIN SIDEBAR & CONTENT -->
         <div class="row margin-bottom-40">
             <!-- BEGIN SIDEBAR -->
-            <div class="sidebar col-md-3 col-sm-4">
+            <div class="sidebar col-md-3 col-sm-5">
                 <ul class="list-group margin-bottom-25 sidebar-menu">
                     <li class="list-group-item clearfix dropdown"
                         ng-repeat="value in menus  | filter : {prentId:0}:true">
@@ -46,19 +45,10 @@
             <!-- END SIDEBAR -->
             <!-- BEGIN CONTENT -->
             <div class="col-md-9 col-sm-7">
-                <div class="row list-view-sorting clearfix">
-                    <div class="col-md-2 col-sm-2 list-view">
-                        <a href="#"><i class="fa fa-th-large"></i></a>
-                        <a href="#"><i class="fa fa-th-list"></i></a>
-                    </div>
-                    <div class="col-md-10 col-sm-10">
-
-                    </div>
-                </div>
                 <!-- BEGIN PRODUCT LIST -->
                 <div class="row product-list">
                     <!-- PRODUCT ITEM START -->
-                    <div class="col-md-4 col-sm-6 col-xs-12" ng-repeat="item in goodses._embedded.goodses">
+                    <div class="col-md-4 col-sm-6 col-xs-12" ng-repeat="item in goodses._embedded.goodses track by $index ">
                         <div class="product-item">
                             <h3><a href="item.html">{{item.name}}</a></h3>
                             <div class="pi-price"><strong>￥{{item.price}}</strong></div>

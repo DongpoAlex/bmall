@@ -24,19 +24,15 @@
 
 
     <!-- Global styles START -->
-    <link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="webjarslocator/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <!-- Global styles END -->
 
     <!-- Page level plugin styles START -->
     <link href="assets/plugins/bxslider/jquery.bxslider.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/plugins/layerslider/css/layerslider.css" type="text/css">
     <!-- Page level plugin styles END -->
 
     <!-- Theme styles START -->
-    <link href="assets/css/style-metronic.css" rel="stylesheet" type="text/css">
     <link href="assets/css/style.css" rel="stylesheet" type="text/css">
-    <link href="assets/css/style-responsive.css" rel="stylesheet" type="text/css">
     <!--<link href="assets/css/custom.css" rel="stylesheet" type="text/css">
      Theme styles END -->
 </head>
@@ -127,7 +123,8 @@
                         <li>
                             <div class="nav-content">
                                 <!-- BEGIN DROPDOWN MENU - COLUMN -->
-                                <div class="nav-content-col" ng-repeat="child in menus | filter : {prentId:value.id}:true">
+                                <div class="nav-content-col"
+                                     ng-repeat="child in menus | filter : {prentId:value.id}:true">
                                     <h3><a class="dropdown-toggle" data-toggle="dropdown" data-delay="0"
                                            data-close-others="false"
                                            data-target="product-list.html" href="product-list.html">
@@ -287,14 +284,6 @@
                 </address>
             </div>
             <!-- END BOTTOM CONTACTS -->
-        </div>
-        <hr>
-        <div class="row">
-            <!-- BEGIN SOCIAL ICONS -->
-
-            <!-- END SOCIAL ICONS -->
-            <!-- BEGIN NEWLETTER -->
-            <!-- END NEWLETTER -->
         </div>
     </div>
 </div>
