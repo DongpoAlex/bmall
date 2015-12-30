@@ -976,9 +976,10 @@ Catalogue styles
 
 .product-item h3 {
 	font: 300 14px 'Open Sans', sans-serif;
+	height: 8rem;
 	text-transform: inherit;
-	padding-top: 10px;
-	padding-bottom: 4px;
+	padding-top: 0.5rem;
+	padding-bottom: 0.1rem;
 }
 .product-item h3 a {
 	color: #3e4d5c;
