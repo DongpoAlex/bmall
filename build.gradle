@@ -52,6 +52,7 @@ dependencies {
     compile("org.webjars:jquery:1.11.3")
     compile("org.webjars:bootstrap:3.3.6")
     compile("org.webjars.bower:momentjs:2.10.6")
+    compile("org.webjars.bower:font-awesome:4.5.0")
 
 
     //database driver
