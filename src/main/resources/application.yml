@@ -23,6 +23,9 @@ spring:
 
   messages:
     basename: messages_zh_CN
+  mobile:
+    devicedelegatingviewresolver:
+      enabled: true
 
 security:
   enable-csrf: true
