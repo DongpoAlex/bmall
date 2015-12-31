@@ -3,30 +3,30 @@ angular.module('bMall', ['ngRoute', 'auth', 'home', 'navigation', 'bMallService'
         function ($routeProvider, $httpProvider, $locationProvider) {
             $locationProvider.html5Mode(true);
 
-            $routeProvider.when('/', {
+            $routeProvider.when('/app/', {
+                templateUrl: '/app/home.html',
+                controller: 'home'
+            }).when('/app/home', {
                 templateUrl: '/home.html',
                 controller: 'home'
-            }).when('/home', {
-                templateUrl: '/home.html',
+            }).when('/app/home/:id', {
+                templateUrl: '/app/home.html',
                 controller: 'home'
-            }).when('/home/:id', {
-                templateUrl: '/home.html',
-                controller: 'home'
-            }).when('/goods/:id', {
-                templateUrl: '/item.html',
+            }).when('/app/goods/:id', {
+                templateUrl: '/app/item.html',
                 controller: 'goodsCtrl'
-            }).when('/login', {
-                templateUrl: '/login.html',
+            }).when('/app/login', {
+                templateUrl: '/app/login.html',
                 controller: 'navigation'
-            }).when('/shopping', {
-                templateUrl: '/shopping-cart.html'
-            }).otherwise('/');
+            }).when('/app/shopping', {
+                templateUrl: '/app/shopping-cart.html'
+            }).otherwise('/app');
 
             $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
         }
     ]).run(function (auth) {
-        auth.init('/', '/login', '/logout');
+        auth.init('/app', '/app/login', '/app/logout');
     }
 ).directive('loading', ['$http', function ($http) {
     return {
