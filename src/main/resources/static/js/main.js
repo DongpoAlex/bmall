@@ -6,6 +6,9 @@ angular.module('bMall', ['ngRoute', 'auth', 'home', 'navigation', 'bMallService'
             $routeProvider.when('/', {
                 templateUrl: '/home.html',
                 controller: 'home'
+            }).when('/home/:id', {
+                templateUrl: '/home.html',
+                controller: 'home'
             }).when('/goods/:id', {
                 templateUrl: '/item.html',
                 controller: 'goodsCtrl'
@@ -37,9 +40,8 @@ angular.module('bMall', ['ngRoute', 'auth', 'home', 'navigation', 'bMallService'
             });
         }
     };
-}]).controller("initCtrl", ['$rootScope', 'cartService','$scope',
-    function ($rootScope,cartService) {
-
+}]).controller("initCtrl", ['$rootScope', 'cartService', '$scope',
+    function ($rootScope, cartService) {
         $rootScope.removeGoods = cartService.remove;
         $rootScope.getTotal = cartService.getTotal;
         $rootScope.putPurchase = cartService.putPurchase;
