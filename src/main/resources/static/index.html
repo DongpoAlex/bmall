@@ -159,10 +159,10 @@
 
                     <form action="#" class="navbar-form navbar-left">
                         <div class="input-group">
-                            <input type="text" placeholder="Search" class="form-control">
+                            <input type="text" placeholder="Search" class="form-control" ng-model="goodsName">
                                     <span class="input-group-btn">
-                                        <button class="btn btn-primary" type="submit">搜索
-                                        </button>
+                                        <a class="btn btn-primary" ng-href="/home?name={{goodsName}}">搜索
+                                        </a>
                                     </span>
                         </div>
                     </form>
