@@ -31,6 +31,9 @@ public class Goods {
     @Column(name = "deptid")
     private int deptId;
 
+    @Column(name = "dept2")
+    private int twoDeptId;
+
     private String spec;
 
     @Column(name = "orderpknum1")
@@ -93,5 +96,9 @@ public class Goods {
 
     public String getoPKName() {
         return oPKName;
+    }
+
+    public int getTwoDeptId() {
+        return twoDeptId;
     }
 }

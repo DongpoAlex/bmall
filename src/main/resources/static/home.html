@@ -28,7 +28,7 @@
                         <ul class="dropdown-menu">
                             <li class="list-group-item dropdown clearfix"
                                 ng-repeat="child in menus | filter : {prentId:value.id} :true">
-                                <a href="javascript:void(0);" handle-sidebar-menu><i class="fa fa-circle"></i>
+                                <a href="javascript:void(0);" ng-click="findByDept(child.id)" handle-sidebar-menu><i class="fa fa-circle"></i>
                                     {{child.name}} </a>
                                 <ul class="dropdown-menu">
                                     <li class="list-group-item dropdown clearfix">

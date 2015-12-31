@@ -54,8 +54,6 @@
             <!-- BEGIN TOP BAR MENU -->
             <div class="col-md-6 col-sm-6 additional-nav">
                 <ul class="list-unstyled list-inline pull-right">
-                    <li><a href="#">我的账户</a></li>
-                    <li><a href="#">我的钱包</a></li>
                     <li ng-show="authenticated()"><a ng-click="logout()">注销</a></li>
                     <li ng-show="!authenticated()"><a href="/login">登陆</a></li>
                 </ul>
@@ -116,7 +114,7 @@
             <ul class="nav navbar-nav">
                 <li class="dropdown" ng-repeat="(key,value) in menus | filter : {prentId:0} :true">
                     <a class="dropdown-toggle" data-toggle="dropdown" data-delay="0" data-close-others="false"
-                       data-target="product-list.html" href="product-list.html">
+                       href="javascript:void(0);">
                         {{value.name}}
                         <i class="fa fa-angle-down"></i>
                     </a>
@@ -127,9 +125,7 @@
                                 <!-- BEGIN DROPDOWN MENU - COLUMN -->
                                 <div class="nav-content-col"
                                      ng-repeat="child in menus | filter : {prentId:value.id}:true">
-                                    <h3><a class="dropdown-toggle" data-toggle="dropdown" data-delay="0"
-                                           data-close-others="false"
-                                           data-target="product-list.html" href="product-list.html">
+                                    <h3><a class="dropdown-toggle" ng-click="findByDept(child.id)" href="product-list.html">
                                         {{child.name}}
                                     </a></h3>
                                 </div>

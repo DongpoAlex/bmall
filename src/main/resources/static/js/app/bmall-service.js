@@ -23,17 +23,13 @@ angular.module('bMallService', ['ngResource'])
 
     $rootScope.goodses = [];
 
-    var init = function (url) {
-        var Goods = $resource(url);
-        Goods.get(function (data) {
-            $rootScope.goodses = data;
-        });
-
-    };
-
     return {
-        initGoodses: init,
-
+        init: function (url) {
+            var Goods = $resource(url);
+            Goods.get(function (data) {
+                $rootScope.goodses = data;
+            });
+        },
         get: function (id) {
             return filterFilter($rootScope.goodses, {goodsId: id}, true);
         },
