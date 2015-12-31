@@ -3,24 +3,30 @@ angular.module('bMall', ['ngRoute', 'auth', 'home', 'navigation', 'bMallService'
         function ($routeProvider, $httpProvider, $locationProvider) {
             $locationProvider.html5Mode(true);
 
-            $routeProvider.when('/app/', {
-                templateUrl: '/app/home.html',
+            $routeProvider.when('/', {
+                templateUrl: '/home.html',
                 controller: 'home'
-            }).when('/app/goods/:id', {
+            }).when('/home', {
+                templateUrl: '/home.html',
+                controller: 'home'
+            }).when('/home/:id', {
+                templateUrl: '/home.html',
+                controller: 'home'
+            }).when('/goods/:id', {
                 templateUrl: '/item.html',
                 controller: 'goodsCtrl'
-            }).when('/app/login', {
+            }).when('/login', {
                 templateUrl: '/login.html',
                 controller: 'navigation'
-            }).when('/app/shopping', {
+            }).when('/shopping', {
                 templateUrl: '/shopping-cart.html'
-            }).otherwise('/app/');
+            }).otherwise('/');
 
             $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
         }
     ]).run(function (auth) {
-        auth.init('/', '/app/login', '/app/logout');
+        auth.init('/', '/login', '/logout');
     }
 ).directive('loading', ['$http', function ($http) {
     return {
@@ -37,8 +43,8 @@ angular.module('bMall', ['ngRoute', 'auth', 'home', 'navigation', 'bMallService'
             });
         }
     };
-}]).controller("initCtrl", ['$rootScope', 'cartService','$scope',
-    function ($rootScope,cartService) {
+}]).controller("initCtrl", ['$rootScope', 'cartService', '$scope',
+    function ($rootScope, cartService) {
 
         $rootScope.removeGoods = cartService.remove;
         $rootScope.getTotal = cartService.getTotal;

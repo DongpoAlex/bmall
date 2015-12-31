@@ -13,9 +13,9 @@ angular.module('auth', ['bMallService']).factory('auth',function ($rootScope, $h
 
             authenticated: false,
 
-            loginPath: '/app/login',
-            logoutPath: '/app/logout',
-            homePath: '/app/',
+            loginPath: '/login',
+            logoutPath: '/logout',
+            homePath: '/',
             path: $location.path(),
 
             authenticate: function (credentials, callback) {

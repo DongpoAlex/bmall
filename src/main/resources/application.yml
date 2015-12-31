@@ -1,5 +1,5 @@
 logging:
-  level: INFO
+  level: ERROR
 
 spring:
   datasource:
@@ -34,3 +34,4 @@ server:
   port: 80
   tomcat:
     uri-encoding: UTF-8
+
