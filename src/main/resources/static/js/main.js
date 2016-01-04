@@ -20,6 +20,8 @@ angular.module('bMall', ['ngRoute', 'auth', 'home', 'navigation', 'bMallService'
                 controller: 'navigation'
             }).when('/shopping', {
                 templateUrl: '/shopping-cart.html'
+            }).when('/about', {
+                templateUrl: '/about.html'
             }).otherwise('/');
 
             $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
