@@ -18,7 +18,7 @@ angular.module('bMallService', ['ngResource'])
             }
         };
 
-        return {int: initMenus};
+        return {init: initMenus};
     }).factory('goodsService', function ($rootScope, $resource, filterFilter) {
 
     $rootScope.goodses = [];

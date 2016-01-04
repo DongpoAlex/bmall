@@ -45,10 +45,8 @@ public class Goods {
     @Column(name = "orderpkspec1")
     private String oPKSpec;
 
-    @OneToMany(mappedBy = "goodsId")
-    private Set<GoodsExtend> extendSet;
-
-    public int getId() {return id;}
+   // @OneToMany(mappedBy = "goodsId")
+    //public int getId() {return id;}
 
     public int getGoodsId() {
         return goodsId;
@@ -73,9 +71,9 @@ public class Goods {
     public double getPrice() {return price;}
 
 
-    public Set<GoodsExtend> getExtendSet() {
-        return extendSet;
-    }
+   // public Set<GoodsExtend> getExtendSet() {
+     //   return extendSet;
+    //}
 
     public int getDeptId() {
         return deptId;

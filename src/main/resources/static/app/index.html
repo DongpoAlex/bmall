@@ -54,6 +54,8 @@
             <!-- BEGIN TOP BAR MENU -->
             <div class="col-md-6 col-sm-6 additional-nav">
                 <ul class="list-unstyled list-inline pull-right">
+                    <li>欢迎登陆系统&nbsp<span class="text-primary">{{user.customer.name}}</span></li>
+                    <li>登陆ID:<span class="text-success">{{user.customer.id}}</span></li>
                     <li ng-show="authenticated()"><a ng-click="logout()">注销</a></li>
                     <li ng-show="!authenticated()"><a href="/login">登陆</a></li>
                 </ul>
@@ -76,22 +78,22 @@
                 <span class="icon-bar"></span>
             </button>
             <!-- END RESPONSIVE MENU TOGGLER -->
-            <a href="/app" class="navbar-brand"><img src="assets/img/logo_red.png" alt="Metronic Shop UI"></a><!-- LOGO -->
+            <a href="/" class="navbar-brand"><img src="assets/img/logo_red.png" alt="Metronic Shop UI"></a><!-- LOGO -->
 
         </div>
         <!-- BEGIN CART -->
         <div class="cart-block">
             <div class="cart-info">
-                <a href="/app/shopping" class="cart-info-count">{{cart.length}}</a>
-                <a href="/app/shopping" class="cart-info-value">{{getTotal()}}</a>
+                <a href="/shopping" class="cart-info-count">{{cart.length}}</a>
+                <a href="/shopping" class="cart-info-value">{{getTotal()}}</a>
             </div>
-            <a href="/app/shopping"><i class="fa fa-shopping-cart"></i></a>
+            <a href="/shopping"><i class="fa fa-shopping-cart"></i></a>
             <!-- BEGIN CART CONTENT -->
             <div class="cart-content-wrapper">
                 <div class="cart-content">
                     <ul class="scroller" style="height: 250px;">
                         <li ng-repeat="item in cart track by $index">
-                            <strong><a href="/app/goods/{{item.id}}">{{item.name}}</a></strong>
+                            <strong><a href="/goods/{{item.id}}">{{item.name}}</a></strong>
                             <span class="cart-content-count">x {{item.qty}}</span>
                             <span>{{item.unitName}}</span>
                             <em>￥{{item.price*item.qty}}</em>
@@ -102,7 +104,7 @@
                     </ul>
                     <div class="text-right">
                         <!--<a href="shopping-cart.html" class="btn btn-default">详细</a>-->
-                        <a href="/app/shopping" class="btn btn-primary">确认</a>
+                        <a href="/shopping" class="btn btn-primary">确认</a>
                     </div>
                 </div>
             </div>
@@ -112,7 +114,7 @@
         <!-- BEGIN NAVIGATION -->
         <div class="collapse navbar-collapse mega-menu">
             <ul class="nav navbar-nav">
-                <li class="dropdown" ng-repeat="value in menus | filter : {prentId:0} :true">
+                <li class="dropdown" ng-repeat="value in menus | filter : {prentId:0} :true |orderBy: '-id'">
                     <a class="dropdown-toggle" data-toggle="dropdown" data-delay="0" data-close-others="false"
                        href="javascript:void(0);">
                         {{value.name}}
@@ -125,7 +127,7 @@
                                 <!-- BEGIN DROPDOWN MENU - COLUMN -->
                                 <div class="nav-content-col"
                                      ng-repeat="child in menus | filter : {prentId:value.id}:true">
-                                    <h3><a class="dropdown-toggle"  ng-href="/app/home/{{child.id}}">
+                                    <h3><a class="dropdown-toggle"  ng-href="/home/{{child.id}}">
                                         {{child.name}}
                                     </a></h3>
                                 </div>
@@ -346,11 +348,11 @@
 
 <!-- END CORE PLUGINS -->
 <!-- BEGIN APP SCRIPT -->
-<script type="text/javascript" src="/app/js/app/bmall-service.js"></script>
-<script type="text/javascript" src="/app/js/app/auth.js"></script>
-<script type="text/javascript" src="/app/js/app/navigation.js"></script>
-<script type="text/javascript" src="/app/js/app/home.js"></script>
-<script type="text/javascript" src="/app/js/main.js"></script>
+<script type="text/javascript" src="js/app/bmall-service.js"></script>
+<script type="text/javascript" src="js/app/auth.js"></script>
+<script type="text/javascript" src="js/app/navigation.js"></script>
+<script type="text/javascript" src="js/app/home.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
 <!-- END APP SCRIPT -->
 
 <!-- END PAGE LEVEL JAVASCRIPTS -->

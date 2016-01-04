@@ -32,10 +32,12 @@ angular.module('auth', ['bMallService']).factory('auth',function ($rootScope, $h
                     if (data.name) {
                         auth.authenticated = true;
                         $rootScope.user=data;
-
-                        //服务加载
-                        menuService.int();
-                        cartService.initCart();
+                        $http.get('api/customer/'+data.name).success(function(data){
+                            $rootScope.user.customer=data;
+                            //服务加载
+                            menuService.init();
+                            cartService.initCart();
+                        });
 
                     } else {
                         auth.authenticated = false;
@@ -56,7 +58,7 @@ angular.module('auth', ['bMallService']).factory('auth',function ($rootScope, $h
                 $rootScope.menus=[];
                 $rootScope.user=[];
                 $rootScope.cart=[];
-                $rootScope.note='';
+                $rootScope.purchase=[];
                 $http.post(auth.logoutPath, {}).success(function () {
                     console.log("Logout succeeded");
                 }).error(function (data) {
