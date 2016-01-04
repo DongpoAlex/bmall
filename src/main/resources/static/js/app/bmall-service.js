@@ -47,19 +47,19 @@ angular.module('bMallService', ['ngResource'])
         $rootScope.purchase = {note: ''};
         var CreditCart = $resource('/api/guestCart/search/byGuest?guestId=' + $rootScope.user.name);
         CreditCart.get(function (data) {
-            $rootScope.cart = data._embedded.guestCarts;
-            angular.forEach($rootScope.cart, function (value) {
-                var CreditGoods = $resource('api/goods/search/byGoodsId?goodsId=' + value.goodsId + '&guestId=' + $rootScope.user.name);
-                CreditGoods.get(function (goods) {
+            var gIds=[];
+            angular.forEach( data._embedded.guestCarts, function (value) {
+                gIds.push(value.goodsId);
+            });
+
+            var CreditGoods = $resource('api/goods/search/byGoodsId?goodsId=' + gIds + '&guestId=' + $rootScope.user.name);
+            CreditGoods.get(function (data) {
+                $rootScope.cart=data._embedded.goodses;
+                angular.forEach($rootScope.cart, function (value) {
                     value.qty = 0;
-                    value.spec = goods.spec;
-                    value.deptId = goods.deptId / 100;
-                    value.name = goods.name;
-                    value.price = goods.price;
-                    value.unitName = goods.unitName;
-                    value.opknum = goods.oPKNum;
-                    value.opkspec = goods.oPKSpec;
                 });
+
+
             });
         });
     };

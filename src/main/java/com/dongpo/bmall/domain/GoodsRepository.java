@@ -8,6 +8,8 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.data.rest.core.annotation.RestResource;
 
+import java.util.List;
+
 /**
  * Created by AlexBob on 2015/12/16.
  */
@@ -18,7 +20,7 @@ public interface GoodsRepository extends PagingAndSortingRepository<Goods, Integ
     Page<Goods> findByGuestId(@Param("guestId") String guestId, Pageable var1);
 
     @RestResource(path = "/byGoodsId")
-    Goods findByGoodsIdAndGuestId(@Param("goodsId") int goodsId,@Param("guestId") String guestId);
+    Iterable<Goods> findByGoodsIdInAndGuestId(@Param("goodsId") int[] goodsId, @Param("guestId") String guestId);
 
     @RestResource(path = "/byName")
     Page<Goods> findByNameContainingAndGuestId(@Param("name") String name,@Param("guestId") String guestId,Pageable var1);
