@@ -56,4 +56,8 @@ public class Application {
     @ResponseBody
     public Principal user(Principal user) {return user;}
 
+    @RequestMapping(value = "/404")
+    public String notFound(){
+        return "forward:/goods/img/not_found_404.jpg";
+    }
 }
