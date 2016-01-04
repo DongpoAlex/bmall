@@ -19,7 +19,7 @@
             <div class="sidebar col-md-3 col-sm-5">
                 <ul class="list-group margin-bottom-25 sidebar-menu">
                     <li class="list-group-item clearfix dropdown"
-                        ng-repeat="value in menus  | filter : {prentId:0}:true">
+                        ng-repeat="value in menus  | filter : {prentId:0}:true | orderBy: '-id'">
                         <a href="javascript:void(0);" handle-sidebar-menu>
                             <i class="fa fa-angle-right"></i>
                             {{value.name}}
