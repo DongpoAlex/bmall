@@ -3,7 +3,7 @@ angular.module('bMallService', ['ngResource'])
         return $cacheFactory('super-cache');
     }])
     .factory('menuService', function ($rootScope, $resource, superCache) {
-        $rootScope.menus = [{name: "生鲜食材", prentId: 0, id: 3}];
+        $rootScope.menus = [];
         var initMenus = function () {
             if (superCache.get('menus')) {
                 $rootScope.menus = superCache.get("menus");
