@@ -82,8 +82,35 @@
                 <a href="/" class="navbar-brand"><img src="assets/img/logo_red.png" alt="Metronic Shop UI"></a>
                 <!-- LOGO -->
             </div>
+            <div class="cart-block">
+                <div class="cart-info">
+                    <a href="/shopping" class="cart-info-count">{{cart.length}}</a>
+                    <a href="/shopping" class="cart-info-value">{{getTotal()}}</a>
+                </div>
+                <a href="/shopping"><i class="fa fa-shopping-cart"></i></a>
+                <!-- BEGIN CART CONTENT -->
+                <div class="cart-content-wrapper">
+                    <div class="cart-content">
+                        <ul class="scroller" style="height: 250px;">
+                            <li ng-repeat="item in cart track by $index">
+                                <strong><a href="/goods/{{item.id}}">{{item.name}}</a></strong>
+                                <span class="cart-content-count">x {{item.qty}}</span>
+                                <span>{{item.unitName}}</span>
+                                <em>￥{{item.price*item.qty}}</em>
+                                <a href="javascript:void(0);" class="del-goods" ng-click="removeGoods(item.$index)"><i
+                                        class="fa fa-times"></i></a>
+                            </li>
 
-            <div class="collapse navbar-collapse" >
+                        </ul>
+                        <div class="text-right">
+                            <!--<a href="shopping-cart.html" class="btn btn-default">详细</a>-->
+                            <a href="/shopping" class="btn btn-primary">确认</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- END CART CONTENT -->
+            </div>
+            <div class="collapse navbar-collapse mega-menu">
                 <ul class="nav navbar-nav">
                     <li class="dropdown" ng-repeat="value in menus | filter : {prentId:0} :true |orderBy: '-id'">
                         <a class="dropdown-toggle" data-toggle="dropdown" data-delay="0" data-close-others="false"
@@ -138,34 +165,7 @@
                     </span>
                     </div>
                 </form>
-                <div class="nav navbar-nav navbar-right cart-block">
-                    <div class="cart-info">
-                        <a href="/shopping" class="cart-info-count">{{cart.length}}</a>
-                        <a href="/shopping" class="cart-info-value">{{getTotal()}}</a>
-                    </div>
-                    <a href="/shopping"><i class="fa fa-shopping-cart"></i></a>
-                    <!-- BEGIN CART CONTENT -->
-                    <div class="cart-content-wrapper">
-                        <div class="cart-content">
-                            <ul class="scroller" style="height: 250px;">
-                                <li ng-repeat="item in cart track by $index">
-                                    <strong><a href="/goods/{{item.id}}">{{item.name}}</a></strong>
-                                    <span class="cart-content-count">x {{item.qty}}</span>
-                                    <span>{{item.unitName}}</span>
-                                    <em>￥{{item.price*item.qty}}</em>
-                                    <a href="javascript:void(0);" class="del-goods" ng-click="removeGoods(item.$index)"><i
-                                            class="fa fa-times"></i></a>
-                                </li>
 
-                            </ul>
-                            <div class="text-right">
-                                <!--<a href="shopping-cart.html" class="btn btn-default">详细</a>-->
-                                <a href="/shopping" class="btn btn-primary">确认</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- END CART CONTENT -->
-                </div>
             </div>
 
         </div>
@@ -228,8 +228,8 @@
             <div class="col-md-4 steps3-col">
                 <i class="fa fa-gift"></i>
                 <div>
-                    <h2>每日礼品</h2>
-                    <em>每日幸运顾客3名</em>
+                    <h2>促销活动</h2>
+                    <em>闪电促销</em>
                 </div>
                 <span>&nbsp;</span>
             </div>
@@ -250,15 +250,15 @@
     <div class="container">
         <div class="row">
             <!-- BEGIN BOTTOM ABOUT BLOCK -->
-            <div class="col-md-3 col-sm-6 pre-footer-col">
+            <div class="col-md-6 col-sm-6 pre-footer-col">
                 <h2><a href="/about">关于我们</a></h2>
-                    </div>
+            </div>
             <!-- END BOTTOM ABOUT BLOCK -->
 
             <!-- BEGIN BOTTOM CONTACTS -->
-            <div class="col-md-3 col-sm-6 pre-footer-col">
+            <div class="col-md-6 col-sm-6 pre-footer-col">
                 <h2>联系我们</h2>
-                <address class="margin-bottom-40">
+                <address>
                     西安市昆明路西段380号<br>
                     西部欣桥农产品物流中心3号门<br>
                     电话: 18681898092<br>
@@ -276,7 +276,7 @@
         <div class="row">
             <!-- BEGIN COPYRIGHT -->
             <div class="col-md-6 col-sm-6 padding-top-10 bottom-l">
-                2015年©陕西米禾商店界面。保留所有权利。
+                2016年©陕西米禾商店界面。保留所有权利。
             </div>
             <!-- END COPYRIGHT -->
 
