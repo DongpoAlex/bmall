@@ -3,6 +3,7 @@ Template Name: Metronic - Responsive Website Template build with Twitter Bootstr
 */
 
 /* General body settings */
+.ui-loader,.ui-loader-default{display:none;}
 body { 
 	color: #3e4d5c; 
 	direction: ltr;
