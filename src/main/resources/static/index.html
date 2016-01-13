@@ -343,6 +343,8 @@
 <script type="text/javascript" src="webjarslocator/angularjs/angular.min.js"></script>
 <script type="text/javascript" src="webjarslocator/angularjs/angular-route.min.js"></script>
 <script type="text/javascript" src="webjarslocator/angularjs/angular-resource.min.js"></script>
+<script type="text/javascript" src="assets/plugins/jquery.mobile-1.4.5.min.js"></script>
+<script type="text/javascript" src="assets/plugins/jquery.touchSwipe.min.js"></script>
 <script type="text/javascript" src="assets/plugins/jquery.bxslider/jquery.bxslider.min.js"></script>
 <script type="text/javascript" src="assets/plugins/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js"></script>
 
@@ -355,6 +357,64 @@
 <script type="text/javascript" src="js/main.js"></script>
 <!-- END APP SCRIPT -->
 
+<div class="cus-menu">
+    <ul class="nav navbar-nav">
+        <li class="" ng-repeat="value in menus | filter : {prentId:0} :true |orderBy: '-id'">
+            <a class="dropdown-toggle" data-toggle="dropdown" data-delay="0" data-close-others="false"
+               href="javascript:void(0);">
+                {{value.name}}
+                <i class="fa fa-angle-down"></i>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="mega-menu">
+                <li>
+                    <div class="nav-content">
+                        <div class="nav-content-col"
+                             ng-repeat="child in menus | filter : {prentId:value.id}:true">
+                            <h3><a class="dropdown-toggle cus-item"  ng-href="/home/{{child.id}}">
+                                {{child.name}}
+                            </a></h3>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </li>         
+    </ul>
+</div>
+<script>
+  var leftShow = 0;
+  $("body").swipe({
+    swipeRight:function(event,direction,distance,duration,fingerCount,fingerData,currentDirection ){
+        showLeftNav();
+    },
+    swipeLeft:function(event,direction,distance,duration,fingerCount,fingerData,currentDirection ){
+        hideLeftNav();
+    },
+    threshold:0
+  });
+  function andBack(){
+    if(leftShow==1)
+        hideLeftNav();
+    else
+        window.history.go(-1);
+  }
+  $('.cus-menu').on('tap',function(){
+    if($(event.target.innerHTML).hasClass('navbar-nav'))
+        hideLeftNav();
+  });
+  function hideLeftNav(){
+    $('.cus-menu').fadeOut();
+    leftShow = 0;
+  }
+  function showLeftNav(){
+    $('html,body').animate({scrollTop: '0px'}, 800);
+    var h = document.body.clientHeight;
+    $('.cus-menu').css('width',document.body.clientWidth);
+    $('.cus-menu').css('height',h);
+    $('.cus-menu > .nav').css('height',h);
+    $('.cus-menu').fadeIn('slow',function(){});
+    leftShow = 1;
+  }
+</script>
 <!-- END PAGE LEVEL JAVASCRIPTS -->
 </body>
 <!-- END BODY -->

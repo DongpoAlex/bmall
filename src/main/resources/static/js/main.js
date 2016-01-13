@@ -22,6 +22,8 @@ angular.module('bMall', ['ngRoute', 'auth', 'home', 'navigation', 'bMallService'
                 templateUrl: '/shopping-cart.html'
             }).when('/about', {
                 templateUrl: '/about.html'
+            }).when('/m_shopping',{
+                templateUrl: '/m_shopping-cart.html'
             }).otherwise('/');
 
             $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
@@ -41,6 +43,7 @@ angular.module('bMall', ['ngRoute', 'auth', 'home', 'navigation', 'bMallService'
                     $(elm).modal('show');
                 } else {
                     $(elm).modal('hide');
+                    hideLeftNav();
                 }
             });
         }
