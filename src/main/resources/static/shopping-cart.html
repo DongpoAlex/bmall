@@ -11,21 +11,21 @@
                             <table summary="Shopping cart">
                                 <tr>
                                     <th class="shopping-cart-description">商品信息</th>
-                                    <th class="shopping-cart-description">件装数</th>
-                                    <th class="shopping-cart-description">件装规格</th>
+                                    <th class="shopping-cart-description m_hide">件装数</th>
+                                    <th class="shopping-cart-description m_hide">件装规格</th>
                                     <th class="shopping-cart-price">单价(元)</th>
                                     <th class="shopping-cart-quantity">数量</th>
-                                    <th class="shopping-cart-quantity">单位</th>
+                                    <th class="shopping-cart-quantity m_hide">单位</th>
                                     <th class="shopping-cart-total" colspan="2">小计(元)</th>
                                 </tr>
                                 <tr ng-repeat="item in cart">
                                     <td class="shopping-cart-description">
                                         <h3><a href="/goods/{{item.id}}">{{item.name}}</a></h3>
                                     </td>
-                                    <td>
+                                    <td class="m_hide">
                                         <span class="label label-primary">{{item.oPKNum}}</span>
                                     </td>
-                                    <td>
+                                    <td class="m_hide">>
                                         <span class="label label-primary">{{item.oPKSpec}}</span>
                                     </td>
                                     <td class="shopping-cart-price">
@@ -37,7 +37,7 @@
                                                    class="form-control input-sm" ng-model="item.qty" init-touchspin>
                                         </div>
                                     </td>
-                                    <td>
+                                    <td class="m_hide">>
                                         <span  class="label label-success">{{item.unitName}}</span>
                                     </td>
                                     </td>
