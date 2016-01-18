@@ -21,22 +21,17 @@
 
     <link rel="shortcut icon" href="favicon.ico">
     <link href="/favicon.ico" rel="SHORTCUT ICON" type="image/ico">
-
-
     <!-- Global styles START -->
     <link href="webjarslocator/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="webjarslocator/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <!-- Global styles END -->
-
     <!-- Page level plugin styles START -->
     <link href="assets/plugins/jquery.bxslider/jquery.bxslider.css" rel="stylesheet">
     <link href="assets/plugins/bootstrap-touchspin/jquery.bootstrap-touchspin.min.css" rel="stylesheet" type="text/css">
     <!-- Page level plugin styles END -->
-
     <!-- Theme styles START -->
     <link href="assets/css/style.css" rel="stylesheet" type="text/css">
-    <!--<link href="assets/css/custom.css" rel="stylesheet" type="text/css">
-     Theme styles END -->
+    <!--<link href="assets/css/custom.css" rel="stylesheet" type="text/css">Theme styles END -->
 </head>
 <!-- Head END -->
 
@@ -89,25 +84,7 @@
                 </div>
                 <a href="/shopping"><i class="fa fa-shopping-cart"></i></a>
                 <!-- BEGIN CART CONTENT -->
-                <div class="cart-content-wrapper">
-                    <div class="cart-content">
-                        <ul class="scroller" style="height: 250px;">
-                            <li ng-repeat="item in cart track by $index">
-                                <strong><a href="/goods/{{item.id}}">{{item.name}}</a></strong>
-                                <span class="cart-content-count">x {{item.qty}}</span>
-                                <span>{{item.unitName}}</span>
-                                <em>￥{{item.price*item.qty}}</em>
-                                <a href="javascript:void(0);" class="del-goods" ng-click="removeGoods(item.$index)"><i
-                                        class="fa fa-times"></i></a>
-                            </li>
 
-                        </ul>
-                        <div class="text-right">
-                            <!--<a href="shopping-cart.html" class="btn btn-default">详细</a>-->
-                            <a href="/shopping" class="btn btn-primary">确认</a>
-                        </div>
-                    </div>
-                </div>
                 <!-- END CART CONTENT -->
             </div>
             <div class="collapse navbar-collapse mega-menu">

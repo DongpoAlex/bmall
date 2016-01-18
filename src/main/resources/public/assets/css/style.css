@@ -2039,7 +2039,7 @@ table .product-quantity .input-group {
 .product-quantity .btn {
 	text-align: center;
 	height: 18px !important;
-	width: 18px;
+	width: 18px !important;
 	padding: 0 2px 0 1px !important;
 	text-align: center;
 	background: #edeff1;
