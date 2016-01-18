@@ -2562,7 +2562,7 @@ a.social-icon {
 .checkout-description p {
 	margin-bottom: 2px;
 }
-.shopping-cart-data a,
+.shopping-cart-data h3,
 .checkout-page .checkout-description a {
 	color: #e6400c;
 }
@@ -2570,6 +2570,10 @@ a.social-icon {
 .checkout-description em {
 	display: block;
 	font-style: normal;
+}
+
+.shopping-cart-ref-no span{
+	font: 300 16px small-caps, sans-serif;
 }
 .shopping-cart-page .btn-default {
 	float: left;

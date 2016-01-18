@@ -4,32 +4,32 @@
         <div class="row margin-bottom-40">
             <!-- BEGIN CONTENT -->
             <div class="col-md-12 col-sm-12">
-                <h1>购物车</h1>
+                <h1>进货单</h1>
                 <div class="shopping-cart-page">
                     <div class="shopping-cart-data clearfix">
                         <div class="table-wrapper-responsive">
                             <table summary="Shopping cart">
                                 <tr>
+                                    <th class="shopping-cart-image">图片</th>
                                     <th class="shopping-cart-description">商品信息</th>
-                                    <th class="shopping-cart-description m_hide">件装数</th>
-                                    <th class="shopping-cart-description m_hide">件装规格</th>
                                     <th class="shopping-cart-price">单价(元)</th>
                                     <th class="shopping-cart-quantity">数量</th>
-                                    <th class="shopping-cart-quantity m_hide">单位</th>
-                                    <th class="shopping-cart-total" colspan="2">小计(元)</th>
+                                    <th class="shopping-cart-ref-no m_hide">单位</th>
+                                    <th class="shopping-cart-total" colspan="2">小计(元)
+                                    <th></th>
                                 </tr>
                                 <tr ng-repeat="item in cart">
+                                    <td class="shopping-cart-image">
+                                        <img ng-src="/goods/img/0{{item.goodsId}}.jpg" alt="{{item.name}}">
+                                    </td>
                                     <td class="shopping-cart-description">
-                                        <h3><a href="/goods/{{item.id}}">{{item.name}}</a></h3>
+                                        <h3>{{item.name}}</h3>
+                                        <p>件装数:<strong class="text-primary">{{item.oPKNum}}</strong></p>
+                                        <em> 件装规格:<strong class="text-primary">{{item.oPKSpec}}</strong></em>
                                     </td>
-                                    <td class="m_hide">
-                                        <span class="label label-primary">{{item.oPKNum}}</span>
-                                    </td>
-                                    <td class="m_hide">
-                                        <span class="label label-primary">{{item.oPKSpec}}</span>
-                                    </td>
+
                                     <td class="shopping-cart-price">
-                                        <strong><span>￥{{item.price}}</span></strong>
+                                        <strong><span>￥</span>{{item.price}}</strong>
                                     </td>
                                     <td class="shopping-cart-quantity">
                                         <div class="product-quantity">
@@ -37,16 +37,15 @@
                                                    class="form-control input-sm" ng-model="item.qty" init-touchspin>
                                         </div>
                                     </td>
-                                    <td class="m_hide">
-                                        <span  class="label label-success">{{item.unitName}}</span>
+                                    <td class="shopping-cart-ref-no m_hide">
+                                       <span class="label label-info">{{item.unitName}}</span>
                                     </td>
                                     </td>
                                     <td class="shopping-cart-total">
-                                        <strong><span>￥{{item.qty*item.price}}</span></strong>
+                                        <strong><span>￥</span>{{item.qty*item.price}}</strong>
                                     </td>
                                     <td class="del-goods-col">
-                                        <a class="del-goods" href="#" ng-click="removeGoods(item.$index)"><i
-                                                class="fa fa-times"></i></a>
+                                        <a href="#" ng-click="removeGoods(item.$index)">删除</a>
                                     </td>
                                 </tr>
 
