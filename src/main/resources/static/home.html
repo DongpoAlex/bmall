@@ -1,8 +1,7 @@
 <div class="title-wrapper">
     <div class="container">
         <div class="container-inner">
-            <h1><span>米禾</span> 超市</h1>
-            <em>超过3000的产品等你挑选</em>
+
         </div>
     </div>
 </div>
@@ -45,6 +44,32 @@
             <!-- END SIDEBAR -->
             <!-- BEGIN CONTENT -->
             <div class="col-md-9 col-sm-7">
+                <div class="row list-view-sorting clearfix">
+                    <div class="col-md-4 col-sm-4 items-info">宝贝{{goodses.page.number+1}} 到 {{goodses.page.size}}
+                        ,总共{{goodses.page.totalElements}}个宝贝
+                    </div>
+                    <div class="col-md-8 col-sm-8">
+                        <ul class="pagination pull-right">
+                            <li><a href="#" ng-click="pageNext(goodses._links.first.href)" aria-label="Previous">
+                                <span aria-hidden="true">首页</span>
+                            </a>
+                            </li>
+                            <li><a href="#" ng-click="pageNext(goodses._links.prev.href)" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                            </li>
+                            <li class="disabled"><a>当前第{{goodses.page.number+1}}页,总共{{goodses.page.totalPages}}</a></li>
+                            <li><a href="#" ng-click="pageNext(goodses._links.next.href)" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                            </li>
+                            <li><a href="#" ng-click="pageNext(goodses._links.last.href)" aria-label="Previous">
+                                <span aria-hidden="true">尾页</span>
+                            </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
                 <!-- BEGIN PRODUCT LIST -->
                 <div class="row product-list">
                     <!-- PRODUCT ITEM START -->

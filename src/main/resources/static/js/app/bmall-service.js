@@ -45,7 +45,7 @@ angular.module('bMallService', ['ngResource'])
     var initCart = function () {
         $rootScope.cart = [];
         $rootScope.purchase = {note: ''};
-        var CreditCart = $resource('/api/guestCart/search/byGuest?guestId=' + $rootScope.user.name);
+       /** var CreditCart = $resource('/api/guestCart/search/byGuest?guestId=' + $rootScope.user.name);
         CreditCart.get(function (data) {
             var gIds=[];
             angular.forEach( data._embedded.guestCarts, function (value) {
@@ -61,7 +61,7 @@ angular.module('bMallService', ['ngResource'])
 
 
             });
-        });
+        });**/
     };
 
 

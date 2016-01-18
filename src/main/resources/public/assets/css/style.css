@@ -1536,6 +1536,7 @@ Steps3 and Steps3 elements
 	position: relative;
 	overflow: hidden;
 	background: #72c2ff url(../temp/title-bg/woman.jpg) no-repeat 100% 100%;
+	background-size:100% 100%;
 	min-height: 280px;
 	padding-top: 79px;
 	width: 100%;
