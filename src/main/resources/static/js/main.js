@@ -87,7 +87,8 @@ angular.module('bMall', ['ngRoute', 'auth', 'home', 'navigation', 'bMallService'
         $scope.addCart = cartService.set;
 
     }
-]).controller('accountCtrl', ['$scope', '$http', '$location', function ($scope, $http, $location) {
+]).controller('accountCtrl', ['$scope', '$http', '$location','AlertService',
+    function ($scope, $http, $location,AlertService) {
     $scope.pwdModel = {
         oldPwd: '',
         newPwd: '',
@@ -101,15 +102,18 @@ angular.module('bMall', ['ngRoute', 'auth', 'home', 'navigation', 'bMallService'
                 }
             }).success(function (data) {
                 if (data.id == 'LE500') {
-                    alert(data.content);
-                    $location.path("/");
+                    $scope.error = true;
+                    $scope.errorMessage = data.content;
                 } else if (data.id == 'LE501') {
                     $scope.error = true;
                     $scope.errorMessage = data;
+                }else if(data.id=='LE200'){
+                    AlertService.post(data.content+' 请重新登陆!');
+                    $location.path("/login");
                 }
             }).error(function (data) {
                 $scope.error = true;
-                $scope.errorMessage = 'ErrorCode:' + data.id + ' Message:' + data.content;
+                $scope.errorMessage = data;
             });
         }else{
             $scope.error = true;
