@@ -23,15 +23,15 @@ angular.module('bMallService', ['ngResource'])
 
     $rootScope.goodses = [];
 
-    var initGoods=function (url) {
-            var Goods = $resource(url);
-            Goods.get(function (data) {
-                $rootScope.goodses = data;
-            });
-        };
+    var initGoods = function (url) {
+        var Goods = $resource(url);
+        Goods.get(function (data) {
+            $rootScope.goodses = data;
+        });
+    };
 
     return {
-        init:initGoods,
+        init: initGoods,
         get: function (id) {
             return filterFilter($rootScope.goodses, {goodsId: id}, true);
         },
@@ -45,8 +45,8 @@ angular.module('bMallService', ['ngResource'])
     var initCart = function () {
         $rootScope.cart = [];
         $rootScope.purchase = {note: ''};
-       /** var CreditCart = $resource('/api/guestCart/search/byGuest?guestId=' + $rootScope.user.name);
-        CreditCart.get(function (data) {
+        /** var CreditCart = $resource('/api/guestCart/search/byGuest?guestId=' + $rootScope.user.name);
+         CreditCart.get(function (data) {
             var gIds=[];
             angular.forEach( data._embedded.guestCarts, function (value) {
                 gIds.push(value.goodsId);
@@ -119,9 +119,8 @@ angular.module('bMallService', ['ngResource'])
             newPurchase.editor = $rootScope.user.name;
             newPurchase.ordphdate = 7;
             newPurchase.itemSet = cartGoods;
-            newPurchase.$save();
 
-            $window.alert('订单已确认！');
+            newPurchase.$save();
             $location.path('/');
         }
     };
@@ -177,5 +176,23 @@ angular.module('bMallService', ['ngResource'])
     };
     return {
         link: link
+    };
+}).factory('AlertService',function () {
+    Messenger.options = {
+        extraClasses: 'messenger-fixed messenger-on-bottom messenger-on-right',
+        theme: 'future'
+    };
+
+    return {
+        post:function (msg, retry, cancel) {
+            Messenger().post({
+                type:'info',
+                message: msg,
+                actions: {
+                    retry: retry,
+                    cancel: cancel
+                }
+            });
+        }
     };
 });

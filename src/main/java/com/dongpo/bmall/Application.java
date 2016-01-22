@@ -48,11 +48,6 @@ public class Application {
     @RequestMapping(value = "/{path:[^\\.]*}{extension:[^api]}/{path:[^\\.]*}")
     public String redirectS() {return "forward:/";}
 
-    @CrossOrigin
-    @RequestMapping("/api/user")
-    @ResponseBody
-    public Principal user(Principal user) {return user;}
-
     @RequestMapping(value = "/404")
     public String notFound(){
         return "forward:/goods/img/not_found_404.jpg";

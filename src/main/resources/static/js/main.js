@@ -20,11 +20,17 @@ angular.module('bMall', ['ngRoute', 'auth', 'home', 'navigation', 'bMallService'
                 controller: 'navigation'
             }).when('/shopping', {
                 templateUrl: '/shopping-cart.html'
+            }).when('/shoppingnull', {
+                templateUrl: '/shopping-cart-null.html'
             }).when('/about', {
                 templateUrl: '/about.html'
-            }).when('/m_shopping',{
-                templateUrl: '/m_shopping-cart.html'
-            }).otherwise('/');
+            }).when('/register', {
+                templateUrl: '/reg-page.html',
+                controller: 'accountCtrl'
+            }).when('/changepwd', {
+                templateUrl: '/change-password.html',
+                controller: 'accountCtrl'
+            }).otherwise('/login');
 
             $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
@@ -48,14 +54,29 @@ angular.module('bMall', ['ngRoute', 'auth', 'home', 'navigation', 'bMallService'
             });
         }
     };
-}]).controller("initCtrl", ['$rootScope', 'cartService', '$scope',
-    function ($rootScope, cartService) {
+}]).controller("initCtrl", ['$rootScope', 'cartService', 'AlertService',
+    function ($rootScope, cartService, AlertService) {
 
         $rootScope.removeGoods = cartService.remove;
         $rootScope.getTotal = cartService.getTotal;
-        $rootScope.putPurchase = cartService.putPurchase;
+        $rootScope.putPurchase = function () {
+            AlertService.post('确认提交订单吗！', {
+                label: '确认提交',
+                action: function () {
+                    cartService.putPurchase;
+                }
+            }, {
+                label: '取消提交', action: function () {
+                    this.update({
+                        type: "success",
+                        message: "订单已取消！",
+                        actions: false
+                    });
+                }
+            });
+        };
 
-    }]).controller('goodsCtrl', ['$scope', '$http', '$routeParams', 'cartService', 'goodsService', 'filterFilter', '$rootScope',
+    }]).controller('goodsCtrl', ['$scope', '$http', '$routeParams', 'cartService',
     function ($scope, $http, $routeParams, cartService) {
         var params = $routeParams.id;
         $scope.goods = [];
@@ -65,4 +86,38 @@ angular.module('bMall', ['ngRoute', 'auth', 'home', 'navigation', 'bMallService'
 
         $scope.addCart = cartService.set;
 
-    }]);
+    }
+]).controller('accountCtrl', ['$scope', '$http', '$location', function ($scope, $http, $location) {
+    $scope.pwdModel = {
+        oldPwd: '',
+        newPwd: '',
+        conPwd: ''
+    };
+    $scope.changePwd = function () {
+        if ($scope.pwdModel.newPwd === $scope.pwdModel.conPwd) {
+            $http.post('/api/changePassword', $.param($scope.pwdModel), {
+                headers: {
+                    "content-type": "application/x-www-form-urlencoded"
+                }
+            }).success(function (data) {
+                if (data.id == 'LE500') {
+                    alert(data.content);
+                    $location.path("/");
+                } else if (data.id == 'LE501') {
+                    $scope.error = true;
+                    $scope.errorMessage = data;
+                }
+            }).error(function (data) {
+                $scope.error = true;
+                $scope.errorMessage = 'ErrorCode:' + data.id + ' Message:' + data.content;
+            });
+        }else{
+            $scope.error = true;
+            $scope.errorMessage = {content:'新密码和确认密码不相同，请重试！'};
+        }
+    };
+    $scope.cancelPwd=function(){
+        $location.path("/");
+    }
+}
+]);

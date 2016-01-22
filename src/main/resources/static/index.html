@@ -26,8 +26,10 @@
     <link href="webjarslocator/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <!-- Global styles END -->
     <!-- Page level plugin styles START -->
-    <link href="assets/plugins/jquery.bxslider/jquery.bxslider.css" rel="stylesheet">
-    <link href="assets/plugins/bootstrap-touchspin/jquery.bootstrap-touchspin.min.css" rel="stylesheet" type="text/css">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.5/jquery.bxslider.min.css" rel="stylesheet">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-touchspin/3.1.1/jquery.bootstrap-touchspin.min.css" rel="stylesheet" type="text/css">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/messenger/1.4.2/css/messenger.min.css" rel="stylesheet">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/messenger/1.4.2/css/messenger-theme-future.min.css" rel="stylesheet">
     <!-- Page level plugin styles END -->
     <!-- Theme styles START -->
     <link href="assets/css/style.css" rel="stylesheet" type="text/css">
@@ -54,6 +56,7 @@
                                 class="text-primary">{{user.customer.name}}</span>
                         </li>
                         <li ng-show="authenticated()">登陆ID:<span class="text-success">{{user.customer.id}}</span></li>
+                        <li ng-show="authenticated()"><a href="/changepwd">修改密码</a></li>
                         <li ng-show="authenticated()"><a ng-click="logout()">注销</a></li>
                         <li ng-show="!authenticated()"><a href="/login">登陆</a></li>
                     </ul>
@@ -289,9 +292,10 @@
 <script type="text/javascript" src="webjarslocator/angularjs/angular-resource.min.js"></script>
 <script type="text/javascript" src="assets/plugins/jquery.mobile-1.4.5.min.js"></script>
 <script type="text/javascript" src="assets/plugins/jquery.touchSwipe.min.js"></script>
-<script type="text/javascript" src="assets/plugins/jquery.bxslider/jquery.bxslider.min.js"></script>
-<script type="text/javascript" src="assets/plugins/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js"></script>
-
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.5/jquery.bxslider.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-touchspin/3.1.1/jquery.bootstrap-touchspin.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/messenger/1.4.2/js/messenger.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/messenger/1.4.2/js/messenger-theme-future.min.js"></script>
 <!-- END CORE PLUGINS -->
 <!-- BEGIN APP SCRIPT -->
 <script type="text/javascript" src="js/app/bmall-service.js"></script>
