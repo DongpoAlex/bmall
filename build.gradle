@@ -12,18 +12,9 @@ apply plugin: "java"
 apply plugin: "spring-boot"
 apply plugin: 'idea'
 
-jar {
-    baseName = 'bmall'
-    version = '0.0.1-SNAPSHOT'
-}
 
 bootRun {
     addResources = true
-}
-
-repositories {
-    jcenter()
-    flatDir { dirs "libs" }
 }
 
 idea {
@@ -37,9 +28,23 @@ springBoot {
     backupSource = false
 }
 
+
+jar {
+    baseName = 'bmall'
+    version = '0.0.1'
+    excludes = ['**/application.yml']
+}
+
 bootRepackage {
     mainClass = 'com.dongpo.bmall.Application'
 }
+
+
+repositories {
+    jcenter()
+    flatDir { dirs "libs" }
+}
+
 
 
 dependencies {
