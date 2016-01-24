@@ -17,6 +17,9 @@ jar {
     version = '0.0.1-SNAPSHOT'
 }
 
+bootRun {
+    addResources = true
+}
 
 repositories {
     jcenter()
