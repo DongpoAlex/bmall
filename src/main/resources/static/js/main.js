@@ -27,16 +27,20 @@ angular.module('bMall', ['ngRoute', 'auth', 'home', 'navigation', 'bMallService'
             }).when('/register', {
                 templateUrl: '/reg-page.html',
                 controller: 'accountCtrl'
+            }).when('/register/success', {
+                templateUrl: '/reg-success.html'
             }).when('/changepwd', {
                 templateUrl: '/change-password.html',
                 controller: 'accountCtrl'
+            }).when('/changepwd/success', {
+                templateUrl: '/change-success.html'
             }).otherwise('/login');
 
             $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
         }
     ]).run(function (auth) {
-        auth.init('/', '/login', '/logout');
+        auth.init('/', '/login', '/logout', '/register');
     }
 ).directive('loading', ['$http', function ($http) {
     return {
@@ -87,41 +91,46 @@ angular.module('bMall', ['ngRoute', 'auth', 'home', 'navigation', 'bMallService'
         $scope.addCart = cartService.set;
 
     }
-]).controller('accountCtrl', ['$scope', '$http', '$location','AlertService',
-    function ($scope, $http, $location,AlertService) {
-    $scope.pwdModel = {
-        oldPwd: '',
-        newPwd: '',
-        conPwd: ''
-    };
-    $scope.changePwd = function () {
-        if ($scope.pwdModel.newPwd === $scope.pwdModel.conPwd) {
-            $http.post('/api/changePassword', $.param($scope.pwdModel), {
-                headers: {
-                    "content-type": "application/x-www-form-urlencoded"
-                }
-            }).success(function (data) {
-                if (data.id == 'LE500') {
-                    $scope.error = true;
-                    $scope.errorMessage = data.content;
-                } else if (data.id == 'LE501') {
+]).controller('accountCtrl', ['$scope', '$http', '$location', 'AlertService','customerService','auth',
+    function ($scope, $http, $location, AlertService,customerService,auth) {
+        $scope.pwdModel = {
+            oldPwd: '',
+            newPwd: '',
+            conPwd: ''
+        };
+        $scope.regModel = {name:'',phone:'',email:'',address:''};
+
+        $scope.register=function(){
+            customerService.postctm($scope.regModel);
+            AlertService.post('注册信息已经提交后台！');
+        };
+
+        $scope.changePwd = function () {
+            if ($scope.pwdModel.newPwd === $scope.pwdModel.conPwd) {
+                $http.post('/api/changePassword', $.param($scope.pwdModel), {
+                    headers: {
+                        "content-type": "application/x-www-form-urlencoded"
+                    }
+                }).success(function (data) {
+                    if (data.id == 'LE500') {
+                        $scope.error = true;
+                        $scope.errorMessage = data.content;
+                    } else if (data.id == 'LE501') {
+                        $scope.error = true;
+                        $scope.errorMessage = data;
+                    } else if (data.id == 'LE200') {
+                        AlertService.post(data.content + ' 请重新登陆!');
+                        auth.clear();
+                        $location.path("/changepwd/success");
+                    }
+                }).error(function (data) {
                     $scope.error = true;
                     $scope.errorMessage = data;
-                }else if(data.id=='LE200'){
-                    AlertService.post(data.content+' 请重新登陆!');
-                    $location.path("/login");
-                }
-            }).error(function (data) {
+                });
+            } else {
                 $scope.error = true;
-                $scope.errorMessage = data;
-            });
-        }else{
-            $scope.error = true;
-            $scope.errorMessage = {content:'新密码和确认密码不相同，请重试！'};
-        }
-    };
-    $scope.cancelPwd=function(){
-        $location.path("/");
+                $scope.errorMessage = {content: '新密码和确认密码不相同，请重试！'};
+            }
+        };
     }
-}
 ]);

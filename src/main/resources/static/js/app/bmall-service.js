@@ -124,6 +124,15 @@ angular.module('bMallService', ['ngResource'])
             $location.path('/');
         }
     };
+}).factory('customerService', function ($rootScope, $location, $resource){
+    return{
+        postctm:function(regModel){
+            var CreditCustomer= $resource('/api/customer');
+            var newCustomer = new CreditCustomer(regModel);
+            newCustomer.$save();
+            $location.path("/register/success");
+        }
+    }
 }).directive('handleSidebarMenu', function () {
         function link(scope, element, attrs) {
             var em = $(element);

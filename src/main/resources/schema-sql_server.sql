@@ -22,6 +22,14 @@ CREATE TABLE GoodsExtend (
   goodsid INT           NOT NULL
 );
 
+CREATE TABLE Customer (
+  id      INT PRIMARY KEY  IDENTITY,
+  name    VARCHAR(64)  NOT NULL,
+  phone   VARCHAR(32)  NOT NULL,
+  email   VARCHAR(64)  NOT NULL,
+  address VARCHAR(255) NOT NULL
+);
+
 ALTER VIEW [dbo].[v_SGroup] AS
 SELECT
   id,
