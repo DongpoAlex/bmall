@@ -1,7 +1,8 @@
 package com.dongpo.bmall.domain;
 
-import javax.persistence.*;
-import java.util.Set;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 /**
  * Created by AlexBob on 2015/12/16.
@@ -45,7 +46,7 @@ public class Goods {
     @Column(name = "orderpkspec1")
     private String oPKSpec;
 
-   // @OneToMany(mappedBy = "goodsId")
+    // @OneToMany(mappedBy = "goodsId")
     //public int getId() {return id;}
 
     public int getGoodsId() {
@@ -66,13 +67,17 @@ public class Goods {
     }
 
 
-    public String getGuestId() {return guestId;}
+    public String getGuestId() {
+        return guestId;
+    }
 
-    public double getPrice() {return price;}
+    public double getPrice() {
+        return price;
+    }
 
 
-   // public Set<GoodsExtend> getExtendSet() {
-     //   return extendSet;
+    // public Set<GoodsExtend> getExtendSet() {
+    //   return extendSet;
     //}
 
     public int getDeptId() {

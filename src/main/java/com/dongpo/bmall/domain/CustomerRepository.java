@@ -8,5 +8,5 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
  */
 
 @RepositoryRestResource(path = "customer")
-public interface CustomerRepository extends CrudRepository<Customer,String> {
+public interface CustomerRepository extends CrudRepository<Customer, String> {
 }

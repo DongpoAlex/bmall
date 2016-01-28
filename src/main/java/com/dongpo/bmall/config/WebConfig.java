@@ -28,7 +28,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 
 
     @Bean
-    public EmbeddedServletContainerCustomizer containerCustomizer(){
+    public EmbeddedServletContainerCustomizer containerCustomizer() {
         return new MyCustomizer();
     }
 

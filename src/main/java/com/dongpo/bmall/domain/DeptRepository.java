@@ -15,6 +15,6 @@ public interface DeptRepository extends CrudRepository<Dept, Integer> {
 
     @RestResource(path = "/byGuest")
     @Query(value = "select * from v_SGroup where id in ( select deptId/100 from wholegoods where guestId = :guestId) or \n" +
-            "id in (select DeptID/10000 from wholegoods where GuestID = :guestId)",nativeQuery =true)
+            "id in (select DeptID/10000 from wholegoods where GuestID = :guestId)", nativeQuery = true)
     Iterable<Dept> findByGuestId(@Param("guestId") String guestId);
 }

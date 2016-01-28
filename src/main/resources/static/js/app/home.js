@@ -7,7 +7,7 @@ angular.module('home', ['bMallService']).controller('home', ['$rootScope', '$sco
         };
 
         function findByName(name) {
-            goodsService.init('api/goods/search/byName?name=' +encodeURI(name) + '&guestId=' + $rootScope.user.name + '&size=9');
+            goodsService.init('api/goods/search/byName?name=' + encodeURI(name) + '&guestId=' + $rootScope.user.name + '&size=9');
 
         };
 

@@ -15,7 +15,7 @@ public class Purchase {
     @Column(name = "sheetid")
     private String sheetId;
 
-    private int flag=1;
+    private int flag = 1;
 
     private String editor;
 
@@ -25,13 +25,13 @@ public class Purchase {
 
     private String checker;
 
-    private Timestamp checkdate= Timestamp.from(Instant.now());
+    private Timestamp checkdate = Timestamp.from(Instant.now());
 
     @Column(name = "ordphdate")
-    private int ordphdate=7;
+    private int ordphdate = 7;
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name ="sheetid")
+    @JoinColumn(name = "sheetid")
     private Set<PurchaseItem> itemSet;
 
     @Column(name = "paymodeid")

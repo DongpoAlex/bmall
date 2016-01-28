@@ -14,17 +14,24 @@ public class Application {
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
+
     /**
      * angular route
+     *
      * @return
      */
     @RequestMapping(value = "/{path:[^\\.]*}{extension:[^(api)]}")
-    public String redirect() {return "forward:/";}
+    public String redirect() {
+        return "forward:/";
+    }
+
     @RequestMapping(value = "/{path:[^\\.]*}{extension:[^api]}/{path:[^\\.]*}")
-    public String redirectS() {return "forward:/";}
+    public String redirectS() {
+        return "forward:/";
+    }
 
     @RequestMapping(value = "/404")
-    public String notFound(){
+    public String notFound() {
         return "forward:/goods/img/not_found_404.jpg";
     }
 }

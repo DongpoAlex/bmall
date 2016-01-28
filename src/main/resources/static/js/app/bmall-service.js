@@ -128,13 +128,13 @@ angular.module('bMallService', ['ngResource'])
             return total;
         },
         postGoods: function (goodsModel) {
-            var CreditFavoritesGoods= $resource('/api/favoritesGoods');
+            var CreditFavoritesGoods = $resource('/api/favoritesGoods');
             var newFavoritesGoods = new CreditFavoritesGoods(goodsModel);
             newFavoritesGoods.$save();
             $location.path("/register/success");
         },
-        deleteGoods:function(goodsModel){
-            var CreditFavoritesGoods= $resource('/api/favoritesGoods');
+        deleteGoods: function (goodsModel) {
+            var CreditFavoritesGoods = $resource('/api/favoritesGoods');
             var newFavoritesGoods = new CreditFavoritesGoods(goodsModel);
             newFavoritesGoods.$remove();
             $location.path("/register/success");

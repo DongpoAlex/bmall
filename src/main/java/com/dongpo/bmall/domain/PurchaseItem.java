@@ -16,7 +16,7 @@ public class PurchaseItem {
     private String sheetId;
 
     @Column(name = "shopid")
-    private String shopId="1001";
+    private String shopId = "1001";
 
     @Column(name = "guestid")
     private String guestId;

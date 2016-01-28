@@ -189,15 +189,15 @@ angular.module('bMall', ['ngRoute', 'auth', 'home', 'navigation', 'bMallService'
             }
         };
     }
-]).controller('favoritesCtrl', ['$scope', 'favoritesService', 'AlertService', 'customerService','$resource',
-    function ($scope, favoritesService, AlertService, customerService,$resource) {
-        var init=function(){
-            var CreditFavoritesGoods= $resource('/api/favoritesGoods');
-            CreditFavoritesGoods.get(function(data){
-                $scope.favoritesGoodses=data;
+]).controller('favoritesCtrl', ['$scope', 'favoritesService', 'AlertService', 'customerService', '$resource',
+    function ($scope, favoritesService, AlertService, customerService, $resource) {
+        var init = function () {
+            var CreditFavoritesGoods = $resource('/api/favoritesGoods');
+            CreditFavoritesGoods.get(function (data) {
+                $scope.favoritesGoodses = data;
             });
         };
         init();
-        $scope.getTotal=favoritesService.getTotal($scope.favoritesGoodses._embedded.favoritesGoodses);
+        $scope.getTotal = favoritesService.getTotal($scope.favoritesGoodses._embedded.favoritesGoodses);
     }
 ]);
