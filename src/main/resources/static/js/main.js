@@ -54,6 +54,7 @@ angular.module('bMall', ['ngRoute', 'auth', 'home', 'navigation', 'bMallService'
             scope.$watch(scope.isLoading, function (v) {
                 if (v) {
                     $(elm).modal('show');
+                    hideLeftNav();
                 } else {
                     $(elm).modal('hide');
                     hideLeftNav();
