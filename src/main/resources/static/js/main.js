@@ -34,7 +34,10 @@ angular.module('bMall', ['ngRoute', 'auth', 'home', 'navigation', 'bMallService'
                 controller: 'accountCtrl'
             }).when('/changepwd/success', {
                 templateUrl: '/change-success.html'
-            }).otherwise('/login');
+            }).when('/favorites', {
+                templateUrl: '/favorites.html',
+                controller: 'favoritesCtrl'
+            });
 
             $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
@@ -58,7 +61,54 @@ angular.module('bMall', ['ngRoute', 'auth', 'home', 'navigation', 'bMallService'
             });
         }
     };
-}]).controller("initCtrl", ['$rootScope', 'cartService', 'AlertService',
+}]).directive('initTouchspin', function () {
+    function link(scope, element, attrs) {
+        jQuery(element).TouchSpin({
+            verticalbuttons: true,
+            max: 1000000000
+        });
+
+    };
+    return {
+        link: link
+    };
+}).directive('handleSidebarMenu', function () {
+        function link(scope, element, attrs) {
+            var em = $(element);
+            em.click(function () {
+                if (em.hasClass("collapsed") == false) {
+                    em.addClass("collapsed");
+                    em.siblings(".dropdown-menu").slideDown(300);
+                } else {
+                    em.removeClass("collapsed");
+                    em.siblings(".dropdown-menu").slideUp(300);
+                }
+            });
+        };
+
+        return {
+            link: link
+        };
+    }
+).factory('AlertService', function () {
+    Messenger.options = {
+        extraClasses: 'messenger-fixed messenger-on-bottom messenger-on-right',
+        theme: 'future'
+    };
+
+    return {
+        post: function (msg, retry, cancel) {
+            Messenger().post({
+                type: 'info',
+                message: msg,
+                actions: {
+                    retry: retry,
+                    cancel: cancel
+                }
+            });
+        }
+    };
+}).controller("initCtrl", ['$rootScope', 'cartService', 'AlertService',
     function ($rootScope, cartService, AlertService) {
 
         $rootScope.removeGoods = cartService.remove;
@@ -67,7 +117,12 @@ angular.module('bMall', ['ngRoute', 'auth', 'home', 'navigation', 'bMallService'
             AlertService.post('确认提交订单吗！', {
                 label: '确认提交',
                 action: function () {
-                    cartService.putPurchase;
+                    cartService.putPurchase();
+                    this.update({
+                        type: "success",
+                        message: "提交成功，已提交后台处理！",
+                        actions: false
+                    });
                 }
             }, {
                 label: '取消提交', action: function () {
@@ -91,16 +146,16 @@ angular.module('bMall', ['ngRoute', 'auth', 'home', 'navigation', 'bMallService'
         $scope.addCart = cartService.set;
 
     }
-]).controller('accountCtrl', ['$scope', '$http', '$location', 'AlertService','customerService','auth',
-    function ($scope, $http, $location, AlertService,customerService,auth) {
+]).controller('accountCtrl', ['$scope', '$http', '$location', 'AlertService', 'customerService', 'auth',
+    function ($scope, $http, $location, AlertService, customerService, auth) {
         $scope.pwdModel = {
             oldPwd: '',
             newPwd: '',
             conPwd: ''
         };
-        $scope.regModel = {name:'',phone:'',email:'',address:''};
+        $scope.regModel = {name: '', phone: '', email: '', address: ''};
 
-        $scope.register=function(){
+        $scope.register = function () {
             customerService.postctm($scope.regModel);
             AlertService.post('注册信息已经提交后台！');
         };
@@ -132,5 +187,16 @@ angular.module('bMall', ['ngRoute', 'auth', 'home', 'navigation', 'bMallService'
                 $scope.errorMessage = {content: '新密码和确认密码不相同，请重试！'};
             }
         };
+    }
+]).controller('favoritesCtrl', ['$scope', 'favoritesService', 'AlertService', 'customerService','$resource',
+    function ($scope, favoritesService, AlertService, customerService,$resource) {
+        var init=function(){
+            var CreditFavoritesGoods= $resource('/api/favoritesGoods');
+            CreditFavoritesGoods.get(function(data){
+                $scope.favoritesGoodses=data;
+            });
+        };
+        init();
+        $scope.getTotal=favoritesService.getTotal($scope.favoritesGoodses._embedded.favoritesGoodses);
     }
 ]);

@@ -22,14 +22,16 @@
     <link rel="shortcut icon" href="favicon.ico">
     <link href="/favicon.ico" rel="SHORTCUT ICON" type="image/ico">
     <!-- Global styles START -->
-    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"
+          type="text/css">
     <!-- Global styles END -->
     <!-- Page level plugin styles START -->
-    <link href="//cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.5/jquery.bxslider.min.css" rel="stylesheet">
-    <link href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-touchspin/3.1.1/jquery.bootstrap-touchspin.min.css" rel="stylesheet" type="text/css">
-    <link href="//cdnjs.cloudflare.com/ajax/libs/messenger/1.4.2/css/messenger.min.css" rel="stylesheet">
-    <link href="//cdnjs.cloudflare.com/ajax/libs/messenger/1.4.2/css/messenger-theme-future.min.css" rel="stylesheet">
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.5/jquery.bxslider.min.css" rel="stylesheet">
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-touchspin/3.1.1/jquery.bootstrap-touchspin.min.css"
+          rel="stylesheet" type="text/css">
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/messenger/1.4.2/css/messenger.min.css" rel="stylesheet">
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/messenger/1.4.2/css/messenger-theme-future.min.css"
+          rel="stylesheet">
     <!-- Page level plugin styles END -->
     <!-- Theme styles START -->
     <link href="assets/css/style.css" rel="stylesheet" type="text/css">
@@ -85,10 +87,13 @@
                     <a href="/shopping" class="cart-info-count">{{cart.length}}</a>
                     <a href="/shopping" class="cart-info-value">{{getTotal()}}</a>
                 </div>
-                <a href="/shopping"><i class="fa fa-shopping-cart"></i></a>
-                <!-- BEGIN CART CONTENT -->
-
-                <!-- END CART CONTENT -->
+                <a href="/shopping"><i class="glyphicon glyphicon-shopping-cart"></i></a>
+            </div>
+            <div class="favorites-block" ng-show="authenticated()">
+                <div class="cart-info">
+                    <a href="/favorites">收藏夹</a>
+                </div>
+                <a href="/favorites"><i class="glyphicon glyphicon-star"></i></a>
             </div>
             <div class="collapse navbar-collapse mega-menu">
                 <ul class="nav navbar-nav">
@@ -112,23 +117,7 @@
                                     <!-- END DROPDOWN MENU - COLUMN -->
                                     <!-- BEGIN DROPDOWN MENU - BRANDS -->
                                     <div class="nav-brands">
-                                        <ul>
-                                            <li><a href="product-list.html"><img title="esprit" alt="esprit"
-                                                                                 src="assets/temp/brands/esprit.jpg"></a>
-                                            </li>
-                                            <li><a href="product-list.html"><img title="gap" alt="gap"
-                                                                                 src="assets/temp/brands/gap.jpg"></a>
-                                            </li>
-                                            <li><a href="product-list.html"><img title="next" alt="next"
-                                                                                 src="assets/temp/brands/next.jpg"></a>
-                                            </li>
-                                            <li><a href="product-list.html"><img title="puma" alt="puma"
-                                                                                 src="assets/temp/brands/puma.jpg"></a>
-                                            </li>
-                                            <li><a href="product-list.html"><img title="zara" alt="zara"
-                                                                                 src="assets/temp/brands/zara.jpg"></a>
-                                            </li>
-                                        </ul>
+
                                     </div>
                                     <!-- END DROPDOWN MENU - BRANDS -->
                                 </div>
@@ -156,7 +145,7 @@
 
 
 <div>
-    <img  src="assets/img/footer.jpg" class="img-responsive" alt="Responsive image"/>
+    <img src="assets/img/footer.jpg" class="img-responsive" alt="Responsive image"/>
 </div>
 <!-- BEGIN STEPS -->
 <div class="steps3 steps3red hidden">
@@ -235,35 +224,37 @@
     <div class="modal-dialog">
         <div class="progress">
             <div class="progress-bar progress-bar-striped active" role="progressbar"
-                 aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="min-width: 50rem;width: 100%;">
+                 aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="min-width: 30rem;width: 100%;">
                 <span>加载中...</span>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
-
-<!-- END fast view of a product -->
-
-<!-- Load javascripts at bottom, this will reduce page load time -->
-
-<!-- BEGIN CORE PLUGINS (REQUIRED FOR ALL PAGES) -->
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular.min.js"></script>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular-route.min.js"></script>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular-resource.min.js"></script>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular-messages.min.js"></script>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/i18n/angular-locale_zh-cn.js"></script>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery-mobile/1.4.5/jquery.mobile.min.js"></script>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.15/jquery.touchSwipe.min.js"></script>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.5/jquery.bxslider.min.js"></script>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-touchspin/3.1.1/jquery.bootstrap-touchspin.min.js"></script>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/messenger/1.4.2/js/messenger.min.js"></script>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/messenger/1.4.2/js/messenger-theme-future.min.js"></script>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.1/moment.min.js"></script>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.1/locale/zh-cn.js"></script>
-<!-- END CORE PLUGINS -->
-<!-- BEGIN APP SCRIPT -->
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script type="text/javascript"
+        src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular.min.js"></script>
+<script type="text/javascript"
+        src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular-route.min.js"></script>
+<script type="text/javascript"
+        src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular-resource.min.js"></script>
+<script type="text/javascript"
+        src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular-messages.min.js"></script>
+<script type="text/javascript"
+        src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/i18n/angular-locale_zh-cn.js"></script>
+<script type="text/javascript"
+        src="http://cdnjs.cloudflare.com/ajax/libs/jquery-mobile/1.4.5/jquery.mobile.min.js"></script>
+<script type="text/javascript"
+        src="http://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.15/jquery.touchSwipe.min.js"></script>
+<script type="text/javascript"
+        src="http://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.5/jquery.bxslider.min.js"></script>
+<script type="text/javascript"
+        src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-touchspin/3.1.1/jquery.bootstrap-touchspin.min.js"></script>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/messenger/1.4.2/js/messenger.min.js"></script>
+<script type="text/javascript"
+        src="http://cdnjs.cloudflare.com/ajax/libs/messenger/1.4.2/js/messenger-theme-future.min.js"></script>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.1/moment.min.js"></script>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.1/locale/zh-cn.js"></script>
 <script type="text/javascript" src="js/app/bmall-service.js"></script>
 <script type="text/javascript" src="js/app/auth.js"></script>
 <script type="text/javascript" src="js/app/navigation.js"></script>
@@ -284,7 +275,7 @@
                     <div class="nav-content">
                         <div class="nav-content-col"
                              ng-repeat="child in menus | filter : {prentId:value.id}:true">
-                            <h3><a class="dropdown-toggle cus-item"  ng-href="/home/{{child.id}}">
+                            <h3><a class="dropdown-toggle cus-item" ng-href="/home/{{child.id}}">
                                 {{child.name}}
                             </a></h3>
                         </div>
@@ -295,39 +286,40 @@
     </ul>
 </div>
 <script>
-  var leftShow = 0;
-  $("body").swipe({
-    swipeRight:function(event,direction,distance,duration,fingerCount,fingerData,currentDirection ){
-        showLeftNav();
-    },
-    swipeLeft:function(event,direction,distance,duration,fingerCount,fingerData,currentDirection ){
-        hideLeftNav();
-    },
-    threshold:0
-  });
-  function andBack(){
-    if(leftShow==1)
-        hideLeftNav();
-    else
-        window.history.go(-1);
-  }
-  $('.cus-menu').on('tap',function(){
-    if($(event.target.innerHTML).hasClass('navbar-nav'))
-        hideLeftNav();
-  });
-  function hideLeftNav(){
-    $('.cus-menu').fadeOut();
-    leftShow = 0;
-  }
-  function showLeftNav(){
-    $('html,body').animate({scrollTop: '0px'}, 800);
-    var h = document.body.clientHeight;
-    $('.cus-menu').css('width',document.body.clientWidth);
-    $('.cus-menu').css('height',h);
-    $('.cus-menu > .nav').css('height',h);
-    $('.cus-menu').fadeIn('slow',function(){});
-    leftShow = 1;
-  }
+    var leftShow = 0;
+    $("body").swipe({
+        swipeRight: function (event, direction, distance, duration, fingerCount, fingerData, currentDirection) {
+            showLeftNav();
+        },
+        swipeLeft: function (event, direction, distance, duration, fingerCount, fingerData, currentDirection) {
+            hideLeftNav();
+        },
+        threshold: 0
+    });
+    function andBack() {
+        if (leftShow == 1)
+            hideLeftNav();
+        else
+            window.history.go(-1);
+    }
+    $('.cus-menu').on('tap', function () {
+        if ($(event.target.innerHTML).hasClass('navbar-nav'))
+            hideLeftNav();
+    });
+    function hideLeftNav() {
+        $('.cus-menu').fadeOut();
+        leftShow = 0;
+    }
+    function showLeftNav() {
+        $('html,body').animate({scrollTop: '0px'}, 800);
+        var h = document.body.clientHeight;
+        $('.cus-menu').css('width', document.body.clientWidth);
+        $('.cus-menu').css('height', h);
+        $('.cus-menu > .nav').css('height', h);
+        $('.cus-menu').fadeIn('slow', function () {
+        });
+        leftShow = 1;
+    }
 </script>
 <!-- END PAGE LEVEL JAVASCRIPTS -->
 </body>

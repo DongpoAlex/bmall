@@ -30,6 +30,24 @@ CREATE TABLE Customer (
   address VARCHAR(255) NOT NULL
 );
 
+
+CREATE TABLE favorites_Goods (
+  id        INT PRIMARY KEY IDENTITY,
+  goodsId   INT          NOT NULL,
+  name      VARCHAR(128) NOT NULL,
+  unitName  VARCHAR(64),
+  guestId   VARCHAR(255),
+  price     dec(12, 4),
+  deptId    INT,
+  twoDeptId INT,
+  spec      VARCHAR(64),
+  qty       INT             DEFAULT 0,
+  oPKNum    INT,
+  oPKName   VARCHAR(64),
+  oPKSpec   VARCHAR(64)
+);
+
+
 ALTER VIEW [dbo].[v_SGroup] AS
 SELECT
   id,

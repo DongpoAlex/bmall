@@ -45,23 +45,7 @@ angular.module('bMallService', ['ngResource'])
     var initCart = function () {
         $rootScope.cart = [];
         $rootScope.purchase = {note: ''};
-        /** var CreditCart = $resource('/api/guestCart/search/byGuest?guestId=' + $rootScope.user.name);
-         CreditCart.get(function (data) {
-            var gIds=[];
-            angular.forEach( data._embedded.guestCarts, function (value) {
-                gIds.push(value.goodsId);
-            });
 
-            var CreditGoods = $resource('api/goods/search/byGoodsId?goodsId=' + gIds + '&guestId=' + $rootScope.user.name);
-            CreditGoods.get(function (data) {
-                $rootScope.cart=data._embedded.goodses;
-                angular.forEach($rootScope.cart, function (value) {
-                    value.qty = 0;
-                });
-
-
-            });
-        });**/
     };
 
 
@@ -124,84 +108,36 @@ angular.module('bMallService', ['ngResource'])
             $location.path('/');
         }
     };
-}).factory('customerService', function ($rootScope, $location, $resource){
-    return{
-        postctm:function(regModel){
-            var CreditCustomer= $resource('/api/customer');
+}).factory('customerService', function ($rootScope, $location, $resource) {
+    return {
+        postctm: function (regModel) {
+            var CreditCustomer = $resource('/api/customer');
             var newCustomer = new CreditCustomer(regModel);
             newCustomer.$save();
             $location.path("/register/success");
         }
     }
-}).directive('handleSidebarMenu', function () {
-        function link(scope, element, attrs) {
-            var em = $(element);
-            em.click(function () {
-                if (em.hasClass("collapsed") == false) {
-                    em.addClass("collapsed");
-                    em.siblings(".dropdown-menu").slideDown(300);
-                } else {
-                    em.removeClass("collapsed");
-                    em.siblings(".dropdown-menu").slideUp(300);
-                }
+}).factory('favoritesService', function ($rootScope, $location, $resource) {
+
+    return {
+        getTotal: function (favoritesGoodses) {
+            var total = 0;
+            angular.forEach(favoritesGoodses, function (value) {
+                total = total + value.price * value.qty;
             });
-        };
-
-        return {
-            link: link
-        };
-    }
-).directive('initTouchspin', function () {
-    function link(scope, element, attrs) {
-        jQuery(element).TouchSpin({
-            verticalbuttons: true,
-            max: 1000000000
-        });
-
-    };
-    return {
-        link: link
-    };
-}).directive('initBxSlider', function () {
-    function link(scope, element, attrs) {
-        var slideMargin = parseInt($(element).attr("data-slide-margin"));
-        var slideContainerWidth = $(element).closest('.bxslider-wrapper').width();
-        var slideWidth;
-
-        var slides = $(element).attr("data-slides-desktop");
-
-        slides = parseInt(slides);
-
-        slideWidth = slideContainerWidth / slides;
-
-        $(element).bxSlider({
-            minSlides: slides,
-            maxSlides: slides,
-            slideWidth: slideWidth,
-            slideMargin: slideMargin,
-            useCSS: false
-
-        });
-    };
-    return {
-        link: link
-    };
-}).factory('AlertService',function () {
-    Messenger.options = {
-        extraClasses: 'messenger-fixed messenger-on-bottom messenger-on-right',
-        theme: 'future'
-    };
-
-    return {
-        post:function (msg, retry, cancel) {
-            Messenger().post({
-                type:'info',
-                message: msg,
-                actions: {
-                    retry: retry,
-                    cancel: cancel
-                }
-            });
+            return total;
+        },
+        postGoods: function (goodsModel) {
+            var CreditFavoritesGoods= $resource('/api/favoritesGoods');
+            var newFavoritesGoods = new CreditFavoritesGoods(goodsModel);
+            newFavoritesGoods.$save();
+            $location.path("/register/success");
+        },
+        deleteGoods:function(goodsModel){
+            var CreditFavoritesGoods= $resource('/api/favoritesGoods');
+            var newFavoritesGoods = new CreditFavoritesGoods(goodsModel);
+            newFavoritesGoods.$remove();
+            $location.path("/register/success");
         }
-    };
+    }
 });
