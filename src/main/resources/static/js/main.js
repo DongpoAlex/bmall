@@ -22,6 +22,8 @@ angular.module('bMall', ['ngRoute', 'auth', 'home', 'navigation', 'bMallService'
                 templateUrl: '/shopping-cart.html'
             }).when('/shoppingnull', {
                 templateUrl: '/shopping-cart-null.html'
+            }).when('/m_shopping',{
+                templateUrl: '/m_shopping-cart.html'
             }).when('/about', {
                 templateUrl: '/about.html'
             }).when('/register', {

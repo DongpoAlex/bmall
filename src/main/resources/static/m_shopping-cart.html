@@ -1,0 +1,65 @@
+<div class="main">
+    <div class="container">
+        <!-- BEGIN SIDEBAR & CONTENT -->
+        <div class="row margin-bottom-40">
+            <!-- BEGIN CONTENT -->
+            <div class="col-md-12 col-sm-12">
+                <h1>进货单</h1>
+                <div class="shopping-cart-page">
+                    <div class="shopping-cart-data clearfix">
+                        <div class="padding-bottom: 40px;">
+                            <div ng-repeat="item in cart" class="item">
+                                <div class="clear"></div>
+                                <div class="tit">{{item.name}}</div>
+                                <div class="summary">
+                                    <em class="price">
+                                        <strong>单价：<span>￥</span>{{item.price}}</strong><br />
+                                        <strong>件装规格：<span>￥</span>{{item.oPKSpec}}</strong>
+                                    </em>
+                                    <em class="qty">
+                                        <div class="product-quantity">
+                                            <input type="text" value="1"
+                                                   class="form-control input-sm" ng-model="item.qty" init-touchspin>
+                                        </div>
+                                    </em>
+                                    <em class="del">
+                                        <span><a href="#" ng-click="removeGoods(item.$index)">删除</a></span>
+                                    </em>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+
+                        </div>
+                        <div class="clear"></div>
+                        <div class="form-group has-success has-feedback">
+                            <label class="control-label sr-only">备注</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">备注</span>
+                                <input type="text" class="form-control" ng-model="purchase.note"
+                                       aria-describedby="inputGroupSuccess4Status">
+                            </div>
+                        </div>
+                        <div class="shopping-total">
+                            <ul>
+                                <li>
+                                    <em>合计</em>
+                                    <strong class="price"><span>￥{{getTotal()}}</span></strong>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <a class="btn btn-default" href="/">继续购物<i class="fa fa-shopping-cart"></i></a>
+                    <button class="btn btn-primary" type="submit" ng-click="putPurchase()">确认订单<i
+                            class="fa fa-check"></i></button>
+                </div>
+            </div>
+            <!-- END CONTENT -->
+        </div>
+        <!-- END SIDEBAR & CONTENT -->
+
+        <!-- BEGIN SIMILAR PRODUCTS -->
+
+        <!-- END SIMILAR PRODUCTS -->
+    </div>
+</div>
