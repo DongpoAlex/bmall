@@ -34,7 +34,8 @@
                                     <td class="shopping-cart-quantity">
                                         <div class="product-quantity">
                                             <input type="text" value="1"
-                                                   class="form-control input-sm" ng-model="item.qty" init-touchspin>
+                                                   class="form-control input-sm" maxlength="5" ng-model="item.qty"
+                                                   init-touchspin>
                                         </div>
                                     </td>
                                     <td class="shopping-cart-ref-no m_hide">
@@ -63,7 +64,7 @@
                             <ul>
                                 <li>
                                     <em>合计</em>
-                                    <strong class="price"><span>￥{{getTotal()}}</span></strong>
+                                    <strong class="price"><span>{{getTotal() | currency:"RMB￥"}}</span></strong>
                                 </li>
                             </ul>
                         </div>

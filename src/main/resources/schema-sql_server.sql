@@ -42,11 +42,11 @@ CREATE TABLE Guest_Goods (
   deptId    INT,
   twoDeptId INT,
   spec      VARCHAR(64),
-  qty       dec(12, 4)             DEFAULT 0,
+  qty       dec(12, 4)      DEFAULT 0,
   oPKNum    INT,
   oPKName   VARCHAR(64),
   oPKSpec   VARCHAR(64),
-  favorited BIT DEFAULT 0
+  favorited BIT             DEFAULT 0
 );
 
 

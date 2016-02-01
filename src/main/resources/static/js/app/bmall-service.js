@@ -41,7 +41,7 @@ angular.module('bMallService', ['ngResource'])
         }
     }
 
-}).factory('cartService', function ($rootScope, $location, $resource, $window) {
+}).factory('cartService', function ($rootScope, $location, $resource, $filter) {
 
     var initCart = function () {
         $rootScope.cart = [];
@@ -58,12 +58,10 @@ angular.module('bMallService', ['ngResource'])
             angular.forEach($rootScope.cart, function (value, key) {
                     if (value.goodsId == goods.goodsId) {
                         index = key;
-                        value.qty = value.qty + 1;
                     }
                 }
             );
             if (index === -1) {
-                if(goods.qty<1) goods.qty = 1;
                 $rootScope.cart.push(goods);
             }
 
@@ -73,10 +71,12 @@ angular.module('bMallService', ['ngResource'])
         },
         getTotal: function () {
             var total = 0;
+            var totalQty=0;
             angular.forEach($rootScope.cart, function (value) {
                 total = total + value.price * value.qty;
+                totalQty = totalQty + value.qty;
             });
-            return total;
+            return $filter('currency')(totalQty,"")+' | '+$filter('currency')(total,"");
         },
         putPurchase: function () {
             var sheetId = moment().format("YYYYMMDDHHmmsss");
@@ -118,31 +118,32 @@ angular.module('bMallService', ['ngResource'])
             $location.path("/register/success");
         }
     }
-}).factory('favoritesService', function ($rootScope,$resource) {
+}).factory('favoritesService', function ($rootScope, $resource) {
     $rootScope.favoritesGoodses = {};
     return {
-        initFavorites:function(url){
+        initFavorites: function (url) {
             var CreditFavoritesGoods = $resource(url);
-            CreditFavoritesGoods.get(function(data){
-               $rootScope.favoritesGoodses=data;
+            CreditFavoritesGoods.get(function (data) {
+                $rootScope.favoritesGoodses = data;
             });
         },
         postGoods: function (goodsModel) {
             var CreditFavoritesGoods = $resource('/api/favoritesGoods/:id', null, {
                 'update': {method: 'PUT'}
             });
-            goodsModel.favorited=true;
-
-            CreditFavoritesGoods.update({ id:goodsModel.modelId},goodsModel);
+            goodsModel.favorited = true;
+            goodsModel.qty = 0;
+            CreditFavoritesGoods.update({id: goodsModel.modelId}, goodsModel);
 
         },
         deleteGoods: function (goodsModel) {
             var CreditFavoritesGoods = $resource('/api/favoritesGoods/:id', null, {
                 'update': {method: 'PUT'}
             });
-            goodsModel.favorited=false;
+            goodsModel.favorited = false;
+            goodsModel.qty = 0;
+            CreditFavoritesGoods.update({id: goodsModel.modelId}, goodsModel);
 
-            CreditFavoritesGoods.update({ id:goodsModel.modelId},goodsModel);
             Messenger().post({
                 message: '商品 ' + goodsModel.name + '已从收藏中删除!',
                 type: 'success',

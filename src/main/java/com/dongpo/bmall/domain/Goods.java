@@ -52,7 +52,9 @@ public class Goods {
 
     private boolean favorited;
 
-    public int getModelId() {return id;}
+    public int getModelId() {
+        return id;
+    }
 
     public boolean getFavorited() {
         return favorited;
@@ -102,8 +104,12 @@ public class Goods {
         return oPKName;
     }
 
-    public int getTwoDeptId() {return twoDeptId;}
+    public int getTwoDeptId() {
+        return twoDeptId;
+    }
 
-    public double getQty() {return qty;}
+    public double getQty() {
+        return qty;
+    }
 
 }

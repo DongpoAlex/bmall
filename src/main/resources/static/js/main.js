@@ -22,7 +22,7 @@ angular.module('bMall', ['ngRoute', 'auth', 'home', 'navigation', 'bMallService'
                 templateUrl: '/shopping-cart.html'
             }).when('/shoppingnull', {
                 templateUrl: '/shopping-cart-null.html'
-            }).when('/m_shopping',{
+            }).when('/m_shopping', {
                 templateUrl: '/m_shopping-cart.html'
             }).when('/about', {
                 templateUrl: '/about.html'
@@ -49,7 +49,7 @@ angular.module('bMall', ['ngRoute', 'auth', 'home', 'navigation', 'bMallService'
     }
 ).directive('loading', ['$http', function ($http) {
     return {
-        link: function (scope, elm,attrs) {
+        link: function (scope, elm, attrs) {
             scope.isLoading = function () {
                 return $http.pendingRequests.length > 0;
             };
@@ -70,7 +70,19 @@ angular.module('bMall', ['ngRoute', 'auth', 'home', 'navigation', 'bMallService'
             verticalbuttons: true,
             verticalupclass: 'glyphicon glyphicon-chevron-up',
             verticaldownclass: 'glyphicon glyphicon-chevron-down',
-            max: 1000000000
+            max: 99999,
+            initval: 1
+        });
+
+    };
+    return {
+        link: link
+    };
+}).directive('initTouchspinHome', function () {
+    function link(scope, element, attrs) {
+        jQuery(element).TouchSpin({
+            initval: 0,
+            max: 9999
         });
 
     };

@@ -45,33 +45,39 @@
                                         <strong>{{item.qty*item.price | currency:"RMB￥"}}</strong>
                                     </td>
                                     <td class="del-goods-col">
-                                        <a href="#" ng-click="addCart(item)">加入进货单</a>|
+                                        <a href="#" ng-click="favoritesAddCart(item)">加入进货单</a>|
                                         <a href="#" ng-click="deleteFavorites(item)">删除收藏</a>
                                     </td>
                                 </tr>
                             </table>
                         </div>
                         <div class="row">
-                            <div class="col-md-4 col-sm-4 ">宝贝{{favoritesGoodses.page.number*favoritesGoodses.page.size+1}} 到
+                            <div class="col-md-4 col-sm-4 ">
+                                宝贝{{favoritesGoodses.page.number*favoritesGoodses.page.size+1}} 到
                                 {{favoritesGoodses.page.size*favoritesGoodses.page.number+favoritesGoodses.page.size}}
                                 ,总共{{favoritesGoodses.page.totalElements}}个宝贝
                             </div>
                             <div class="col-md-8 col-sm-8">
                                 <ul class="pagination pull-right">
-                                    <li><a href="#" ng-click="pageNext(favoritesGoodses._links.first.href)" aria-label="Previous">
+                                    <li><a href="#" ng-click="pageNext(favoritesGoodses._links.first.href)"
+                                           aria-label="Previous">
                                         <span aria-hidden="true">首页</span>
                                     </a>
                                     </li>
-                                    <li><a href="#" ng-click="pageNext(favoritesGoodses._links.prev.href)" aria-label="Previous">
+                                    <li><a href="#" ng-click="pageNext(favoritesGoodses._links.prev.href)"
+                                           aria-label="Previous">
                                         <span aria-hidden="true">&laquo;</span>
                                     </a>
                                     </li>
-                                    <li class="disabled"><a>当前第{{favoritesGoodses.page.number+1}}页,总共{{favoritesGoodses.page.totalPages}}</a></li>
-                                    <li><a href="#" ng-click="pageNext(favoritesGoodses._links.next.href)" aria-label="Next">
+                                    <li class="disabled"><a>当前第{{favoritesGoodses.page.number+1}}页,总共{{favoritesGoodses.page.totalPages}}</a>
+                                    </li>
+                                    <li><a href="#" ng-click="pageNext(favoritesGoodses._links.next.href)"
+                                           aria-label="Next">
                                         <span aria-hidden="true">&raquo;</span>
                                     </a>
                                     </li>
-                                    <li><a href="#" ng-click="pageNext(favoritesGoodses._links.last.href)" aria-label="Previous">
+                                    <li><a href="#" ng-click="pageNext(favoritesGoodses._links.last.href)"
+                                           aria-label="Previous">
                                         <span aria-hidden="true">尾页</span>
                                     </a>
                                     </li>

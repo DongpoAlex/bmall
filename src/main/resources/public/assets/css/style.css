@@ -514,7 +514,7 @@ Header and header elements
 }
 
 .header .nav {
-    font: 19px 'PT Sans Narrow', sans-serif;
+    font: 16px 'PT Sans Narrow', sans-serif;
     letter-spacing: 1px;
     margin-top: -1px;
     margin-bottom: -1px;
@@ -1164,8 +1164,7 @@ Catalogue styles
 
 .product-item h3 {
     font: 300 14px 'Open Sans', sans-serif;
-    text-transform: inherit;
-    height: 4rem;
+    word-wrap: break-word;
     padding-top: 0.5rem;
     padding-bottom: 0.2rem;
 }
@@ -1185,14 +1184,12 @@ Catalogue styles
     padding-top: 1px;
 }
 
-
 .product-item .add2cart {
     float: right;
-    color: #a8aeb3;
+    color: red;
     border: 1px #ededed solid;
     padding: 3px 6px;
 }
-
 
 .product-item .add2cart:hover {
     color: #fff !important;
@@ -1200,11 +1197,14 @@ Catalogue styles
     border-color: #E84D1C;
 }
 
-
 .product-item .add2favorites {
-    color: #a8aeb3;
+    position: absolute;
+    right: 2px;
+    bottom: 8rem;
+    color: red;
     border: 1px #ededed solid;
     padding: 3px 6px;
+    font: 12px Simsun, sans-serif;
 }
 
 .product-item .add2favorites:hover {
@@ -1212,13 +1212,24 @@ Catalogue styles
     background: #E84D1C !important;
     border-color: #E84D1C;
 }
-.product-item .yet1favorites{
+
+.product-item .yet1favorites {
+    position: absolute;
+    right: 2px;
+    bottom: 8rem;
     border: 1px #E84D1C solid;
     padding: 3px 6px;
     color: #fff !important;
     background: #E84D1C !important;
+    font: 12px Simsun, sans-serif;
 }
 
+.product-item .input-group {
+    width: 100px;
+    float: left;
+    margin-right: 20px;
+    position: relative;
+}
 
 /* bx-slider styles */
 .bxslider li {
@@ -2379,7 +2390,7 @@ div.content-form-page {
 
 .product-quantity,
 .product-quantity .input-group {
-    width: 70px;
+    width: 90px;
     float: left;
     margin-right: 20px;
     position: relative;
@@ -2402,8 +2413,6 @@ table .product-quantity .input-group {
     font: 300 23px 'Open Sans', sans-serif;;
     color: #647484;
     height: 38px;
-    width: 50px;
-    text-align: center;
     padding: 5px;
 }
 
@@ -3723,4 +3732,30 @@ div.checker {
     display: inline-block;
     text-align: left;
     vertical-align: middle;
+}
+
+.navbar-fixed-right {
+    position: fixed;
+    right: 10px;
+    bottom: 100px;
+    width: 20px;
+    font: 300 18px 'Open Sans', sans-serif;
+    z-index: 10000;
+    background: #fff !important;
+}
+
+.navbar-fixed-right a:hover {
+    color: #337ab7 !important;
+}
+
+.navbar-fixed-right .shopping-a-fixed {
+    padding: 3px 6px;
+}
+
+.navbar-fixed-right .favorites-a-fixed {
+    padding: 3px 6px;
+}
+
+.navbar-fixed-right .top-a-fixed {
+    padding: 3px 6px;
 }

@@ -69,7 +69,13 @@
         </div>
     </div>
     <!-- END TOP BAR -->
-
+    <!--start rigth-->
+    <div class="navbar-fixed-right" ng-show="authenticated()">
+        <div class="shopping-a-fixed"><a href="/shopping"><i class="glyphicon glyphicon-shopping-cart"></i>购物车</a></div>
+        <div class="favorites-a-fixed"><a href="/favorites"><i class="glyphicon glyphicon-star"></i>收藏夹</a></div>
+        <div class="top-a-fixed"><a href="javascript:scroll(0,0)"><i class="glyphicon glyphicon-circle-arrow-up"></i>返回顶部</a>
+        </div>
+    </div>
     <!-- BEGIN HEADER -->
     <div role="navigation" class="navbar header no-margin">
         <div class="container">
@@ -85,8 +91,7 @@
             </div>
             <div class="cart-block">
                 <div class="cart-info">
-                    <a href="/shopping" class="cart-info-count">{{cart.length}}</a>
-                    <a href="/shopping" class="cart-info-value">{{getTotal()}}</a>
+                    <a href="/shopping">{{getTotal()}}</a>
                 </div>
                 <a href="/shopping" class="m_hide"><i class="glyphicon glyphicon-shopping-cart"></i></a>
                 <a href="/m_shopping" class="hide m_show"><i class="glyphicon glyphicon-shopping-cart"></i></a>
