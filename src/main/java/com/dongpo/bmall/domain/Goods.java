@@ -3,11 +3,13 @@ package com.dongpo.bmall.domain;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  * Created by AlexBob on 2015/12/16.
  */
-@Entity(name = "wholegoods")
+@Entity
+@Table(name = "guest_goods")
 public class Goods {
 
     @Id
@@ -18,7 +20,7 @@ public class Goods {
 
     private String name;
 
-    @Column(name = "BarcodeID")
+    @Column(name = "barcodeid")
     private String barcode;
 
     @Column(name = "unitname")
@@ -27,27 +29,34 @@ public class Goods {
     @Column(name = "guestid")
     private String guestId;
 
+    private double qty;
+
     private double price;
 
     @Column(name = "deptid")
     private int deptId;
 
-    @Column(name = "dept2")
+    @Column(name = "twodeptid")
     private int twoDeptId;
 
     private String spec;
 
-    @Column(name = "orderpknum1")
+    @Column(name = "opknum")
     private int oPKNum;
 
-    @Column(name = "orderpkname1")
+    @Column(name = "opkname")
     private String oPKName;
 
-    @Column(name = "orderpkspec1")
+    @Column(name = "opkspec")
     private String oPKSpec;
 
-    // @OneToMany(mappedBy = "goodsId")
-    //public int getId() {return id;}
+    private boolean favorited;
+
+    public int getModelId() {return id;}
+
+    public boolean getFavorited() {
+        return favorited;
+    }
 
     public int getGoodsId() {
         return goodsId;
@@ -57,7 +66,6 @@ public class Goods {
         return name;
     }
 
-
     public String getBarcode() {
         return barcode;
     }
@@ -65,7 +73,6 @@ public class Goods {
     public String getUnitName() {
         return unitName;
     }
-
 
     public String getGuestId() {
         return guestId;
@@ -75,15 +82,9 @@ public class Goods {
         return price;
     }
 
-
-    // public Set<GoodsExtend> getExtendSet() {
-    //   return extendSet;
-    //}
-
     public int getDeptId() {
         return deptId;
     }
-
 
     public String getSpec() {
         return spec;
@@ -101,7 +102,8 @@ public class Goods {
         return oPKName;
     }
 
-    public int getTwoDeptId() {
-        return twoDeptId;
-    }
+    public int getTwoDeptId() {return twoDeptId;}
+
+    public double getQty() {return qty;}
+
 }

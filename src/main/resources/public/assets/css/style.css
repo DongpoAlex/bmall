@@ -1185,6 +1185,7 @@ Catalogue styles
     padding-top: 1px;
 }
 
+
 .product-item .add2cart {
     float: right;
     color: #a8aeb3;
@@ -1192,11 +1193,32 @@ Catalogue styles
     padding: 3px 6px;
 }
 
+
 .product-item .add2cart:hover {
     color: #fff !important;
     background: #E84D1C !important;
     border-color: #E84D1C;
 }
+
+
+.product-item .add2favorites {
+    color: #a8aeb3;
+    border: 1px #ededed solid;
+    padding: 3px 6px;
+}
+
+.product-item .add2favorites:hover {
+    color: #fff !important;
+    background: #E84D1C !important;
+    border-color: #E84D1C;
+}
+.product-item .yet1favorites{
+    border: 1px #E84D1C solid;
+    padding: 3px 6px;
+    color: #fff !important;
+    background: #E84D1C !important;
+}
+
 
 /* bx-slider styles */
 .bxslider li {

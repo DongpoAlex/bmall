@@ -29,7 +29,7 @@
                                     </td>
 
                                     <td class="shopping-cart-price">
-                                        <strong><span>￥</span>{{item.price}}</strong>
+                                        <strong>{{item.price | currency:"RMB￥"}}</strong>
                                     </td>
                                     <td class="shopping-cart-quantity">
                                         <div class="product-quantity">
@@ -42,7 +42,7 @@
                                     </td>
                                     </td>
                                     <td class="shopping-cart-total">
-                                        <strong><span>￥</span>{{item.qty*item.price}}</strong>
+                                        <strong>{{item.qty*item.price | currency:"RMB￥"}}</strong>
                                     </td>
                                     <td class="del-goods-col">
                                         <a href="#" ng-click="removeGoods(item.$index)">删除</a>

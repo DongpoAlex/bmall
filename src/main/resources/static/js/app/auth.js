@@ -47,7 +47,7 @@ angular.module('auth', ['bMallService']).factory('auth', function ($rootScope, $
                         menuService.init();
                         cartService.initCart();
                     });
-
+                    $location.path('/');
                 } else {
                     auth.authenticated = false;
                 }

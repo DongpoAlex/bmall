@@ -49,7 +49,7 @@ angular.module('bMall', ['ngRoute', 'auth', 'home', 'navigation', 'bMallService'
     }
 ).directive('loading', ['$http', function ($http) {
     return {
-        link: function (scope, elm, attrs) {
+        link: function (scope, elm,attrs) {
             scope.isLoading = function () {
                 return $http.pendingRequests.length > 0;
             };
@@ -68,6 +68,8 @@ angular.module('bMall', ['ngRoute', 'auth', 'home', 'navigation', 'bMallService'
     function link(scope, element, attrs) {
         jQuery(element).TouchSpin({
             verticalbuttons: true,
+            verticalupclass: 'glyphicon glyphicon-chevron-up',
+            verticaldownclass: 'glyphicon glyphicon-chevron-down',
             max: 1000000000
         });
 
@@ -98,7 +100,6 @@ angular.module('bMall', ['ngRoute', 'auth', 'home', 'navigation', 'bMallService'
         extraClasses: 'messenger-fixed messenger-on-bottom messenger-on-right',
         theme: 'future'
     };
-
     return {
         post: function (msg, retry, cancel) {
             Messenger().post({
@@ -190,16 +191,5 @@ angular.module('bMall', ['ngRoute', 'auth', 'home', 'navigation', 'bMallService'
                 $scope.errorMessage = {content: '新密码和确认密码不相同，请重试！'};
             }
         };
-    }
-]).controller('favoritesCtrl', ['$scope', 'favoritesService', 'AlertService', 'customerService', '$resource',
-    function ($scope, favoritesService, AlertService, customerService, $resource) {
-        var init = function () {
-            var CreditFavoritesGoods = $resource('/api/favoritesGoods');
-            CreditFavoritesGoods.get(function (data) {
-                $scope.favoritesGoodses = data;
-            });
-        };
-        init();
-        $scope.getTotal = favoritesService.getTotal($scope.favoritesGoodses._embedded.favoritesGoodses);
     }
 ]);

@@ -1,7 +1,6 @@
 <div class="title-wrapper">
     <div class="container">
         <div class="container-inner">
-
         </div>
     </div>
 </div>
@@ -45,33 +44,6 @@
             <!-- END SIDEBAR -->
             <!-- BEGIN CONTENT -->
             <div class="col-md-9 col-sm-7">
-                <div class="row list-view-sorting clearfix m_hide">
-                    <div class="col-md-4 col-sm-4 items-info">宝贝{{goodses.page.number*goodses.page.size+1}} 到
-                        {{goodses.page.size*goodses.page.number+goodses.page.size}}
-                        ,总共{{goodses.page.totalElements}}个宝贝
-                    </div>
-                    <div class="col-md-8 col-sm-8">
-                        <ul class="pagination pull-right">
-                            <li><a href="#" ng-click="pageNext(goodses._links.first.href)" aria-label="Previous">
-                                <span aria-hidden="true">首页</span>
-                            </a>
-                            </li>
-                            <li><a href="#" ng-click="pageNext(goodses._links.prev.href)" aria-label="Previous">
-                                <span aria-hidden="true">&laquo;</span>
-                            </a>
-                            </li>
-                            <li class="disabled"><a>当前第{{goodses.page.number+1}}页,总共{{goodses.page.totalPages}}</a></li>
-                            <li><a href="#" ng-click="pageNext(goodses._links.next.href)" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                            </a>
-                            </li>
-                            <li><a href="#" ng-click="pageNext(goodses._links.last.href)" aria-label="Previous">
-                                <span aria-hidden="true">尾页</span>
-                            </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
                 <!-- BEGIN PRODUCT LIST -->
                 <div class="row product-list">
                     <!-- PRODUCT ITEM START -->
@@ -88,6 +60,10 @@
                                 <p><span class="label label-primary">{{item.spec}}</span>*<span
                                         class="label label-success">{{item.unitName}}</span></p>
                             </div>
+                            <a  ng-show="!item.favorited" href="#" ng-click="addFavorites(item)" class="btn btn-default add2favorites">
+                                <i class="glyphicon glyphicon-star-empty"></i>收藏</a>
+                            <span  ng-show="item.favorited"  ng-click="deleteFavorites(item)" class="btn btn-default yet1favorites">
+                                <i class="glyphicon glyphicon-star"></i>已收藏</span>
                             <a href="#" ng-click="addCart(item)" class="btn btn-default add2cart">加入进货单</a>
                         </div>
                     </div>

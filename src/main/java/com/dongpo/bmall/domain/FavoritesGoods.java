@@ -1,14 +1,12 @@
 package com.dongpo.bmall.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by AlexBob on 2016/1/27.
  */
 @Entity
+@Table(name = "guest_goods")
 public class FavoritesGoods {
 
     @Id
@@ -20,11 +18,16 @@ public class FavoritesGoods {
 
     private String name;
 
+    @Column(name = "barcodeid")
+    private String barcode;
+
     @Column(name = "unitname")
     private String unitName;
 
     @Column(name = "guestid")
     private String guestId;
+
+    private double qty;
 
     private double price;
 
@@ -45,21 +48,9 @@ public class FavoritesGoods {
     @Column(name = "opkspec")
     private String oPKSpec;
 
-    public int getId() {
-        return id;
-    }
+    private boolean favorited=true;
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getGoodsId() {
-        return goodsId;
-    }
-
-    public void setGoodsId(int goodsId) {
-        this.goodsId = goodsId;
-    }
+    public int getModelId() {return id;}
 
     public String getName() {
         return name;
@@ -69,20 +60,20 @@ public class FavoritesGoods {
         this.name = name;
     }
 
+    public String getBarcode() {
+        return barcode;
+    }
+
+    public void setBarcode(String barcode) {
+        this.barcode = barcode;
+    }
+
     public String getUnitName() {
         return unitName;
     }
 
     public void setUnitName(String unitName) {
         this.unitName = unitName;
-    }
-
-    public String getGuestId() {
-        return guestId;
-    }
-
-    public void setGuestId(String guestId) {
-        this.guestId = guestId;
     }
 
     public double getPrice() {
@@ -139,5 +130,45 @@ public class FavoritesGoods {
 
     public void setoPKSpec(String oPKSpec) {
         this.oPKSpec = oPKSpec;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getGoodsId() {
+        return goodsId;
+    }
+
+    public void setGoodsId(int goodsId) {
+        this.goodsId = goodsId;
+    }
+
+    public String getGuestId() {
+        return guestId;
+    }
+
+    public void setGuestId(String guestId) {
+        this.guestId = guestId;
+    }
+
+    public double getQty() {
+        return qty;
+    }
+
+    public void setQty(double qty) {
+        this.qty = qty;
+    }
+
+    public boolean isFavorited() {
+        return favorited;
+    }
+
+    public void setFavorited(boolean favorited) {
+        this.favorited = favorited;
     }
 }

@@ -31,20 +31,22 @@ CREATE TABLE Customer (
 );
 
 
-CREATE TABLE favorites_Goods (
+CREATE TABLE Guest_Goods (
   id        INT PRIMARY KEY IDENTITY,
   goodsId   INT          NOT NULL,
   name      VARCHAR(128) NOT NULL,
-  unitName  VARCHAR(64),
-  guestId   VARCHAR(255),
-  price     dec(12, 4),
+  unitName  VARCHAR(64)  NOT NULL,
+  barcodeid VARCHAR(64)  NOT NULL,
+  guestId   VARCHAR(255) NOT NULL,
+  price     dec(12, 4)   NOT NULL,
   deptId    INT,
   twoDeptId INT,
   spec      VARCHAR(64),
-  qty       INT             DEFAULT 0,
+  qty       dec(12, 4)             DEFAULT 0,
   oPKNum    INT,
   oPKName   VARCHAR(64),
-  oPKSpec   VARCHAR(64)
+  oPKSpec   VARCHAR(64),
+  favorited BIT DEFAULT 0
 );
 
 

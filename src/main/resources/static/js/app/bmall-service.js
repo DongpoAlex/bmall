@@ -37,6 +37,7 @@ angular.module('bMallService', ['ngResource'])
         },
         pageNext: function (url) {
             initGoods(url);
+            $(document).scrollTop(300);
         }
     }
 
@@ -62,7 +63,7 @@ angular.module('bMallService', ['ngResource'])
                 }
             );
             if (index === -1) {
-                goods.qty = 1;
+                if(goods.qty<1) goods.qty = 1;
                 $rootScope.cart.push(goods);
             }
 
@@ -117,27 +118,40 @@ angular.module('bMallService', ['ngResource'])
             $location.path("/register/success");
         }
     }
-}).factory('favoritesService', function ($rootScope, $location, $resource) {
-
+}).factory('favoritesService', function ($rootScope,$resource) {
+    $rootScope.favoritesGoodses = {};
     return {
-        getTotal: function (favoritesGoodses) {
-            var total = 0;
-            angular.forEach(favoritesGoodses, function (value) {
-                total = total + value.price * value.qty;
+        initFavorites:function(url){
+            var CreditFavoritesGoods = $resource(url);
+            CreditFavoritesGoods.get(function(data){
+               $rootScope.favoritesGoodses=data;
             });
-            return total;
         },
         postGoods: function (goodsModel) {
-            var CreditFavoritesGoods = $resource('/api/favoritesGoods');
-            var newFavoritesGoods = new CreditFavoritesGoods(goodsModel);
-            newFavoritesGoods.$save();
-            $location.path("/register/success");
+            var CreditFavoritesGoods = $resource('/api/favoritesGoods/:id', null, {
+                'update': {method: 'PUT'}
+            });
+            goodsModel.favorited=true;
+
+            CreditFavoritesGoods.update({ id:goodsModel.modelId},goodsModel);
+
         },
         deleteGoods: function (goodsModel) {
-            var CreditFavoritesGoods = $resource('/api/favoritesGoods');
-            var newFavoritesGoods = new CreditFavoritesGoods(goodsModel);
-            newFavoritesGoods.$remove();
-            $location.path("/register/success");
+            var CreditFavoritesGoods = $resource('/api/favoritesGoods/:id', null, {
+                'update': {method: 'PUT'}
+            });
+            goodsModel.favorited=false;
+
+            CreditFavoritesGoods.update({ id:goodsModel.modelId},goodsModel);
+            Messenger().post({
+                message: '商品 ' + goodsModel.name + '已从收藏中删除!',
+                type: 'success',
+                showCloseButton: true,
+                phrase: 'Retrying TIME',
+                auto: true,
+                delay: 3,
+                actions: false
+            });
         }
     }
 });
