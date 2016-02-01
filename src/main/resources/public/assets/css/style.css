@@ -3717,6 +3717,7 @@ div.checker {
 
 .modal {
     text-align: center;
+    z-index: 999999;
 }
 
 @media screen and (min-width: 768px) {
@@ -3740,7 +3741,7 @@ div.checker {
     bottom: 100px;
     width: 20px;
     font: 300 18px 'Open Sans', sans-serif;
-    z-index: 10000;
+    z-index: 99999;
     background: #fff !important;
 }
 
