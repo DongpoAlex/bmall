@@ -54,7 +54,7 @@
                                 <img ng-src="/goods/img/0{{item.goodsId}}.jpg" class="img-responsive"
                                      alt="{{item.name}}">
                             </div>
-                            <h3>{{item.name}}</h3>
+                            <h3>{{item.name.trim()}}</h3>
                             <a ng-show="!item.favorited" href="#" ng-click="addFavorites(item)"
                                class="btn btn-default add2favorites">
                                 <i class="glyphicon glyphicon-star-empty"></i>收藏</a>
