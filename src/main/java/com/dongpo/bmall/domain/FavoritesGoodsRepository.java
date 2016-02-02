@@ -1,7 +1,5 @@
 package com.dongpo.bmall.domain;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -16,5 +14,5 @@ public interface FavoritesGoodsRepository extends CrudRepository<FavoritesGoods,
 
     @RestResource(path = "/byFavorited")
     @Query("select FG from FavoritesGoods FG where guestId = ?1 and favorited=true")
-    Page<Goods> findByGuestId(@Param("guestId") String guestId, Pageable var1);
+    Iterable<FavoritesGoods> findByGuestId(@Param("guestId") String guestId);
 }
