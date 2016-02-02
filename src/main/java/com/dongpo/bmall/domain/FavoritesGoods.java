@@ -48,7 +48,7 @@ public class FavoritesGoods {
     @Column(name = "opkspec")
     private String oPKSpec;
 
-    private boolean favorited = true;
+    private boolean favorited;
 
     public int getModelId() {
         return id;

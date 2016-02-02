@@ -82,19 +82,20 @@ angular.module('bMallService', ['ngResource'])
             var sheetId = moment().format("YYYYMMDDHHmmsss");
 
             var cartGoods = [];
-
+            var total=0;
             angular.forEach($rootScope.cart, function (value) {
                 if (value.qty > 0) {
                     value.sheetId = sheetId;
                     value.sumPrice = value.qty * value.price;
+                    total=total+value.sumPrice;
                     cartGoods.push(value);
                 }
             });
 
-            if (cartGoods.length === 0) {
-                $window.alert('订单商品数量不能为空!');
-                return;
+            if (cartGoods.length === 0 || total<100) {
+                return -1;
             }
+
             var CreditPurchase = $resource('/api/purchase');
 
             var newPurchase = new CreditPurchase({sheetId: sheetId});
@@ -106,7 +107,10 @@ angular.module('bMallService', ['ngResource'])
             newPurchase.itemSet = cartGoods;
 
             newPurchase.$save();
+            $rootScope.cart=[];
             $location.path('/');
+
+            return 1;
         }
     };
 }).factory('customerService', function ($rootScope, $location, $resource) {

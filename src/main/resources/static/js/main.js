@@ -133,12 +133,20 @@ angular.module('bMall', ['ngRoute', 'auth', 'home', 'navigation', 'bMallService'
             AlertService.post('确认提交订单吗！', {
                 label: '确认提交',
                 action: function () {
-                    cartService.putPurchase();
-                    this.update({
-                        type: "success",
-                        message: "提交成功，已提交后台处理！",
-                        actions: false
-                    });
+                   var re= cartService.putPurchase();
+                    if(re > -1) {
+                        this.update({
+                            type: "success",
+                            message: "提交成功，已提交后台处理!",
+                            actions: false
+                        });
+                    }else{
+                        this.update({
+                            type: "success",
+                            message: "提交失败，原因订单金额小于100或者商品为空！",
+                            actions: false
+                        });
+                    }
                 }
             }, {
                 label: '取消提交', action: function () {

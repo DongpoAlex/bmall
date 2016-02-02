@@ -46,7 +46,7 @@ angular.module('home', ['bMallService']).controller('home', ['$rootScope', '$sco
 ]).controller('favoritesCtrl', ['$scope', 'favoritesService', '$rootScope', 'cartService',
     function ($scope, favoritesService, $rootScope, cartService) {
         var init = function () {
-            favoritesService.initFavorites('api/favoritesGoods/search/byFavorited?guestId=' + $rootScope.user.name + '&size=50');
+            favoritesService.initFavorites('api/favoritesGoods/search/byFavorited?guestId='+$rootScope.user.name +'&size=50');
         };
 
         init();
