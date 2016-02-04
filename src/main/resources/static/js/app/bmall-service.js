@@ -65,6 +65,16 @@ angular.module('bMallService', ['ngResource'])
                 $rootScope.cart.push(goods);
             }
 
+            Messenger().post({
+                message: '商品 ' + goods.name + ' 增加购物车成功!',
+                type: 'success',
+                showCloseButton: true,
+                phrase: 'Retrying TIME',
+                auto: true,
+                delay: 3,
+                actions: false
+            });
+
         },
         remove: function (index) {
             $rootScope.cart.splice(index, 1);
