@@ -35,13 +35,13 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         auth
                 .jdbcAuthentication()
                 .dataSource(dataSource);
-        //.withUser("user").password("password").roles("USER");
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.httpBasic().and().authorizeRequests()
-                .antMatchers("/*", "/assets/**", "/register/success","/changepwd/success","/download/app/**").permitAll()
+                .antMatchers("/*", "/assets/**", "/register/success",
+                        "/changepwd/success","/download/app/**","/goods/img/**").permitAll()
                 .anyRequest().authenticated().and().csrf()
                 .csrfTokenRepository(csrfTokenRepository()).and()
                 .addFilterAfter(csrfHeaderFilter(), CsrfFilter.class);

@@ -128,9 +128,17 @@ angular.module('bMall', ['ngRoute', 'auth', 'home', 'navigation', 'bMallService'
     };
 }).controller("initCtrl", ['$rootScope', 'cartService', 'AlertService',
     function ($rootScope, cartService, AlertService) {
-
         $rootScope.removeGoods = cartService.remove;
         $rootScope.getTotal = cartService.getTotal;
+        $rootScope.sumTotal=function(){
+                var total = 0;
+                angular.forEach($rootScope.cart, function (value) {
+                    total = parseInt(total) + value.price * value.qty;
+                });
+                return total;
+
+        };
+
         $rootScope.putPurchase = function () {
             AlertService.post('确认提交订单吗！', {
                 label: '确认提交',
