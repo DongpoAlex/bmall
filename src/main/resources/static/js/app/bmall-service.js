@@ -55,54 +55,55 @@ angular.module('bMallService', ['ngResource'])
 
         set: function (goods) {
             var index = -1;
-            angular.forEach($rootScope.cart, function (value, key) {
-                    if (value.goodsId == goods.goodsId) {
-                        index = key;
+            if (goods.qty > 0) {
+                angular.forEach($rootScope.cart, function (value, key) {
+                        if (value.goodsId == goods.goodsId) {
+                            index = key;
+                        }
                     }
+                );
+                if (index === -1) {
+                    $rootScope.cart.push(goods);
                 }
-            );
-            if (index === -1) {
-                $rootScope.cart.push(goods);
+
+                Messenger().post({
+                    message: '商品 ' + goods.name + ' 增加购物车成功!',
+                    type: 'success',
+                    showCloseButton: true,
+                    phrase: 'Retrying TIME',
+                    auto: true,
+                    delay: 3,
+                    actions: false
+                });
             }
-
-            Messenger().post({
-                message: '商品 ' + goods.name + ' 增加购物车成功!',
-                type: 'success',
-                showCloseButton: true,
-                phrase: 'Retrying TIME',
-                auto: true,
-                delay: 3,
-                actions: false
-            });
-
         },
         remove: function (index) {
             $rootScope.cart.splice(index, 1);
         },
         getTotal: function () {
             var total = 0;
-            var totalQty=0;
+            var totalQty = 0;
             angular.forEach($rootScope.cart, function (value) {
                 total = parseInt(total) + value.price * value.qty;
-                totalQty = totalQty +parseInt(value.qty) ;
+                totalQty = totalQty + parseInt(value.qty);
             });
-            return $filter('currency')(totalQty,"")+' | '+$filter('currency')(total,"");
+            return $filter('currency')(totalQty, "") + ' | ' + $filter('currency')(total, "");
         },
         putPurchase: function () {
             var sheetId = moment().format("YYYYMMDDHHmmsss");
 
             var cartGoods = [];
-            var total=0;
+            var total = 0;
             angular.forEach($rootScope.cart, function (value) {
                 if (value.qty > 0) {
                     value.sheetId = sheetId;
                     value.sumPrice = value.qty * value.price;
-                    total=total+value.sumPrice;
+                    total = total + value.sumPrice;
                     cartGoods.push(value);
                 }
             });
 
-            if (cartGoods.length === 0 || total<100) {
+            if (cartGoods.length === 0 || total < 100) {
                 return -1;
             }
 
@@ -117,7 +118,7 @@ angular.module('bMallService', ['ngResource'])
             newPurchase.itemSet = cartGoods;
 
             newPurchase.$save();
-            $rootScope.cart=[];
+            $rootScope.cart = [];
             $location.path('/');
 
             return 1;
