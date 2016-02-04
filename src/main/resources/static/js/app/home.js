@@ -53,6 +53,8 @@ angular.module('home', ['bMallService']).controller('home', ['$rootScope', '$sco
 
         $scope.favoritesAddCart = cartService.set;
 
+        $scope.pageNext = favoritesService.pageNext;
+
         $scope.favoritesPageNext = function (url) {
             favoritesService.initFavorites(url)
             $(document).scrollTop(100);

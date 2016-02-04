@@ -24,6 +24,8 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/goods/img/**")
                 .addResourceLocations("file:D:/bmall/resources/img/");
+        registry.addResourceHandler("/download/app/**")
+                .addResourceLocations("file:D:/bmall/App_Setup/");
     }
 
 

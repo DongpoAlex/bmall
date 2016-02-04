@@ -73,8 +73,8 @@ angular.module('bMallService', ['ngResource'])
             var total = 0;
             var totalQty=0;
             angular.forEach($rootScope.cart, function (value) {
-                total = total + value.price * value.qty;
-                totalQty = totalQty + value.qty;
+                total = parseInt(total) + value.price * value.qty;
+                totalQty = totalQty +parseInt(value.qty) ;
             });
             return $filter('currency')(totalQty,"")+' | '+$filter('currency')(total,"");
         },
@@ -157,6 +157,13 @@ angular.module('bMallService', ['ngResource'])
                 delay: 3,
                 actions: false
             });
+        },
+        pageNext: function (url) {
+            var CreditFavoritesGoods = $resource(url);
+            CreditFavoritesGoods.get(function (data) {
+                $rootScope.favoritesGoodses = data;
+            });
+            $(document).scrollTop(300);
         }
     }
 });
