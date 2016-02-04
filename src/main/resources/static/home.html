@@ -61,6 +61,7 @@
                             <span ng-show="item.favorited" ng-click="deleteFavorites(item)"
                                   class="btn btn-default yet1favorites">
                                 <i class="glyphicon glyphicon-star"></i>已收藏</span>
+                            <div class="m_clear"></div>
                             <div class="pi-price"><strong>￥{{item.price}}</strong></div>
                             <div class="text-right">
                                 <p><span class="label label-primary">{{item.spec}}</span>*<span
@@ -68,7 +69,10 @@
                             </div>
                             <input type="text"  class="form-control input-sm" maxlength="4"
                                    ng-model="item.qty" init-touchspin-home>
-                            <a href="#" ng-click="addCart(item)" class="btn btn-default add2cart">加入进货单</a>
+                            <a href="#" ng-click="addCart(item)" class="btn btn-default add2cart m_hide">加入进货单</a>
+                            <a href="#" ng-click="addCart(item)" class="btn btn-default add2cart hide m_show">
+                                <i class="glyphicon glyphicon-plus"></i>
+                            </a>
                         </div>
                     </div>
                     <!-- PRODUCT ITEM END -->

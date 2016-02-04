@@ -39,8 +39,10 @@ angular.module('bMall', ['ngRoute', 'auth', 'home', 'navigation', 'bMallService'
             }).when('/favorites', {
                 templateUrl: '/favorites.html',
                 controller: 'favoritesCtrl'
+            }).when('/m_favorites', {
+                templateUrl: '/m_favorites.html',
+                controller: 'favoritesCtrl'
             });
-
             $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
         }

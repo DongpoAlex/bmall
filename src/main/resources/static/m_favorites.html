@@ -1,0 +1,75 @@
+<div class="main">
+    <div class="container">
+        <!-- BEGIN SIDEBAR & CONTENT -->
+        <div class="row margin-bottom-40">
+            <!-- BEGIN CONTENT -->
+            <div class="col-md-12 col-sm-12">
+                <h1>收藏夹</h1>
+                <div class="shopping-cart-page">
+                    <div class="shopping-cart-data clearfix">
+                        <div class="padding-bottom: 40px;">
+                            <div ng-repeat="item in favoritesGoodses._embedded.favoritesGoodses" class="item">
+                                <div class="clear"></div>
+                                <div class="tit">{{item.name}}</div>
+                                <div class="summary">
+                                    <em class="price">
+                                        <strong>单价：<span>￥</span>{{item.price}}</strong><br/>
+                                        <strong>件装规格：<span>￥</span>{{item.oPKSpec}}</strong>
+                                    </em>
+                                    <em class="qty">
+                                        <div class="product-quantity">
+                                            <input type="text" value="1"
+                                                   class="form-control input-sm" ng-model="item.qty" init-touchspin>
+                                        </div>
+                                    </em>
+                                    <em class="del">
+                                        <a href="#" style="margin:2px 0 6px 0;" ng-click="favoritesAddCart(item)"><i class="glyphicon glyphicon-plus"></i>购买</a><br />
+                                        <a href="#" ng-click="deleteFavorites(item)"><i class="glyphicon glyphicon-remove"></i>删除</a>
+                                    </em>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 col-sm-8 items-info">
+                                宝贝{{favoritesGoodses.page.number*favoritesGoodses.page.size+1}} 到
+                                {{favoritesGoodses.page.size*favoritesGoodses.page.number+favoritesGoodses.page.size}}
+                                ,总共{{favoritesGoodses.page.totalElements}}个宝贝
+                            </div>
+                            <div class="col-md-8 col-sm-12">
+                                <ul class="pagination pull-right">
+                                    <li><a href="#" ng-click="pageNext(favoritesGoodses._links.first.href)"
+                                           aria-label="Previous">
+                                        <span aria-hidden="true">首页</span>
+                                    </a>
+                                    </li>
+                                    <li><a href="#" ng-click="pageNext(favoritesGoodses._links.prev.href)"
+                                           aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                    </li>
+                                    <li class="disabled"><a>当前第{{favoritesGoodses.page.number+1}}页,总共{{favoritesGoodses.page.totalPages}}</a>
+                                    </li>
+                                    <li><a href="#" ng-click="pageNext(favoritesGoodses._links.next.href)"
+                                           aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                    </li>
+                                    <li><a href="#" ng-click="pageNext(favoritesGoodses._links.last.href)"
+                                           aria-label="Previous">
+                                        <span aria-hidden="true">尾页</span>
+                                    </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="btn btn-default" href="/">返回购物<i class="fa fa-shopping-cart"></i></a>
+                </div>
+            </div>
+            <!-- END CONTENT -->
+        </div>
+    </div>
+</div>
+
