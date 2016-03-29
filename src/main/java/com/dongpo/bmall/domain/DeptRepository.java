@@ -14,7 +14,9 @@ import org.springframework.data.rest.core.annotation.RestResource;
 public interface DeptRepository extends CrudRepository<Dept, Integer> {
 
     @RestResource(path = "/byGuest")
-    @Query(value = "select * from v_SGroup where id in ( select deptId/100 from guest_goods where guestId = :guestId) or \n" +
+    @Query(value = "select * from v_SGroup where id in " +
+            "( select deptId/100 from guest_goods where guestId = :guestId) " +
+            "or \n" +
             "id in (select DeptID/10000 from guest_goods where GuestID = :guestId)", nativeQuery = true)
     Iterable<Dept> findByGuestId(@Param("guestId") String guestId);
 }
