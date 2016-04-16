@@ -73,7 +73,8 @@ angular.module('bMall', ['ngRoute', 'auth', 'home', 'navigation', 'bMallService'
             verticalupclass: 'glyphicon glyphicon-chevron-up',
             verticaldownclass: 'glyphicon glyphicon-chevron-down',
             max: 99999,
-            initval: 1
+            initval: 1,
+            decimals: 2
         });
 
     };
@@ -84,7 +85,8 @@ angular.module('bMall', ['ngRoute', 'auth', 'home', 'navigation', 'bMallService'
     function link(scope, element, attrs) {
         jQuery(element).TouchSpin({
             initval: 0,
-            max: 9999
+            max: 9999,
+            decimals: 2
         });
 
     };
